@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+
+  /* Palette derived from HRCM's own logo (azure/green sampled from logo.png) */
+  --color-navy-950: #050f22;
+  --color-navy-900: #0a1e3e;
+  --color-navy-800: #10294f;
+  --color-navy-700: #16376a;
+  --color-navy-100: #dbe7f5;
+  --color-azure-600: #0878d8;
+  --color-azure-500: #0888e8;
+  --color-azure-400: #08a8f8;
+  --color-azure-300: #4dbdff;
+  --color-azure-50: #eaf6ff;
+  --color-signal-500: #5fbf3f;
+  --color-signal-400: #79d95a;
+  --color-mist-50: #f5f7fa;
+  --color-mist-100: #eef1f6;
+  --color-mist-200: #dfe5ee;
+  --color-ink-900: #0d1526;
+  --color-ink-600: #43506a;
+  --color-ink-500: #5b6880;
+
+  --shadow-card: 0 1px 2px rgb(10 30 62 / 0.04), 0 8px 24px -8px rgb(10 30 62 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(10 30 62 / 0.05), 0 20px 44px -16px rgb(10 30 62 / 0.22);
+
+  --animate-marquee: marquee 32s linear infinite;
+  --animate-gradient-drift: gradient-drift 14s ease-in-out infinite alternate;
+  --animate-pulse-ring: pulse-ring 2.4s ease-out infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes gradient-drift {
+    from { background-position: 0% 40%; }
+    to { background-position: 100% 60%; }
+  }
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 rgb(8 136 232 / 0.35); }
+    70%, 100% { box-shadow: 0 0 0 14px rgb(8 136 232 / 0); }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink-900);
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-azure-500);
+  color: #fff;
+}
+
+/* Visible focus rings for keyboard users on brand surfaces */
+:focus-visible {
+  outline: 2px solid var(--color-azure-500);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Scroll-reveal system (IntersectionObserver + CSS transitions)       */
+/* Content is VISIBLE by default; hiding is applied only when JS adds  */
+/* .will-reveal, so nothing can ever be stuck invisible.               */
+/* ------------------------------------------------------------------ */
+
+.will-reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.will-reveal.is-inview {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .will-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Services grid cards: stagger via nth-child transition delays */
+.stagger-grid > *:nth-child(1) { --reveal-delay: 0ms; }
+.stagger-grid > *:nth-child(2) { --reveal-delay: 70ms; }
+.stagger-grid > *:nth-child(3) { --reveal-delay: 140ms; }
+.stagger-grid > *:nth-child(4) { --reveal-delay: 210ms; }
+.stagger-grid > *:nth-child(5) { --reveal-delay: 280ms; }
+.stagger-grid > *:nth-child(6) { --reveal-delay: 350ms; }
