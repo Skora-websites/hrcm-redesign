@@ -2,97 +2,114 @@ import { useEffect, useRef } from "react";
 import { gsap, shouldSkipAnimation } from "../../lib/gsap";
 import { HERO } from "../../data/content";
 import { CTAButton } from "../ui";
+import { TechCanvas } from "../TechCanvas";
 
-function ClaimFlowVisual() {
+const TRUST_CHIPS = [
+  "Claims Audit",
+  "AR Management",
+  "Medical Billing",
+  "Reconciliation",
+  "Denial Reduction",
+];
+
+function TelemetryCard() {
   const root = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const el = root.current;
     if (!el || shouldSkipAnimation()) return;
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline();
+      const tl = gsap.timeline({ delay: 0.9 });
       tl.from("[data-chip]", {
         opacity: 0,
-        x: -18,
+        x: 18,
         duration: 0.5,
-        stagger: 0.22,
-        delay: 1.0,
+        stagger: 0.18,
         ease: "power2.out",
       })
-        .from("[data-settle]", {
-          opacity: 0,
-          y: 22,
-          duration: 0.55,
-          delay: 0.2,
-          ease: "power3.out",
-        })
+        .from(
+          "[data-settle]",
+          { opacity: 0, y: 24, duration: 0.55, ease: "power3.out" },
+          "-=0.2",
+        )
         .fromTo(
           "[data-settle-bar]",
           { width: "0%" },
           { width: "86%", duration: 0.9, ease: "power2.out" },
+          "-=0.1",
+        )
+        .from(
+          "[data-row]",
+          { opacity: 0, y: 10, duration: 0.4, stagger: 0.12, ease: "power2.out" },
+          "-=0.5",
         );
       window.setTimeout(() => {
         if (tl.progress() < 1) tl.progress(1);
-      }, 4200);
+      }, 3600);
     }, el);
     return () => ctx.revert();
   }, []);
 
   const chips = [
-    { label: "Claim 1042", status: "Verified", cls: "text-signal-400 border-signal-500/40 bg-signal-500/10", pos: "left-0 top-6" },
-    { label: "Claim 1043", status: "Submitting", cls: "text-azure-300 border-azure-400/40 bg-azure-500/10", pos: "left-10 top-24 sm:left-16" },
-    { label: "Claim 1044", status: "Audited", cls: "text-signal-400 border-signal-500/40 bg-signal-500/10", pos: "left-4 top-44 sm:left-8" },
+    { label: "Claim 1042", status: "Verified", cls: "text-signal-600 border-signal-500/40 bg-signal-50" },
+    { label: "Claim 1043", status: "Submitting", cls: "text-azure-700 border-azure-500/40 bg-azure-50" },
+    { label: "Claim 1044", status: "Audited", cls: "text-signal-600 border-signal-500/40 bg-signal-50" },
+  ];
+
+  const rows = [
+    { k: "Claims processed", v: "1,284" },
+    { k: "Denial rate", v: "2.3%" },
+    { k: "Avg. turnaround", v: "60 days" },
   ];
 
   return (
     <div ref={root} className="relative mx-auto w-full max-w-md" aria-hidden>
-      <div className="overflow-hidden rounded-3xl border border-white/10 shadow-lift">
-        <img
-          src="/images/hero.jpg"
-          alt=""
-          className="h-64 w-full object-cover sm:h-72"
-          loading="eager"
-        />
-        <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-navy-950/90 via-navy-950/45 to-azure-600/20" />
+      {/* Live pipeline chips */}
+      <div className="mb-4 space-y-2.5">
+        {chips.map((c, i) => (
+          <div
+            key={c.label}
+            data-chip
+            className={`w-fit rounded-xl border px-4 py-2.5 backdrop-blur-sm shadow-card ${
+              i === 1 ? "ml-auto" : i === 2 ? "ml-6" : ""
+            } ${c.cls}`}
+          >
+            <div className="text-sm font-semibold text-navy-900">{c.label}</div>
+            <div className="text-[0.7rem] font-semibold uppercase tracking-wider opacity-80">
+              {c.status}
+            </div>
+          </div>
+        ))}
       </div>
 
-      <div className="pointer-events-none absolute inset-0 p-6">
-        <div className="flex items-center justify-between text-xs font-medium text-white/80">
-          <span className="inline-flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-signal-400 animate-pulse-ring" />
-            Live RCM pipeline
+      {/* Settlement card */}
+      <div
+        data-settle
+        className="rounded-3xl border border-mist-200 bg-white/90 p-6 shadow-lift backdrop-blur-xl"
+      >
+        <div className="flex items-center justify-between">
+          <span className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-signal-600">
+            Settlement
           </span>
-          <span>Today</span>
+          <span className="inline-flex items-center gap-1.5 text-[0.7rem] font-medium text-ink-500">
+            <span className="h-1.5 w-1.5 rounded-full bg-signal-500 animate-pulse-ring" />
+            Live
+          </span>
         </div>
+        <div className="mt-1.5 text-3xl font-extrabold tracking-tight text-navy-900">₹ 48.6 L</div>
+        <div className="mt-3 h-2 overflow-hidden rounded-full bg-mist-200">
+          <div data-settle-bar className="h-full rounded-full bg-gradient-to-r from-signal-500 to-azure-500" />
+        </div>
+        <div className="mt-1.5 text-[0.72rem] text-ink-500">86% recovered this cycle</div>
 
-        <div className="relative mt-4 h-64">
-          {chips.map((c) => (
-            <div
-              key={c.label}
-              data-chip
-              className={`absolute ${c.pos} rounded-xl border px-4 py-3 backdrop-blur-sm ${c.cls}`}
-            >
-              <div className="text-sm font-semibold">{c.label}</div>
-              <div className="mt-0.5 text-[0.7rem] uppercase tracking-wider opacity-80">
-                {c.status}
-              </div>
+        <dl className="mt-5 space-y-2.5 border-t border-mist-200 pt-4">
+          {rows.map((r) => (
+            <div key={r.k} data-row className="flex items-center justify-between">
+              <dt className="text-[0.82rem] text-ink-500">{r.k}</dt>
+              <dd className="text-[0.85rem] font-bold text-navy-900">{r.v}</dd>
             </div>
           ))}
-
-          <div
-            data-settle
-            className="absolute bottom-0 right-0 w-48 rounded-2xl border border-signal-500/40 bg-white/95 p-4 text-navy-900 shadow-lift sm:right-2"
-          >
-            <div className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-signal-500">
-              Settlement
-            </div>
-            <div className="mt-1 text-2xl font-bold">₹ 48.6 L</div>
-            <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-mist-200">
-              <div data-settle-bar className="h-full rounded-full bg-signal-500" />
-            </div>
-            <div className="mt-1.5 text-[0.7rem] text-ink-500">86% recovered this cycle</div>
-          </div>
-        </div>
+        </dl>
       </div>
     </div>
   );
@@ -109,11 +126,16 @@ export function Hero() {
       tl.from("[data-hero-badge]", { opacity: 0, y: 14, duration: 0.5 })
         .from(
           "[data-hero-word]",
-          { opacity: 0, y: 30, rotate: 2, duration: 0.55, stagger: 0.07 },
+          { opacity: 0, y: 30, rotate: 2, duration: 0.55, stagger: 0.06 },
           "-=0.15",
         )
         .from("[data-hero-sub]", { opacity: 0, y: 18, duration: 0.6 }, "-=0.2")
         .from("[data-hero-cta]", { opacity: 0, y: 18, duration: 0.6 }, "-=0.3")
+        .from(
+          "[data-hero-chip]",
+          { opacity: 0, y: 12, duration: 0.4, stagger: 0.07 },
+          "-=0.3",
+        )
         .from(
           "[data-hero-visual]",
           { opacity: 0, y: 34, scale: 0.97, duration: 0.7 },
@@ -130,28 +152,36 @@ export function Hero() {
   const words = HERO.headline.split(" ");
 
   return (
-    <section ref={root} id="home" className="relative overflow-hidden bg-navy-950">
+    <section ref={root} id="home" className="relative overflow-hidden bg-white">
+      {/* Tech animation texture backdrop */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="animate-gradient-drift absolute inset-0 bg-[radial-gradient(1200px_600px_at_15%_-10%,rgb(8_88_184/0.35),transparent_60%),radial-gradient(900px_500px_at_90%_10%,rgb(95_191_63/0.12),transparent_55%),radial-gradient(700px_700px_at_60%_110%,rgb(8_168_248/0.18),transparent_60%)] bg-[length:180%_180%]" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent,rgb(5_15_34/0.6))]" />
+        <TechCanvas />
+        {/* Soft light washes so copy stays readable over the canvas */}
+        <div className="absolute inset-0 bg-[radial-gradient(1100px_520px_at_12%_-8%,rgb(14_165_233/0.12),transparent_58%),radial-gradient(880px_480px_at_92%_12%,rgb(16_185_129/0.10),transparent_55%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/25 to-white" />
       </div>
 
-      <div className="relative mx-auto grid max-w-7xl gap-14 px-5 pb-20 pt-32 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:pb-28 lg:pt-40">
+      <div className="relative mx-auto grid max-w-7xl gap-14 px-5 pb-24 pt-32 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:pb-32 lg:pt-44">
         <div>
           <span
             data-hero-badge
-            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-azure-300"
+            className="inline-flex items-center gap-2 rounded-full border border-azure-200 bg-azure-50/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-azure-700 backdrop-blur-sm"
           >
+            <span className="h-1.5 w-1.5 rounded-full bg-signal-500" />
             Healthcare Revenue Cycle Management
           </span>
 
-          <h1 className="mt-6 text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.6rem]">
+          <h1 className="mt-6 text-4xl font-bold leading-[1.08] tracking-tight text-navy-900 sm:text-5xl lg:text-[3.6rem]">
             {words.map((w, i) => (
               <span
                 key={i}
                 data-hero-word
                 className={`inline-block ${
-                  w === "Revenue" ? "text-azure-400" : w === "HRCM" ? "text-signal-400" : ""
+                  w === "Revenue"
+                    ? "bg-gradient-to-r from-azure-600 to-azure-500 bg-clip-text text-transparent"
+                    : w === "HRCM"
+                      ? "text-signal-600"
+                      : ""
                 }`}
               >
                 {w}
@@ -160,7 +190,7 @@ export function Hero() {
             ))}
           </h1>
 
-          <p data-hero-sub className="mt-6 max-w-xl text-lg leading-relaxed text-navy-100/85">
+          <p data-hero-sub className="mt-6 max-w-xl text-lg leading-relaxed text-ink-600">
             {HERO.subheadline}
           </p>
 
@@ -168,14 +198,27 @@ export function Hero() {
             <CTAButton href={HERO.primaryCta.href} variant="primary">
               {HERO.primaryCta.label}
             </CTAButton>
-            <CTAButton href={HERO.secondaryCta.href} variant="ghost-light">
+            <CTAButton href={HERO.secondaryCta.href} variant="outline">
               {HERO.secondaryCta.label}
             </CTAButton>
+          </div>
+
+          {/* Trust chips */}
+          <div className="mt-10 flex flex-wrap gap-2.5">
+            {TRUST_CHIPS.map((c) => (
+              <span
+                key={c}
+                data-hero-chip
+                className="rounded-full border border-mist-200 bg-white/70 px-3.5 py-1.5 text-[0.8rem] font-medium text-ink-600 shadow-card backdrop-blur-sm"
+              >
+                {c}
+              </span>
+            ))}
           </div>
         </div>
 
         <div data-hero-visual>
-          <ClaimFlowVisual />
+          <TelemetryCard />
         </div>
       </div>
 

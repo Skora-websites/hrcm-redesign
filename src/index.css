@@ -1,34 +1,43 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
 
   /* Palette derived from HRCM's own logo (azure/green sampled from logo.png) */
-  --color-navy-950: #050f22;
-  --color-navy-900: #0a1e3e;
-  --color-navy-800: #10294f;
-  --color-navy-700: #16376a;
-  --color-navy-100: #dbe7f5;
-  --color-azure-600: #0878d8;
-  --color-azure-500: #0888e8;
-  --color-azure-400: #08a8f8;
-  --color-azure-300: #4dbdff;
-  --color-azure-50: #eaf6ff;
-  --color-signal-500: #5fbf3f;
-  --color-signal-400: #79d95a;
-  --color-mist-50: #f5f7fa;
-  --color-mist-100: #eef1f6;
-  --color-mist-200: #dfe5ee;
-  --color-ink-900: #0d1526;
-  --color-ink-600: #43506a;
-  --color-ink-500: #5b6880;
+  --color-navy-950: #0b132b;
+  --color-navy-900: #0f172a;
+  --color-navy-800: #1c2541;
+  --color-navy-700: #334155;
+  --color-navy-100: #e2e8f0;
+  --color-azure-700: #0369a1;
+  --color-azure-600: #0284c7;
+  --color-azure-500: #0ea5e9;
+  --color-azure-400: #38bdf8;
+  --color-azure-300: #7dd3fc;
+  --color-azure-100: #e0f2fe;
+  --color-azure-50: #f0f9ff;
+  --color-signal-600: #059669;
+  --color-signal-500: #10b981;
+  --color-signal-400: #34d399;
+  --color-signal-100: #d1fae5;
+  --color-signal-50: #ecfdf5;
+  --color-mist-50: #f8fafc;
+  --color-mist-100: #f1f5f9;
+  --color-mist-200: #e2e8f0;
+  --color-ink-900: #0f172a;
+  --color-ink-700: #334155;
+  --color-ink-600: #475569;
+  --color-ink-500: #64748b;
 
-  --shadow-card: 0 1px 2px rgb(10 30 62 / 0.04), 0 8px 24px -8px rgb(10 30 62 / 0.12);
-  --shadow-lift: 0 2px 4px rgb(10 30 62 / 0.05), 0 20px 44px -16px rgb(10 30 62 / 0.22);
+  --shadow-card: 0 4px 20px -2px rgb(11 19 43 / 0.05);
+  --shadow-lift: 0 20px 35px -8px rgb(2 132 199 / 0.12), 0 4px 12px -2px rgb(11 19 43 / 0.04);
+  --shadow-brand: 0 10px 30px -10px rgb(14 165 233 / 0.35);
 
-  --animate-marquee: marquee 32s linear infinite;
+  --animate-marquee: marquee 28s linear infinite;
   --animate-gradient-drift: gradient-drift 14s ease-in-out infinite alternate;
   --animate-pulse-ring: pulse-ring 2.4s ease-out infinite;
+  --animate-float-slow: float-slow 9s ease-in-out infinite;
+  --animate-float-reverse: float-reverse 11s ease-in-out infinite;
 
   @keyframes marquee {
     from { transform: translateX(0); }
@@ -39,8 +48,16 @@
     to { background-position: 100% 60%; }
   }
   @keyframes pulse-ring {
-    0% { box-shadow: 0 0 0 0 rgb(8 136 232 / 0.35); }
-    70%, 100% { box-shadow: 0 0 0 14px rgb(8 136 232 / 0); }
+    0% { box-shadow: 0 0 0 0 rgb(16 185 129 / 0.4); }
+    70%, 100% { box-shadow: 0 0 0 14px rgb(16 185 129 / 0); }
+  }
+  @keyframes float-slow {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(14px, -18px); }
+  }
+  @keyframes float-reverse {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-16px, 14px); }
   }
 }
 
@@ -53,6 +70,7 @@ body {
   color: var(--color-ink-900);
   background: #ffffff;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 ::selection {
@@ -112,3 +130,24 @@ body {
 .stagger-grid > *:nth-child(4) { --reveal-delay: 210ms; }
 .stagger-grid > *:nth-child(5) { --reveal-delay: 280ms; }
 .stagger-grid > *:nth-child(6) { --reveal-delay: 350ms; }
+
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-azure-600), var(--color-azure-400), var(--color-signal-500));
+  width: 0%;
+  z-index: 100;
+  transition: width 0.1s ease-out;
+}
+
+/* Hero tech-texture canvas backdrop */
+.tech-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}

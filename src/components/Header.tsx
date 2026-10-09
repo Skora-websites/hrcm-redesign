@@ -65,11 +65,7 @@ export function Header() {
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-5 sm:px-8">
         <Link href="/" className="flex items-center gap-3" aria-label="HRCM home">
           <img src="/logo.png" alt="HRCM Logo" className="h-11 w-11 object-contain" />
-          <span
-            className={`text-lg font-bold tracking-tight transition-colors ${
-              scrolled ? "text-navy-900" : "text-white"
-            }`}
-          >
+          <span className="text-lg font-bold tracking-tight text-navy-900 transition-colors">
             HRCM
           </span>
         </Link>
@@ -81,8 +77,8 @@ export function Header() {
               href={item.href}
               aria-current={isActive(item.href) ? "page" : undefined}
               className={`text-[0.92rem] font-medium transition-colors hover:text-azure-500 ${
-                scrolled ? "text-ink-600" : "text-white/85"
-              } ${isActive(item.href) ? (scrolled ? "text-azure-600" : "text-azure-300") : ""}`}
+                isActive(item.href) ? "text-azure-600" : "text-ink-600"
+              }`}
             >
               {item.label}
             </Link>
@@ -92,20 +88,14 @@ export function Header() {
         <div className="hidden lg:block">
           <Link
             href="/get-in-touch.html"
-            className={`rounded-full px-5 py-2.5 text-[0.9rem] font-semibold transition-all duration-300 ${
-              scrolled
-                ? "bg-azure-500 text-white hover:bg-azure-600"
-                : "bg-white text-navy-900 hover:bg-azure-50"
-            }`}
+            className="rounded-full bg-azure-500 px-5 py-2.5 text-[0.9rem] font-semibold text-white shadow-[0_10px_30px_-12px_rgb(8_136_232/0.7)] transition-all duration-300 hover:bg-azure-600"
           >
             Request a Consultation
           </Link>
         </div>
 
         <button
-          className={`rounded-lg p-2 transition-colors lg:hidden ${
-            scrolled ? "text-navy-900" : "text-white"
-          }`}
+          className="rounded-lg p-2 text-navy-900 transition-colors lg:hidden"
           onClick={() => setOpen(true)}
           aria-label="Open menu"
           aria-expanded={open}

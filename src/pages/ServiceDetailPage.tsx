@@ -1,4 +1,5 @@
 import { SERVICES, SERVICE_POINTS } from "../data/content";
+import { TechCanvas } from "../components/TechCanvas";
 import { Icon } from "../components/Icon";
 import { CTABand } from "../components/CTABand";
 import { Breadcrumbs } from "../components/Breadcrumbs";
@@ -15,26 +16,27 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
 
   return (
     <main>
-      {/* Detail hero — navy like other subpages, no PageHero wave */}
-      <section className="relative overflow-hidden bg-navy-950 pb-16 pt-32 text-white sm:pb-20 sm:pt-40">
-        <div
-          aria-hidden
-          className="animate-gradient-drift pointer-events-none absolute inset-0 bg-[radial-gradient(900px_480px_at_18%_-10%,rgb(8_88_184/0.4),transparent_60%),radial-gradient(700px_400px_at_88%_0%,rgb(8_168_248/0.22),transparent_55%)] bg-[length:180%_180%]"
-        />
+      {/* Detail hero — light theme, tech canvas backdrop (matches PageHero) */}
+      <section className="relative overflow-hidden bg-white pb-16 pt-32 sm:pb-20 sm:pt-40">
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <TechCanvas density={0.00007} />
+          <div className="absolute inset-0 bg-[radial-gradient(900px_460px_at_18%_-10%,rgb(14_165_233/0.12),transparent_60%),radial-gradient(700px_400px_at_88%_0%,rgb(16_185_129/0.08),transparent_55%)]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/30 to-white" />
+        </div>
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal>
-            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-azure-300">
+            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-azure-600">
               <span className="h-px w-6 bg-current" aria-hidden />
               OUR SERVICES
             </span>
           </Reveal>
           <Reveal delay={0.1}>
-            <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl">
+            <h1 className="mt-4 max-w-3xl text-4xl font-bold leading-[1.1] tracking-tight text-navy-900 sm:text-5xl">
               {service.title}
             </h1>
           </Reveal>
           <Reveal delay={0.2}>
-            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-navy-100/85">
+            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-600">
               {service.detailIntro ?? service.text}
             </p>
           </Reveal>

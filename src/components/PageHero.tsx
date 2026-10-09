@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { gsap, shouldSkipAnimation } from "../lib/gsap";
 import type { PageHero as PageHeroData } from "../data/content";
+import { TechCanvas } from "./TechCanvas";
 
 export function PageHero({ data }: { data: PageHeroData }) {
   const root = useRef<HTMLElement>(null);
@@ -22,32 +23,39 @@ export function PageHero({ data }: { data: PageHeroData }) {
   }, []);
 
   return (
-    <section ref={root} className="relative overflow-hidden bg-navy-950 pb-16 pt-32 text-white sm:pb-20 sm:pt-40">
-      <div
-        aria-hidden
-        className="animate-gradient-drift pointer-events-none absolute inset-0 bg-[radial-gradient(900px_480px_at_18%_-10%,rgb(8_88_184/0.4),transparent_60%),radial-gradient(700px_400px_at_88%_0%,rgb(8_168_248/0.22),transparent_55%)] bg-[length:180%_180%]"
-      />
+    <section
+      ref={root}
+      className="relative overflow-hidden bg-white pb-16 pt-32 sm:pb-20 sm:pt-40"
+    >
+      {/* Tech animation texture backdrop (consistent with hero) */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <TechCanvas density={0.00007} />
+        <div className="absolute inset-0 bg-[radial-gradient(900px_460px_at_18%_-10%,rgb(14_165_233/0.12),transparent_60%),radial-gradient(700px_400px_at_88%_0%,rgb(16_185_129/0.08),transparent_55%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/30 to-white" />
+      </div>
+
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <span
           data-ph-eyebrow
-          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-azure-300"
+          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-azure-600"
         >
           <span className="h-px w-6 bg-current" aria-hidden />
           {data.eyebrow}
         </span>
         <h1
           data-ph-title
-          className="mt-4 max-w-3xl text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl"
+          className="mt-4 max-w-3xl text-4xl font-bold leading-[1.1] tracking-tight text-navy-900 sm:text-5xl"
         >
           {data.title}
         </h1>
         <p
           data-ph-intro
-          className="mt-5 max-w-2xl text-lg leading-relaxed text-navy-100/85"
+          className="mt-5 max-w-2xl text-lg leading-relaxed text-ink-600"
         >
           {data.intro}
         </p>
       </div>
+
       <svg
         aria-hidden
         viewBox="0 0 1440 64"

@@ -38,7 +38,7 @@ export function ComingSoon() {
         stagger: 0.12,
         scrollTrigger: { trigger: "[data-cs-support]", start: "top 88%", once: true },
       });
-      // Gentle float on the hourglass visual
+      // Gentle float on the visual
       gsap.to("[data-cs-visual]", {
         y: -12,
         duration: 2.6,
@@ -51,7 +51,8 @@ export function ComingSoon() {
         gsap.globalTimeline
           .getChildren(false, false, true)
           .forEach((t) => {
-            const st = (t as unknown as { scrollTrigger?: { start: number; end: number } }).scrollTrigger;
+            const st = (t as unknown as { scrollTrigger?: { start: number; end: number } })
+              .scrollTrigger;
             if (!st && t.progress() < 1 && t.repeat() === 0) t.progress(1);
           });
       }, 2600);
@@ -63,11 +64,11 @@ export function ComingSoon() {
     <section
       ref={root}
       id="ai-platform"
-      className="relative overflow-hidden bg-navy-950 py-20 text-white sm:py-28"
+      className="relative overflow-hidden bg-navy-900 py-20 text-white sm:py-28"
     >
       <div
         aria-hidden
-        className="animate-gradient-drift pointer-events-none absolute inset-0 bg-[radial-gradient(900px_500px_at_20%_20%,rgb(8_136_232/0.28),transparent_60%),radial-gradient(700px_400px_at_85%_75%,rgb(95_191_63/0.14),transparent_55%)] bg-[length:180%_180%]"
+        className="animate-gradient-drift pointer-events-none absolute inset-0 bg-[radial-gradient(900px_500px_at_20%_20%,rgb(14_165_233/0.22),transparent_60%),radial-gradient(700px_400px_at_85%_75%,rgb(16_185_129/0.12),transparent_55%)] bg-[length:180%_180%]"
       />
 
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
@@ -75,7 +76,7 @@ export function ComingSoon() {
           <div>
             <span
               data-cs-badge
-              className="inline-flex items-center gap-2 rounded-full border border-signal-500/40 bg-signal-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-signal-400"
+              className="inline-flex items-center gap-2 rounded-full border border-signal-400/40 bg-signal-500/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-signal-400"
             >
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal-400 opacity-60" />
