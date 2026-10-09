@@ -60,6 +60,9 @@ export function BarChart({ metric }: { metric: Metric }) {
   const H = 150;
   const beforeH = (metric.before / max) * H;
   const afterH = (metric.after / max) * H;
+  // Sanitized, unique gradient ids: raw titles contain spaces/"&" which are
+  // invalid inside a url(#…) fragment reference and render the fill as black.
+  const gid = metric.title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
   useEffect(() => {
     if (!inView) return;
@@ -99,11 +102,11 @@ export function BarChart({ metric }: { metric: Metric }) {
         aria-label={`${metric.title}: ${metric.beforeLabel} before, ${metric.afterLabel} after`}
       >
         <defs>
-          <linearGradient id={`bar-before-${metric.title}`} x1="0" y1="0" x2="0" y2="1">
+          <linearGradient id={`bar-before-${gid}`} x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#f43f5e" />
             <stop offset="100%" stopColor="#e11d48" />
           </linearGradient>
-          <linearGradient id={`bar-after-${metric.title}`} x1="0" y1="0" x2="0" y2="1">
+          <linearGradient id={`bar-after-${gid}`} x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#34d399" />
             <stop offset="100%" stopColor="#059669" />
           </linearGradient>
@@ -128,7 +131,7 @@ export function BarChart({ metric }: { metric: Metric }) {
             width={barW}
             height={beforeH}
             rx="8"
-            fill={`url(#bar-before-${metric.title})`}
+            fill={`url(#bar-before-${gid})`}
           />
           <rect
             ref={afterRef}
@@ -137,7 +140,7 @@ export function BarChart({ metric }: { metric: Metric }) {
             width={barW}
             height={afterH}
             rx="8"
-            fill={`url(#bar-after-${metric.title})`}
+            fill={`url(#bar-after-${gid})`}
           />
         </g>
       </svg>
