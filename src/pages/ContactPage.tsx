@@ -57,7 +57,7 @@ export function ContactPage() {
             </Reveal>
           </div>
           <Reveal delay={0.15}>
-            <div className="rounded-3xl border border-mist-200 bg-white p-7 shadow-card sm:p-9">
+            <div className="border-t-2 border-navy-900 pt-8">
               <h2 className="text-xl font-bold text-navy-900">{CONTACT.form.heading}</h2>
               <ContactForm />
             </div>

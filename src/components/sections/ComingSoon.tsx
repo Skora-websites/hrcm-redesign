@@ -95,17 +95,17 @@ export function ComingSoon() {
               </span>
             </h2>
 
-            <div data-cs-grid className="mt-10 grid gap-4 sm:grid-cols-3">
+            <div data-cs-grid className="mt-10 grid gap-8 sm:grid-cols-3 sm:gap-10">
               {COMING_SOON.questions.map((q, i) => (
                 <div
                   data-cs-card
                   key={i}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur transition-colors duration-300 hover:border-azure-400/40"
+                  className="border-l border-white/20 pl-6 transition-colors duration-300 hover:border-azure-400/60"
                 >
                   <span className="text-2xl" aria-hidden>
                     {["🛡️", "⚡", "🧠"][i]}
                   </span>
-                  <p className="mt-3 text-sm leading-relaxed text-navy-100/85">{q}</p>
+                  <p className="mt-4 text-sm leading-relaxed text-navy-100/85">{q}</p>
                 </div>
               ))}
             </div>

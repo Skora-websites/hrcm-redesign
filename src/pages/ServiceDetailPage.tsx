@@ -19,8 +19,6 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
       {/* Detail hero — light theme, premium layered backdrop (matches PageHero) */}
       <section className="relative overflow-hidden bg-gradient-to-b from-azure-50/70 via-white to-white pb-16 pt-32 sm:pb-20 sm:pt-40">
         <div aria-hidden className="pointer-events-none absolute inset-0">
-          <div className="absolute -left-32 -top-32 h-96 w-96 rounded-full bg-azure-300/25 blur-3xl" />
-          <div className="absolute -right-24 top-0 h-80 w-80 rounded-full bg-signal-300/20 blur-3xl" />
           <div
             className="absolute inset-0 opacity-60 [background-image:radial-gradient(rgb(2_132_199/0.16)_1px,transparent_1px)] [background-size:26px_26px] [mask-image:radial-gradient(1000px_500px_at_50%_0%,black,transparent_75%)]"
           />

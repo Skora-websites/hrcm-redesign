@@ -1,75 +1,56 @@
 import { useReveal } from "../../hooks/useReveal";
 import { SERVICES } from "../../data/content";
-import { Icon } from "../Icon";
 import { SectionHeading } from "../ui";
 import { Link } from "../Link";
 
-/** HRCM's own section artwork, mapped to services for visual identity. */
-const SERVICE_IMAGES: Record<string, string> = {
-  audit: "/images/about-1.png",
-  processing: "/images/hero.jpg",
-  receivable: "/images/about-2.png",
-  reconciliation: "/images/hero.jpg",
-  billing: "/images/about-1.png",
-  query: "/images/about-2.png",
-};
-
 export function Services() {
-  const gridRef = useReveal<HTMLDivElement>();
+  const listRef = useReveal<HTMLDivElement>();
 
   return (
     <section id="services" className="bg-white py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
+          align="left"
           label="SERVICES"
           title="Scope Of Services"
           intro="End-to-end revenue cycle support — from claim audit to final reconciliation."
         />
-        <div ref={gridRef} className="stagger-grid mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((s) => (
+
+        {/* Editorial index list — hairline-separated rows, no cards */}
+        <div ref={listRef} className="mt-14 border-t border-mist-200">
+          {SERVICES.map((s, i) => (
             <Link
               key={s.title}
               href={s.href}
-              className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-mist-200 bg-white shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-azure-300 hover:shadow-lift"
+              className="group grid grid-cols-[3rem_1fr_auto] items-start gap-x-6 border-b border-mist-200 py-8 transition-colors duration-300 hover:bg-azure-50/60 md:grid-cols-[4rem_20rem_1fr_3rem] md:items-center md:gap-x-8"
             >
-              <div className="relative h-36 overflow-hidden">
-                <img
-                  src={SERVICE_IMAGES[s.icon]}
-                  alt=""
-                  aria-hidden
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-navy-950/20 to-transparent" />
-                <div className="absolute bottom-3 left-5 inline-flex rounded-xl bg-white/95 p-2.5 text-azure-600 shadow-card transition-colors duration-300 group-hover:bg-azure-500 group-hover:text-white">
-                  <Icon name={s.icon} className="h-5 w-5" />
-                </div>
-                {s.needsValidation && (
-                  <span
-                    className="absolute right-4 top-4 rounded-full bg-mist-100 px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-wider text-ink-500"
-                    title="Copy pending client validation"
-                  >
-                    Draft
-                  </span>
-                )}
-              </div>
-              <div className="flex flex-1 flex-col p-7">
-                <h3 className="text-lg font-semibold leading-snug text-navy-900">
+              <span className="pt-1 text-sm font-bold text-azure-500 md:pt-0">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+
+              <div>
+                <h3 className="flex items-center gap-3 text-lg font-semibold leading-snug text-navy-900 transition-colors duration-300 group-hover:text-azure-600 md:text-xl">
                   {s.title}
+                  {s.needsValidation && (
+                    <span
+                      className="rounded-full bg-mist-100 px-2.5 py-0.5 text-[0.62rem] font-semibold uppercase tracking-wider text-ink-500"
+                      title="Copy pending client validation"
+                    >
+                      Draft
+                    </span>
+                  )}
                 </h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-600">
-                  {s.text.length > 140 ? s.text.slice(0, 137).trimEnd() + "…" : s.text}
+                <p className="col-span-2 mt-3 max-w-2xl text-sm leading-relaxed text-ink-600 md:col-span-1 md:mt-0 md:col-start-3 md:row-start-1">
+                  {s.text.length > 150 ? s.text.slice(0, 147).trimEnd() + "…" : s.text}
                 </p>
-                <span className="mt-4 inline-flex w-fit items-center gap-1.5 text-sm font-semibold text-azure-600 transition-colors group-hover:text-azure-500">
-                  Read more
-                  <span
-                    aria-hidden
-                    className="transition-transform duration-300 group-hover:translate-x-1"
-                  >
-                    →
-                  </span>
-                </span>
               </div>
+
+              <span
+                aria-hidden
+                className="col-start-3 row-start-1 flex h-11 w-11 items-center justify-center rounded-full border border-mist-200 text-azure-500 transition-all duration-300 group-hover:border-azure-500 group-hover:bg-azure-500 group-hover:text-white md:col-start-4"
+              >
+                →
+              </span>
             </Link>
           ))}
         </div>

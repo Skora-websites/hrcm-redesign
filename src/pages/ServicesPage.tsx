@@ -1,5 +1,4 @@
 import { PROCESS, SERVICES } from "../data/content";
-import { Icon } from "../components/Icon";
 import { CTABand } from "../components/CTABand";
 import { PageHero } from "../components/PageHero";
 import { Breadcrumbs } from "../components/Breadcrumbs";
@@ -23,30 +22,40 @@ export function ServicesPage() {
 
       <section className="bg-mist-50 py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Editorial index list — hairline-separated rows, no cards */}
+          <div className="border-t border-navy-900/10">
             {SERVICES.map((s, i) => (
-              <Reveal key={s.title} delay={(i % 3) * 0.08} className="h-full">
+              <Reveal key={s.title} delay={(i % 3) * 0.06}>
                 <Link
                   href={s.href}
-                  className="group flex h-full flex-col rounded-3xl border border-mist-200 bg-white p-7 shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:border-azure-300 hover:shadow-lift"
+                  className="group grid grid-cols-[3rem_1fr_auto] items-start gap-x-6 border-b border-navy-900/10 py-8 transition-colors duration-300 hover:bg-white/70 md:grid-cols-[4rem_22rem_1fr_3rem] md:items-center md:gap-x-8"
                 >
-                  {s.needsValidation && (
-                    <span className="absolute right-5 top-5 rounded-full bg-mist-100 px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-wider text-ink-500">
-                      Draft
-                    </span>
-                  )}
-                  <div className="inline-flex w-fit rounded-2xl bg-navy-900 p-3.5 text-azure-400 transition-colors duration-300 group-hover:bg-azure-500 group-hover:text-white">
-                    <Icon name={s.icon} className="h-6 w-6" />
+                  <span className="pt-1 text-sm font-bold text-azure-500 md:pt-0">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+
+                  <div>
+                    <h2 className="flex items-center gap-3 text-lg font-semibold leading-snug text-navy-900 transition-colors duration-300 group-hover:text-azure-600 md:text-xl">
+                      {s.title}
+                      {s.needsValidation && (
+                        <span
+                          className="rounded-full bg-mist-100 px-2.5 py-0.5 text-[0.62rem] font-semibold uppercase tracking-wider text-ink-500"
+                          title="Copy pending client validation"
+                        >
+                          Draft
+                        </span>
+                      )}
+                    </h2>
+                    <p className="col-span-2 mt-3 max-w-2xl text-sm leading-relaxed text-ink-600 md:col-span-1 md:col-start-3 md:row-start-1 md:mt-0">
+                      {s.text.length > 190 ? s.text.slice(0, 187).trimEnd() + "…" : s.text}
+                    </p>
                   </div>
-                  <h2 className="mt-5 text-lg font-semibold leading-snug text-navy-900">
-                    {s.title}
-                  </h2>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-600">{s.text}</p>
-                  <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-azure-600 transition-colors group-hover:text-azure-500">
-                    Read more
-                    <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
-                      →
-                    </span>
+
+                  <span
+                    aria-hidden
+                    className="col-start-3 row-start-1 flex h-11 w-11 items-center justify-center rounded-full border border-navy-900/10 text-azure-500 transition-all duration-300 group-hover:border-azure-500 group-hover:bg-azure-500 group-hover:text-white md:col-start-4"
+                  >
+                    →
                   </span>
                 </Link>
               </Reveal>
@@ -67,12 +76,12 @@ export function ServicesPage() {
               {PROCESS.heading}
             </h2>
           </Reveal>
-          <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <ol className="mt-10 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {PROCESS.steps.map((s, i) => (
               <Reveal key={s.num} delay={i * 0.08} className="h-full">
-                <li className="h-full rounded-2xl border border-mist-200 bg-mist-50 p-6">
-                  <span className="text-3xl font-bold text-azure-500">{s.num}</span>
-                  <h3 className="mt-3 font-semibold text-navy-900">{s.title}</h3>
+                <li className="h-full border-t-2 border-azure-500/80 pt-5">
+                  <span className="text-xs font-bold text-azure-500">{s.num}</span>
+                  <h3 className="mt-2 font-semibold text-navy-900">{s.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-ink-500">{s.text}</p>
                 </li>
               </Reveal>

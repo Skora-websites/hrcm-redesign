@@ -57,7 +57,7 @@ export function Contact() {
 
           {/* Right: form */}
           <Reveal delay={0.15}>
-            <div className="rounded-3xl border border-mist-200 bg-mist-50 p-7 shadow-card sm:p-9">
+            <div className="border-t-2 border-navy-900 pt-8">
               <h3 className="text-xl font-bold text-navy-900">{CONTACT.form.heading}</h3>
               <ContactForm />
             </div>

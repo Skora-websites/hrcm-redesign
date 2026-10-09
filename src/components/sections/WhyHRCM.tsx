@@ -6,22 +6,28 @@ export function WhyHRCM() {
   return (
     <section id="why-hrcm" className="bg-white py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionHeading label={WHY.label} title={WHY.heading} intro={WHY.intro} />
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <SectionHeading
+          align="left"
+          label={WHY.label}
+          title={WHY.heading}
+          intro={WHY.intro}
+        />
+
+        {/* Editorial numbered rows — hairline-separated, no cards */}
+        <div className="mt-14 border-t border-navy-900/10">
           {WHY.items.map((item, i) => (
-            <Reveal
-              key={item.title}
-              delay={i * 0.07}
-              className={i === 0 ? "lg:col-span-2 lg:col-start-1" : ""}
-            >
-              <div className="group flex h-full flex-col rounded-3xl border border-mist-200 bg-mist-50 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-azure-300 hover:bg-white hover:shadow-lift">
-                <div className="flex items-center gap-4">
-                  <span className="inline-flex rounded-xl bg-navy-900 p-3 text-azure-400 transition-colors duration-300 group-hover:bg-azure-500 group-hover:text-white">
-                    <Icon name={item.icon} className="h-5.5 w-5.5" />
-                  </span>
-                  <h3 className="text-lg font-semibold text-navy-900">{item.title}</h3>
-                </div>
-                <p className="mt-4 text-sm leading-relaxed text-ink-600">{item.text}</p>
+            <Reveal key={item.title} delay={i * 0.06}>
+              <div className="grid grid-cols-[2.75rem_1fr] items-start gap-x-5 border-b border-navy-900/10 py-8 md:grid-cols-[5rem_19rem_1fr] md:gap-x-10">
+                <span className="text-xl font-bold text-azure-500/70 md:text-2xl">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="flex items-center gap-3 text-lg font-semibold text-navy-900 md:text-xl">
+                  <Icon name={item.icon} className="h-5 w-5 shrink-0 text-azure-500" />
+                  {item.title}
+                </h3>
+                <p className="col-span-2 mt-3 max-w-2xl text-sm leading-relaxed text-ink-600 md:col-span-1 md:mt-0">
+                  {item.text}
+                </p>
               </div>
             </Reveal>
           ))}

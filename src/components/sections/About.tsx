@@ -2,10 +2,7 @@ import { useEffect, useRef } from "react";
 import { gsap, shouldSkipAnimation } from "../../lib/gsap";
 import { useReveal } from "../../hooks/useReveal";
 import { ABOUT } from "../../data/content";
-import { Icon } from "../Icon";
 import { CTAButton } from "../ui";
-
-const cardIcons = ["audit", "processing", "eye", "data"];
 
 function AboutCollage() {
   const root = useRef<HTMLDivElement>(null);
@@ -68,12 +65,6 @@ function AboutCollage() {
           loading="lazy"
         />
       </div>
-      <div className="absolute -left-3 bottom-8 rounded-2xl bg-azure-500 px-5 py-4 text-white shadow-lift sm:left-auto sm:-right-6">
-        <div className="text-2xl font-bold leading-none">100%</div>
-        <div className="mt-1 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-white/85">
-          End-to-end RCM
-        </div>
-      </div>
     </div>
   );
 }
@@ -106,16 +97,13 @@ export function About() {
           <AboutCollage />
         </div>
 
-        <div ref={cardsRef} className="stagger-grid mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div ref={cardsRef} className="stagger-grid mt-16 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
           {ABOUT.cards.map((c, i) => (
-            <div
-              key={c.title}
-              className="group h-full rounded-2xl border border-mist-200 bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-azure-300 hover:shadow-lift"
-            >
-              <div className="inline-flex rounded-xl bg-azure-50 p-3 text-azure-600 transition-colors duration-300 group-hover:bg-azure-500 group-hover:text-white">
-                <Icon name={cardIcons[i]} className="h-6 w-6" />
-              </div>
-              <h3 className="mt-4 text-base font-semibold text-navy-900">{c.title}</h3>
+            <div key={c.title} className="border-t-2 border-azure-500/80 pt-5">
+              <span className="text-xs font-bold text-azure-500">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 className="mt-2 text-base font-semibold text-navy-900">{c.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-500">{c.text}</p>
             </div>
           ))}
