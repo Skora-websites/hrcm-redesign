@@ -206,6 +206,11 @@ export function Hero() {
             <CTAButton href={HERO.secondaryCta.href} variant="outline">
               {HERO.secondaryCta.label}
             </CTAButton>
+            {HERO.portalCta && (
+              <CTAButton href={HERO.portalCta.href} variant="outline">
+                {HERO.portalCta.label}
+              </CTAButton>
+            )}
           </div>
 
           {/* Trust chips */}

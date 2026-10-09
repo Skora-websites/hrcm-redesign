@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NAV } from "../data/content";
+import { NAV, PORTAL_URL } from "../data/content";
 import { Link } from "./Link";
 
 /** Current pathname normalized the same way the router does (for active state). */
@@ -55,6 +55,7 @@ export function Header() {
     href === "/" ? path === "/" : path === href.replace(/\.html$/, "");
 
   return (
+    <>
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
@@ -85,12 +86,18 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-3 lg:flex">
+          <Link
+            href={PORTAL_URL}
+            className="rounded-full border-2 border-navy-900/15 px-5 py-2 text-[0.9rem] font-semibold text-navy-900 transition-all duration-300 hover:-translate-y-0.5 hover:border-azure-500 hover:text-azure-600"
+          >
+            Explore Portal
+          </Link>
           <Link
             href="/get-in-touch.html"
             className="rounded-full bg-azure-500 px-5 py-2.5 text-[0.9rem] font-semibold text-white shadow-[0_10px_30px_-12px_rgb(8_136_232/0.7)] transition-all duration-300 hover:bg-azure-600"
           >
-            Request a Consultation
+            Request a Demo
           </Link>
         </div>
 
@@ -105,6 +112,7 @@ export function Header() {
           </svg>
         </button>
       </div>
+    </header>
 
       {open && (
         <div
@@ -151,11 +159,18 @@ export function Header() {
               onClick={closeDrawer}
               className="mt-6 rounded-full bg-azure-500 px-5 py-3 text-center font-semibold text-white hover:bg-azure-600"
             >
-              Request a Consultation
+              Request a Demo
+            </Link>
+            <Link
+              href={PORTAL_URL}
+              onClick={closeDrawer}
+              className="mt-3 rounded-full border-2 border-navy-900/15 px-5 py-3 text-center font-semibold text-navy-900 hover:border-azure-500 hover:text-azure-600"
+            >
+              Explore Portal
             </Link>
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }

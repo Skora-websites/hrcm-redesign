@@ -1,4 +1,4 @@
-import { SERVICES, SERVICE_POINTS } from "../data/content";
+import { PORTAL_URL, SERVICES, SERVICE_POINTS } from "../data/content";
 import { TechCanvas } from "../components/TechCanvas";
 import { Icon } from "../components/Icon";
 import { CTABand } from "../components/CTABand";
@@ -112,7 +112,13 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
                   href="/get-in-touch.html"
                   className="mt-5 block rounded-full bg-azure-500 px-5 py-3 text-center text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-azure-600"
                 >
-                  Request a Free Consultation
+                  Request a Demo
+                </Link>
+                <Link
+                  href={PORTAL_URL}
+                  className="mt-3 block rounded-full border-2 border-navy-900/15 bg-white px-5 py-3 text-center text-sm font-semibold text-navy-900 transition-all duration-300 hover:-translate-y-0.5 hover:border-azure-500 hover:text-azure-600"
+                >
+                  Explore Portal
                 </Link>
               </div>
             </Reveal>

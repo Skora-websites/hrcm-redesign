@@ -1,18 +1,22 @@
-import { CONTACT } from "../data/content";
+import { CONTACT, PORTAL_URL } from "../data/content";
 import { CTAButton, Reveal } from "./ui";
 
 export function CTABand({
   title = "Ready to strengthen your revenue cycle?",
   text = CONTACT.body,
-  primaryLabel = "Request a Free Consultation",
+  primaryLabel = "Request a Demo",
   secondaryLabel = "Explore Our Services",
   secondaryHref = "/services.html",
+  tertiaryLabel = "Explore Portal",
+  tertiaryHref = PORTAL_URL,
 }: {
   title?: string;
   text?: string;
   primaryLabel?: string;
   secondaryLabel?: string;
   secondaryHref?: string;
+  tertiaryLabel?: string;
+  tertiaryHref?: string;
 }) {
   return (
     <section className="relative overflow-hidden bg-navy-900 py-16 text-white sm:py-20">
@@ -36,6 +40,9 @@ export function CTABand({
             </CTAButton>
             <CTAButton href={secondaryHref} variant="ghost-light">
               {secondaryLabel}
+            </CTAButton>
+            <CTAButton href={tertiaryHref} variant="ghost-light">
+              {tertiaryLabel}
             </CTAButton>
           </div>
         </Reveal>

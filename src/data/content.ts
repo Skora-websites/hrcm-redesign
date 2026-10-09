@@ -17,6 +17,13 @@ export const NAV = [
   { label: "Get In Touch", href: "/get-in-touch.html" },
 ] as const;
 
+/**
+ * Central portal link — the client will provide the real URL later.
+ * When it arrives, replace this single value and every "Explore Portal"
+ * button (header, hero, CTA band, service pages) will redirect there.
+ */
+export const PORTAL_URL = "#";
+
 export const HERO = {
   /** VERBATIM: current hero H1 ("Optimize Your Hospital Revenue with HRCM"). */
   headline: "Optimize Your Hospital Revenue with HRCM",
@@ -26,7 +33,8 @@ export const HERO = {
    */
   subheadline:
     "We Provide End-to-end receivables recovery and operational support to healthcare providers.",
-  primaryCta: { label: "Request a Free Consultation", href: "/get-in-touch.html" },
+  primaryCta: { label: "Request a Demo", href: "/get-in-touch.html" },
+  portalCta: { label: "Explore Portal", href: PORTAL_URL },
   secondaryCta: { label: "Explore Services", href: "/services.html" },
 } as const;
 
@@ -65,8 +73,8 @@ export const ABOUT = {
       text: "Detailed reports and performance insights.",
     },
   ],
-  /** Live CTA "EXPLORE PORTAL →" pointed to "#". Now targets the Services page. */
-  cta: { label: "Explore Our Services", href: "/services.html" },
+  /** Live CTA was "EXPLORE PORTAL →" (pointed to "#") — now the real portal link. */
+  cta: { label: "Explore Portal", href: PORTAL_URL },
 } as const;
 
 export type Service = {
@@ -317,9 +325,9 @@ export const FOUNDERS = {
 
 export const CONTACT = {
   label: "GET IN TOUCH",
-  heading: "Request a Free Consultation",
+  heading: "Request a Demo",
   /** VERBATIM: closing copy from the live site's contact section. */
-  body: "HRCM invites healthcare providers to discover how a structured and efficient revenue cycle management approach can help reduce operational inefficiencies, improve settlement processes, and strengthen overall financial performance. Healthcare organizations interested in optimizing their revenue cycle operations may request a free consultation or revenue audit to assess current processes and identify opportunities for improvement.",
+  body: "HRCM invites healthcare providers to discover how a structured and efficient revenue cycle management approach can help reduce operational inefficiencies, improve settlement processes, and strengthen overall financial performance. Healthcare organizations interested in optimizing their revenue cycle operations may request a demo or revenue audit to assess current processes and identify opportunities for improvement.",
   phones: ["+91 98688 08775", "+91 80102 85464"],
   email: "info@hrcm.in",
   address:
@@ -396,9 +404,9 @@ export const PAGE_HEROES: Record<string, PageHero> = {
   },
   contact: {
     eyebrow: "GET IN TOUCH",
-    title: "Request a Free Consultation",
+    title: "Request a Demo",
     intro:
-      "Request a free consultation or revenue audit to assess current processes and identify opportunities for improvement.",
+      "Request a demo or revenue audit to assess current processes and identify opportunities for improvement.",
   },
 };
 
