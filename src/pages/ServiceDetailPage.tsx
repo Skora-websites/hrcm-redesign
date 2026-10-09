@@ -16,12 +16,17 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
 
   return (
     <main>
-      {/* Detail hero — light theme, tech canvas backdrop (matches PageHero) */}
-      <section className="relative overflow-hidden bg-white pb-16 pt-32 sm:pb-20 sm:pt-40">
+      {/* Detail hero — light theme, premium layered backdrop (matches PageHero) */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-azure-50/70 via-white to-white pb-16 pt-32 sm:pb-20 sm:pt-40">
         <div aria-hidden className="pointer-events-none absolute inset-0">
-          <TechCanvas density={0.00007} />
-          <div className="absolute inset-0 bg-[radial-gradient(900px_460px_at_18%_-10%,rgb(14_165_233/0.12),transparent_60%),radial-gradient(700px_400px_at_88%_0%,rgb(16_185_129/0.08),transparent_55%)]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/30 to-white" />
+          <div className="absolute -left-32 -top-32 h-96 w-96 rounded-full bg-azure-300/25 blur-3xl" />
+          <div className="absolute -right-24 top-0 h-80 w-80 rounded-full bg-signal-300/20 blur-3xl" />
+          <div
+            className="absolute inset-0 opacity-60 [background-image:radial-gradient(rgb(2_132_199/0.16)_1px,transparent_1px)] [background-size:26px_26px] [mask-image:radial-gradient(1000px_500px_at_50%_0%,black,transparent_75%)]"
+          />
+          <TechCanvas density={0.0001} />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgb(255_255_255/0.8)_0%,rgb(255_255_255/0.5)_42%,transparent_70%)]" />
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-white" />
         </div>
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <Reveal>
@@ -41,14 +46,6 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
             </p>
           </Reveal>
         </div>
-        <svg
-          aria-hidden
-          viewBox="0 0 1440 64"
-          preserveAspectRatio="none"
-          className="absolute bottom-0 left-0 h-10 w-full text-mist-50 sm:h-14"
-        >
-          <path d="M0 64h1440V24c-240 32-480 40-720 24S240 8 0 24v40z" fill="currentColor" />
-        </svg>
       </section>
 
       <div className="mx-auto max-w-7xl px-5 pt-6 sm:px-8">

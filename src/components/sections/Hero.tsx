@@ -152,13 +152,22 @@ export function Hero() {
   const words = HERO.headline.split(" ");
 
   return (
-    <section ref={root} id="home" className="relative overflow-hidden bg-white">
-      {/* Tech animation texture backdrop */}
+    <section ref={root} id="home" className="relative overflow-hidden bg-gradient-to-b from-azure-50/70 via-white to-white">
+      {/* Premium layered backdrop: glow blobs → dot grid → tech canvas → soft veil */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
+        {/* Depth glow blobs */}
+        <div className="absolute -left-40 -top-40 h-[34rem] w-[34rem] rounded-full bg-azure-300/25 blur-3xl" />
+        <div className="absolute -right-32 top-10 h-[28rem] w-[28rem] rounded-full bg-signal-300/20 blur-3xl" />
+        <div className="absolute bottom-0 left-1/3 h-[24rem] w-[24rem] rounded-full bg-azure-200/30 blur-3xl" />
+        {/* Subtle data dot grid, faded at the edges */}
+        <div
+          className="absolute inset-0 opacity-60 [background-image:radial-gradient(rgb(2_132_199/0.16)_1px,transparent_1px)] [background-size:26px_26px] [mask-image:radial-gradient(1200px_600px_at_50%_20%,black,transparent_75%)]"
+        />
+        {/* Animated tech texture network */}
         <TechCanvas />
-        {/* Soft light washes so copy stays readable over the canvas */}
-        <div className="absolute inset-0 bg-[radial-gradient(1100px_520px_at_12%_-8%,rgb(14_165_233/0.12),transparent_58%),radial-gradient(880px_480px_at_92%_12%,rgb(16_185_129/0.10),transparent_55%)]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/25 to-white" />
+        {/* Soft veil only behind the copy side, so the texture stays visible */}
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgb(255_255_255/0.78)_0%,rgb(255_255_255/0.45)_38%,transparent_65%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-white" />
       </div>
 
       <div className="relative mx-auto grid max-w-7xl gap-14 px-5 pb-24 pt-32 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:pb-32 lg:pt-44">
@@ -222,14 +231,6 @@ export function Hero() {
         </div>
       </div>
 
-      <svg
-        aria-hidden
-        viewBox="0 0 1440 64"
-        preserveAspectRatio="none"
-        className="absolute bottom-0 left-0 h-10 w-full text-mist-50 sm:h-14"
-      >
-        <path d="M0 64h1440V24c-240 32-480 40-720 24S240 8 0 24v40z" fill="currentColor" />
-      </svg>
     </section>
   );
 }

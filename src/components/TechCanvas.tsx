@@ -14,7 +14,7 @@ type Node = { x: number; y: number; vx: number; vy: number };
  */
 export function TechCanvas({
   className = "",
-  density = 0.00009,
+  density = 0.00013,
 }: {
   className?: string;
   density?: number;
@@ -45,7 +45,7 @@ export function TechCanvas({
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       const target = Math.round(w * h * density);
-      const count = Math.max(24, Math.min(target, 90));
+      const count = Math.max(40, Math.min(target, 120));
       nodes = Array.from({ length: count }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
@@ -57,7 +57,7 @@ export function TechCanvas({
     const draw = () => {
       ctx.clearRect(0, 0, w, h);
 
-      const linkDist = Math.min(160, Math.max(90, w / 9));
+      const linkDist = Math.min(210, Math.max(130, w / 6));
 
       // Connecting lines
       for (let i = 0; i < nodes.length; i++) {
@@ -68,9 +68,9 @@ export function TechCanvas({
           const dy = a.y - b.y;
           const dist = Math.hypot(dx, dy);
           if (dist < linkDist) {
-            const alpha = (1 - dist / linkDist) * 0.28;
-            ctx.strokeStyle = `rgba(56, 189, 248, ${alpha.toFixed(3)})`;
-            ctx.lineWidth = 1;
+            const alpha = (1 - dist / linkDist) * 0.5;
+            ctx.strokeStyle = `rgba(14, 165, 233, ${alpha.toFixed(3)})`;
+            ctx.lineWidth = 1.15;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
@@ -79,12 +79,17 @@ export function TechCanvas({
         }
       }
 
-      // Nodes
-      for (const n of nodes) {
+      // Nodes — azure network with occasional green "live" nodes and a soft glow
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+        const isLive = i % 6 === 0;
         ctx.beginPath();
-        ctx.arc(n.x, n.y, 1.6, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(125, 211, 252, 0.55)";
+        ctx.arc(n.x, n.y, isLive ? 2.8 : 2.1, 0, Math.PI * 2);
+        ctx.fillStyle = isLive ? "rgba(16, 185, 129, 0.75)" : "rgba(2, 132, 199, 0.65)";
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = isLive ? "rgba(16, 185, 129, 0.5)" : "rgba(14, 165, 233, 0.45)";
         ctx.fill();
+        ctx.shadowBlur = 0;
       }
     };
 
