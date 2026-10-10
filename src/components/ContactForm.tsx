@@ -27,7 +27,7 @@ export function ContactForm() {
   }
 
   const inputCls =
-    "w-full rounded-xl border border-mist-200 bg-white px-4 py-3 text-sm text-ink-900 placeholder:text-ink-500/60 transition-colors focus:border-azure-500 focus:outline-none focus:ring-2 focus:ring-azure-500/20";
+    "bevel-well w-full rounded-xl border border-mist-200/80 bg-white/85 px-4 py-3 text-sm text-ink-900 placeholder:text-ink-500/60 backdrop-blur-sm transition-colors focus:border-azure-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-azure-500/20";
 
   if (status === "success") {
     return (
@@ -88,7 +88,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-azure-500 px-8 py-3.5 font-semibold text-white shadow-[0_10px_30px_-10px_rgb(8_136_232/0.6)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-azure-600 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+          className="press group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-b from-azure-400 to-azure-600 px-8 py-3.5 font-semibold text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.45),inset_0_-2px_0_rgb(3_105_161/0.55),0_12px_26px_-10px_rgb(8_136_232/0.7)] transition-all duration-300 hover:-translate-y-0.5 hover:from-azure-400 hover:to-azure-500 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
         >
           {status === "sending" ? "Sending…" : CONTACT.form.button}
           <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">

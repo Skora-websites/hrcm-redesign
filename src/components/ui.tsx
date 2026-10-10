@@ -115,14 +115,14 @@ export function CTAButton({
   arrow = true,
 }: BtnProps) {
   const base =
-    "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300 px-7 py-3.5 text-[0.95rem]";
+    "group inline-flex items-center justify-center gap-2 rounded-full font-semibold px-7 py-3.5 text-[0.95rem] press";
   const styles = {
     primary:
-      "bg-azure-500 text-white shadow-[0_10px_30px_-10px_rgb(8_136_232/0.6)] hover:bg-azure-600 hover:shadow-[0_14px_34px_-10px_rgb(8_136_232/0.7)] hover:-translate-y-0.5",
+      "bg-gradient-to-b from-azure-400 to-azure-600 text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.45),inset_0_-2px_0_rgb(3_105_161/0.55),0_12px_26px_-10px_rgb(8_136_232/0.7)] hover:from-azure-400 hover:to-azure-500 hover:-translate-y-0.5 active:shadow-[inset_0_1px_0_rgb(255_255_255/0.3),inset_0_2px_6px_rgb(3_105_161/0.45),0_4px_10px_-8px_rgb(8_136_232/0.6)]",
     outline:
-      "border-2 border-navy-900/15 text-navy-900 hover:border-azure-500 hover:text-azure-600 hover:-translate-y-0.5 bg-white/60",
+      "border-2 border-navy-900/15 text-navy-900 hover:border-azure-500 hover:text-azure-600 hover:-translate-y-0.5 bg-white/70 backdrop-blur-sm shadow-[inset_0_1px_0_rgb(255_255_255/0.9),0_6px_16px_-10px_rgb(11_19_43/0.35)]",
     "ghost-light":
-      "border-2 border-white/25 text-white hover:border-white/70 hover:-translate-y-0.5",
+      "border border-white/30 text-white bg-white/10 backdrop-blur-md hover:border-white/70 hover:bg-white/15 hover:-translate-y-0.5 shadow-[inset_0_1px_0_rgb(255_255_255/0.25)]",
   } as const;
   return (
     <Link href={href} className={`${base} ${styles[variant]} ${className}`}>

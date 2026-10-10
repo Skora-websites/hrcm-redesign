@@ -66,7 +66,7 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {points.map((pt, i) => (
                 <Reveal key={pt.title} delay={0.1 + i * 0.06} className="h-full">
-                  <div className="flex h-full gap-3.5 rounded-2xl border border-mist-200 bg-white p-5 shadow-card">
+                  <div className="glass flex h-full gap-3.5 rounded-2xl p-5">
                     <span className="mt-0.5 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-signal-500/12 text-signal-500">
                       <Icon name="check" className="h-4 w-4" strokeWidth={2.4} />
                     </span>
@@ -88,7 +88,7 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
 
           <aside>
             <Reveal delay={0.15}>
-              <div className="rounded-3xl border border-mist-200 bg-white p-7 shadow-card">
+              <div className="glass rounded-3xl p-7">
                 <h2 className="text-lg font-bold text-navy-900">Other services</h2>
                 <ul className="mt-4 space-y-1">
                   {others.map((o) => (
@@ -110,13 +110,13 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
                 </ul>
                 <Link
                   href="/get-in-touch.html"
-                  className="mt-5 block rounded-full bg-azure-500 px-5 py-3 text-center text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-azure-600"
+                  className="press mt-5 block rounded-full bg-gradient-to-b from-azure-400 to-azure-600 px-5 py-3 text-center text-sm font-semibold text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.45),inset_0_-2px_0_rgb(3_105_161/0.55),0_10px_22px_-10px_rgb(8_136_232/0.7)] transition-all duration-300 hover:-translate-y-0.5 hover:from-azure-400 hover:to-azure-500"
                 >
                   Request a Demo
                 </Link>
                 <Link
                   href={PORTAL_URL}
-                  className="mt-3 block rounded-full border-2 border-navy-900/15 bg-white px-5 py-3 text-center text-sm font-semibold text-navy-900 transition-all duration-300 hover:-translate-y-0.5 hover:border-azure-500 hover:text-azure-600"
+                  className="press mt-3 block rounded-full border border-navy-900/12 bg-white/70 px-5 py-3 text-center text-sm font-semibold text-navy-900 shadow-[inset_0_1px_0_rgb(255_255_255/0.9),0_6px_16px_-10px_rgb(11_19_43/0.35)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-azure-500 hover:text-azure-600"
                 >
                   Explore Portal
                 </Link>

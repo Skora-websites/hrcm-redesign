@@ -59,7 +59,7 @@ export function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/85 shadow-[0_1px_0_rgb(10_30_62/0.08),0_12px_32px_-16px_rgb(10_30_62/0.25)] backdrop-blur-xl"
+          ? "glass-bar"
           : "bg-transparent"
       }`}
     >

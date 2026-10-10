@@ -70,7 +70,7 @@ function TelemetryCard() {
           <div
             key={c.label}
             data-chip
-            className={`w-fit rounded-xl border px-4 py-2.5 backdrop-blur-sm shadow-card ${
+            className={`glass-tint w-fit rounded-xl border px-4 py-2.5 ${
               i === 1 ? "ml-auto" : i === 2 ? "ml-6" : ""
             } ${c.cls}`}
           >
@@ -82,10 +82,10 @@ function TelemetryCard() {
         ))}
       </div>
 
-      {/* Settlement card */}
+      {/* Settlement card — frosted glass panel, skeuomorphic inner lighting */}
       <div
         data-settle
-        className="rounded-3xl border border-mist-200 bg-white/90 p-6 shadow-lift backdrop-blur-xl"
+        className="glass rounded-3xl p-6"
       >
         <div className="flex items-center justify-between">
           <span className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-signal-600">
@@ -97,8 +97,11 @@ function TelemetryCard() {
           </span>
         </div>
         <div className="mt-1.5 text-3xl font-extrabold tracking-tight text-navy-900">₹ 48.6 L</div>
-        <div className="mt-3 h-2 overflow-hidden rounded-full bg-mist-200">
-          <div data-settle-bar className="h-full rounded-full bg-gradient-to-r from-signal-500 to-azure-500" />
+        <div className="bevel-well mt-3 h-2.5 overflow-hidden rounded-full bg-mist-100">
+          <div
+            data-settle-bar
+            className="h-full rounded-full bg-gradient-to-r from-signal-500 to-azure-500 shadow-[inset_0_1px_0_rgb(255_255_255/0.45)]"
+          />
         </div>
         <div className="mt-1.5 text-[0.72rem] text-ink-500">86% recovered this cycle</div>
 
@@ -213,13 +216,13 @@ export function Hero() {
             )}
           </div>
 
-          {/* Trust chips */}
+          {/* Trust chips — frosted glass pills */}
           <div className="mt-10 flex flex-wrap gap-2.5">
             {TRUST_CHIPS.map((c) => (
               <span
                 key={c}
                 data-hero-chip
-                className="rounded-full border border-mist-200 bg-white/70 px-3.5 py-1.5 text-[0.8rem] font-medium text-ink-600 shadow-card backdrop-blur-sm"
+                className="glass-tint rounded-full border border-white/70 px-3.5 py-1.5 text-[0.8rem] font-medium text-ink-600"
               >
                 {c}
               </span>
@@ -227,8 +230,14 @@ export function Hero() {
           </div>
         </div>
 
-        <div data-hero-visual>
-          <TelemetryCard />
+        {/* Spatial layer: visual floats forward with a subtle 3D tilt */}
+        <div
+          data-hero-visual
+          className="[perspective:1400px]"
+        >
+          <div className="[transform:rotateY(-4deg)_rotateX(2deg)_translateZ(0)] transition-transform duration-500 hover:[transform:rotateY(-1.5deg)_rotateX(0.5deg)]">
+            <TelemetryCard />
+          </div>
         </div>
       </div>
 

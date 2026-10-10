@@ -23,7 +23,7 @@ export function TeamPage() {
           <div className="grid gap-6 md:grid-cols-3">
             {FOUNDERS.people.map((p, i) => (
               <Reveal key={p.name} delay={i * 0.1} className="h-full">
-                <article className="group h-full overflow-hidden rounded-3xl border border-mist-200 bg-white shadow-card transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lift">
+                <article className="group glass h-full overflow-hidden rounded-3xl transition-all duration-300 hover:-translate-y-1.5">
                   <div className="relative aspect-[4/4.4] overflow-hidden bg-mist-100">
                     <img
                       src={p.photo}

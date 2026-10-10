@@ -24,7 +24,8 @@ export function CTABand({
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(700px_360px_at_15%_0%,rgb(8_136_232/0.25),transparent_60%),radial-gradient(600px_320px_at_90%_100%,rgb(95_191_63/0.12),transparent_55%)]"
       />
-      <div className="relative mx-auto max-w-4xl px-5 text-center sm:px-8">
+      <div className="relative mx-auto max-w-4xl px-5 sm:px-8">
+        <div className="glass-dark rounded-3xl px-6 py-12 text-center sm:px-10">
         <Reveal>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{title}</h2>
         </Reveal>
@@ -64,6 +65,7 @@ export function CTABand({
             </a>
           </p>
         </Reveal>
+        </div>
       </div>
     </section>
   );
