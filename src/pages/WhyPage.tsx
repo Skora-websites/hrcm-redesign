@@ -1,63 +1,54 @@
-import { IMPACT, WHY } from "../data/content";
+import { IMPACT, PAGE_HEROES } from "../data/content";
 import { CTABand } from "../components/CTABand";
 import { PageHero } from "../components/PageHero";
 import { Breadcrumbs } from "../components/Breadcrumbs";
-import { Reveal } from "../components/ui";
+import { SectionHeading } from "../components/ui";
+import { WhyGrid } from "../components/WhyGrid";
+import { ImpactCards } from "../components/ImpactCards";
 
 export function WhyPage() {
   return (
     <main>
-      <PageHero data={WHY_PAGE_HERO} />
-      <div className="mx-auto max-w-7xl px-5 pt-6 sm:px-8">
+      <PageHero
+        data={PAGE_HEROES.why}
+        eyebrow="Why choose us"
+        crumbs="Compliance, visibility and sustainable growth"
+      />
+      <div className="mx-auto max-w-[102rem] px-5 pt-6 sm:px-8">
         <Breadcrumbs items={[{ label: "Why Choose Us" }]} />
       </div>
 
-      <section className="bg-mist-50 py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          {/* Editorial numbered rows — hairline-separated, no cards */}
-          <div className="border-t border-navy-900/10">
-            {WHY.items.map((item, i) => (
-              <Reveal key={item.title} delay={i * 0.07}>
-                <div className="grid grid-cols-[2.75rem_1fr] items-start gap-x-5 border-b border-navy-900/10 py-8 md:grid-cols-[5rem_19rem_1fr] md:gap-x-10">
-                  <span className="text-xl font-bold text-azure-500/70 md:text-2xl">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h2 className="text-lg font-semibold text-navy-900 md:text-xl">
-                    {item.title}
-                  </h2>
-                  <p className="col-span-2 mt-3 max-w-2xl text-sm leading-relaxed text-ink-600 md:col-span-1 md:mt-0">
-                    {item.text}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+      <section className="relative py-16 sm:py-20">
+        <div className="mx-auto max-w-[102rem] px-8 sm:px-12">
+          <WhyGrid />
         </div>
       </section>
 
       {/* Business impact — archived figures preserved exactly */}
-      <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <Reveal>
-            <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] text-azure-600">
-              <span className="h-px w-6 bg-current" aria-hidden />
-              {IMPACT.label}
-            </span>
-            <h2 className="mt-3 text-2xl font-bold tracking-tight text-navy-900 sm:text-3xl">
-              {IMPACT.heading}
-            </h2>
-            <p className="mt-4 max-w-3xl text-base leading-relaxed text-ink-600">
-              {IMPACT.intro}
-            </p>
-          </Reveal>
-          <div className="stagger-grid mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-            {IMPACT.cards.map((c) => (
-              <div key={c.title} className="border-t border-mist-200 pt-5">
-                <h3 className="text-[0.95rem] font-semibold text-navy-900">{c.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-500">{c.text}</p>
+      <section className="relative overflow-hidden py-20 sm:py-28">
+        <div aria-hidden className="pointer-events-none absolute inset-0 pattern-dots opacity-50" />
+        <div className="relative mx-auto max-w-[102rem] px-8 sm:px-12">
+          <SectionHeading align="left" title={IMPACT.heading} intro={IMPACT.intro} />
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {IMPACT.metrics.map((m) => (
+              <div
+                key={m.title}
+                className="glass h-full rounded-[var(--r-card)] p-6 transition-shadow duration-500 hover:shadow-[var(--glass-shadow-lift)]"
+              >
+                <h3 className="text-[0.88rem] font-medium text-ink-600">{m.title}</h3>
+                <p className="tabular mt-4 text-[2.3rem] font-semibold leading-none tracking-[-0.03em] text-ink-900">
+                  {m.result.split(" ")[0]}
+                  <span className="ml-1 text-[0.95rem] font-semibold text-azure-600">
+                    {m.result.split(" ").slice(1).join(" ")}
+                  </span>
+                </p>
+                <p className="tabular mt-3 text-[0.82rem] text-ink-500">
+                  {m.beforeLabel} → {m.afterLabel}
+                </p>
               </div>
             ))}
           </div>
+          <ImpactCards className="mt-8" />
         </div>
       </section>
 
@@ -65,9 +56,3 @@ export function WhyPage() {
     </main>
   );
 }
-
-const WHY_PAGE_HERO = {
-  eyebrow: WHY.label,
-  title: WHY.heading,
-  intro: WHY.intro,
-};

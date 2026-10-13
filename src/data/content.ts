@@ -32,47 +32,25 @@ export const HERO = {
    * receivables…") preserved per content-preservation rule; flagged for client.
    */
   subheadline:
-    "We Provide End-to-end receivables recovery and operational support to healthcare providers.",
+    "End-to-end receivables recovery and operational support for healthcare providers.",
   primaryCta: { label: "Request a Demo", href: "/get-in-touch.html" },
   portalCta: { label: "Explore Portal", href: PORTAL_URL },
   secondaryCta: { label: "Explore Services", href: "/services.html" },
 } as const;
 
-export const MARQUEE_SERVICES = [
-  "Claims Audit & Analysis",
-  "Claims Processing & Submission",
-  "Accounts Receivable (AR) Management",
-  "Revenue Reconciliation",
-  "Query Management",
-  "Medical Billing",
-] as const;
-
 export const ABOUT = {
-  label: "ABOUT US",
   heading: "About HRCM",
   /** VERBATIM: two paragraphs merged exactly as shown on the live site. */
   body: [
-    "HRCM is a healthcare technology company that provides end-to-end Revenue Cycle Management (RCM) solutions for hospitals and healthcare organizations. The company supports healthcare providers in managing their financial processes more efficiently, from patient billing to final settlement with a strong focus on accuracy, compliance, and operational efficiency, HRCM combines industry knowledge with well-structured processes to help reduce revenue loss and improve cash flow.",
-    "Our services are designed to simplify financial operations, support timely settlement, and enhance the overall performance of healthcare revenue management systems.",
+    "HRCM is a healthcare technology company providing end-to-end Revenue Cycle Management (RCM) solutions for hospitals and healthcare organizations. We support providers in managing their financial processes more efficiently — from patient billing to final settlement — with a strong focus on accuracy, compliance, and operational efficiency. Industry knowledge and well-structured processes help reduce revenue loss and improve cash flow.",
+    "Our services simplify financial operations, support timely settlement, and strengthen the performance of healthcare revenue management systems.",
   ],
-  cards: [
-    {
-      title: "Audit & Gap Analysis",
-      text: "Comprehensive review of revenue cycle management.",
-    },
-    {
-      title: "Process Optimization",
-      text: "Structured workflows to reduce delays.",
-    },
-    {
-      title: "Execution & Monitoring",
-      text: "Continuous monitoring of claims processing.",
-    },
-    {
-      title: "Reporting & Improvement",
-      text: "Detailed reports and performance insights.",
-    },
-  ],
+  /**
+   * NOTE: the four "cards" that used to live here (Audit & Gap Analysis,
+   * Process Optimization, Execution & Monitoring, Reporting & Improvement)
+   * duplicated PROCESS.steps verbatim in both title and claim. Removed rather
+   * than restated — every claim below still ships via PROCESS.
+   */
   /** Live CTA was "EXPLORE PORTAL →" (pointed to "#") — now the real portal link. */
   cta: { label: "Explore Portal", href: PORTAL_URL },
 } as const;
@@ -80,7 +58,6 @@ export const ABOUT = {
 export type Service = {
   title: string;
   text: string;
-  icon: string;
   /** Detail page path for this service. */
   href: string;
   /**
@@ -100,55 +77,48 @@ export const SERVICES: Service[] = [
     text: "HRCM conducts a detailed review of existing claims processes to identify inaccuracies, operational inefficiencies, and potential revenue loss. By analyzing claim submissions and settlement patterns, the company helps healthcare organizations improve claim accuracy, reduce denials, and identify missed revenue opportunities. This structured approach supports more efficient claims management and strengthens overall financial performance.",
     detailIntro:
       "HRCM conducts a detailed review of existing claims processes to identify inaccuracies, operational inefficiencies, and potential revenue loss.",
-    icon: "audit",
   },
   {
     title: "Claims Processing & Submission",
     href: "/services/claims-processing-and-submission.html",
     text: "HRCM ensures that claims are accurately prepared and submitted within required timelines to support faster settlement and smoother payment processing. Through careful review and structured workflows, the team works to reduce claim rejections, minimize processing delays, and improve overall claims efficiency. This approach helps healthcare organizations shorten payment cycles and maintain a more stable revenue flow.",
-    icon: "processing",
   },
   {
     title: "Accounts Receivable Management",
     href: "/services/accounts-receivable-management.html",
     text: "HRCM provides proactive Accounts Receivable (AR) management by closely monitoring pending, delayed, and denied claims. The team works systematically to follow up with payers, resolve claim issues, and recover outstanding payments in a timely manner. This structured approach helps improve collection efficiency, reduce aging receivables, and support healthier cash flow for healthcare organizations.",
-    icon: "receivable",
   },
   {
     title: "Revenue Reconciliation",
     href: "/services/revenue-reconciliation.html",
     text: "HRCM ensures that claims and payment data are accurately reconciled with hospital accounting systems to maintain financial accuracy and transparency. By matching settlement, claims records, and financial reports, the company helps healthcare organizations identify discrepancies, improve reporting accuracy, and strengthen overall financial control. This process supports better decision-making and more reliable revenue tracking.",
-    icon: "reconciliation",
   },
   {
     title: "Medical Billing",
     href: "/services/medical-billing.html",
     text: "Smart billing workflows with faster submission and claim tracking systems.",
-    icon: "billing",
   },
   {
     // NOT from the current site — drafted in HRCM's tone. Client approval required.
     title: "Query Management",
     href: "/services/query-management.html",
     text: "Structured handling and timely resolution of payer queries and documentation requests, keeping claims moving toward settlement without unnecessary delays.",
-    icon: "query",
     needsValidation: true,
   },
 ];
 
 export const PROCESS = {
-  label: "OUR PROCESS",
-  heading: "A Proven Process That Delivers Results",
+  heading: "How an engagement works",
   steps: [
     {
       num: "01",
       title: "Audit & Gap Analysis",
-      text: "We analyze your current RCM process to find gaps and revenue leakages.",
+      text: "We review your current RCM process to find gaps and revenue leakage.",
     },
     {
       num: "02",
       title: "Process Optimization",
-      text: "We implement best practices and workflow automation for efficiency and accuracy.",
+      text: "We rebuild the workflow around best practices for speed and accuracy.",
     },
     {
       num: "03",
@@ -164,11 +134,10 @@ export const PROCESS = {
 } as const;
 
 export const IMPACT = {
-  label: "BUSINESS",
   heading: "Business Impact",
   /** VERBATIM intro (including the trailing "Key benefits include." — flagged). */
   intro:
-    "Healthcare providers working with HRCM can expect improved operational efficiency, stronger financial control, and more streamlined revenue cycle management processes. Through structured workflows and continuous monitoring, HRCM helps organizations reduce claim errors, improve settlement timelines, and strengthen overall financial performance. Key benefits include.",
+    "Providers working with HRCM see fewer claim errors, faster settlement, and stronger financial control — measured against their own baseline before engagement.",
   /**
    * All before/after figures preserved EXACTLY from the live site.
    *
@@ -223,84 +192,81 @@ export const IMPACT = {
     {
       title: "Faster Payment",
       text: "Faster payment turnaround through timely and accurate claims processing.",
-      icon: "bolt",
     },
     {
       title: "Denial Claims",
       text: "Fewer claim denials and payment deductions through improved claim accuracy and compliance management.",
-      icon: "shield",
     },
     {
       title: "Improved Revenue",
       text: "Improved revenue realization through effective claims management, payment recovery, and reduced revenue leakage.",
-      icon: "trend",
     },
     {
       title: "Payment Collection",
       text: "Reduced outstanding balances through proactive Accounts Receivable (AR) follow-ups and timely payment collection.",
-      icon: "collect",
     },
     {
       title: "Greater Financial Visibility",
       text: "Greater financial visibility through accurate reporting, revenue reconciliation, and transparent financial tracking.",
-      icon: "eye",
     },
   ],
 } as const;
 
+/**
+ * Shared "120 days → 60 days" formatter for before/after metrics.
+ * % labels already carry their sign; "₹ Cr" is omitted to match the
+ * live site's figure captions.
+ */
+export function metricPair(m: (typeof IMPACT.metrics)[number]): string {
+  const unit = m.unit === "Days" ? " days" : m.unit === "%" ? "%" : "";
+  return `${m.beforeLabel}${unit} → ${m.afterLabel}${unit}`;
+}
+
 export const WHY = {
-  label: "WHY HRCM",
   heading: "Why Choose HRCM",
   intro:
-    "HRCM delivers expert Revenue Cycle Management solutions that improve financial performance, ensure compliance, and drive sustainable growth for healthcare organizations.",
+    "Revenue cycle management that improves financial performance, keeps you compliant, and supports sustainable growth.",
   items: [
     {
       title: "Specialized Expertise",
-      text: "Specialized expertise in healthcare Revenue Cycle Management (RCM) with a strong understanding of industry-specific challenges and requirements.",
-      icon: "expertise",
+      text: "A focused RCM practice with a working understanding of industry-specific challenges, payer requirements, and hospital operations.",
     },
     {
       title: "Data-Driven Insights",
-      text: "Data-driven insights and reporting that support informed decision-making and improved financial outcomes.",
-      icon: "data",
+      text: "Reporting that shows exactly where revenue is leaking and what to do about it.",
     },
     {
       title: "Transparent Processes",
-      text: "Transparent and accountable processes designed to maintain accuracy, compliance, and operational clarity.",
-      icon: "transparent",
+      text: "Every claim is documented and accountable. Your team can see accuracy and compliance at each stage.",
     },
     {
       title: "Dedicated Support",
-      text: "Dedicated client support focused on responsive communication and long-term partnership.",
-      icon: "support",
+      text: "A named team that responds quickly and stays with you beyond onboarding.",
     },
     {
       title: "Scalable Solutions",
-      text: "Scalable RCM solutions tailored to meet the evolving needs of hospitals and healthcare institutions.",
-      icon: "scalable",
+      text: "Engagements that adapt as volumes, service lines, and payer mix change.",
     },
   ],
 } as const;
 
 export const COMING_SOON = {
-  label: "COMING SOON",
-  heading: "Something Big Is About to Change Healthcare Forever.",
-  questions: [
-    "What if hospitals could stop claim rejections before they happen?",
-    "What if every claim got smarter, faster, and impossible to ignore?",
-    "For the first time ever, AI meets hospital claims management in a way the industry has never seen before.",
+  heading: "AI claims management, built for hospitals.",
+  bullets: [
+    "Rejection risk flagged before a claim is submitted.",
+    "Every claim scored, prioritized, and moving toward settlement.",
+    "Models trained on real hospital claims workflows.",
   ],
-  /** VERBATIM: supporting copy from the live site's second AI section. */
+  /** Supporting copy derived from the live site's second AI section. */
   support:
-    "AI-powered claims management that stops rejections before they happen, settles faster, and maximizes revenue recovery.",
-  cta: { label: "Coming Soon", href: "/get-in-touch.html" },
+    "AI-powered claims management that surfaces rejections early, shortens settlement, and improves revenue recovery.",
+  cta: { label: "Contact us", href: "/get-in-touch.html" },
 } as const;
 
 export const FOUNDERS = {
-  label: "FOUNDERS",
   heading: "Our Founders",
   intro:
-    "Visionary leaders driving innovation and excellence in healthcare finance and operations.",
+    "Decades of experience in healthcare operations, hospital receivables, and insurance — leading HRCM's work with providers.",
   people: [
     {
       name: "Vikram Dev Kulesh",
@@ -324,10 +290,9 @@ export const FOUNDERS = {
 } as const;
 
 export const CONTACT = {
-  label: "GET IN TOUCH",
   heading: "Request a Demo",
   /** VERBATIM: closing copy from the live site's contact section. */
-  body: "HRCM invites healthcare providers to discover how a structured and efficient revenue cycle management approach can help reduce operational inefficiencies, improve settlement processes, and strengthen overall financial performance. Healthcare organizations interested in optimizing their revenue cycle operations may request a demo or revenue audit to assess current processes and identify opportunities for improvement.",
+  body: "See how a structured revenue cycle approach reduces operational inefficiencies, improves settlement, and strengthens financial performance. Request a demo or a revenue audit — we'll assess your current processes and identify where the gains are.",
   phones: ["+91 98688 08775", "+91 80102 85464"],
   email: "info@hrcm.in",
   address:
@@ -368,7 +333,6 @@ export const FOOTER = {
 /* ------------------------------------------------------------------ */
 
 export type PageHero = {
-  eyebrow: string;
   title: string;
   intro: string;
 };
@@ -379,31 +343,26 @@ export type PageHero = {
  */
 export const PAGE_HEROES: Record<string, PageHero> = {
   about: {
-    eyebrow: "ABOUT US",
     title: "About HRCM",
     intro:
       "End-to-end Revenue Cycle Management (RCM) solutions for hospitals and healthcare organizations.",
   },
   services: {
-    eyebrow: "SERVICES",
     title: "Scope Of Services",
     intro:
       "End-to-end revenue cycle support — from claim audit to final reconciliation.",
   },
   why: {
-    eyebrow: "WHY HRCM",
     title: "Why Choose HRCM",
     intro:
-      "HRCM delivers expert Revenue Cycle Management solutions that improve financial performance, ensure compliance, and drive sustainable growth for healthcare organizations.",
+      "Revenue cycle management that improves financial performance, keeps you compliant, and supports sustainable growth.",
   },
   team: {
-    eyebrow: "FOUNDERS",
     title: "Our Founders",
     intro:
-      "Visionary leaders driving innovation and excellence in healthcare finance and operations.",
+      "Decades of experience in healthcare operations, hospital receivables, and insurance — leading HRCM's work with providers.",
   },
   contact: {
-    eyebrow: "GET IN TOUCH",
     title: "Request a Demo",
     intro:
       "Request a demo or revenue audit to assess current processes and identify opportunities for improvement.",
@@ -520,7 +479,6 @@ export const SERVICE_POINTS: Record<string, ServicePoint[]> = {
 };
 
 export type LegalPage = {
-  eyebrow: string;
   title: string;
   updated: string;
   intro: string;
@@ -534,7 +492,6 @@ export type LegalPage = {
  */
 export const LEGAL_PAGES: Record<"terms" | "privacy", LegalPage> = {
   terms: {
-    eyebrow: "LEGAL",
     title: "Terms & Conditions",
     updated: "Last updated: September 2026",
     intro:
@@ -579,7 +536,6 @@ export const LEGAL_PAGES: Record<"terms" | "privacy", LegalPage> = {
     ],
   },
   privacy: {
-    eyebrow: "LEGAL",
     title: "Privacy Policy",
     updated: "Last updated: September 2026",
     intro:

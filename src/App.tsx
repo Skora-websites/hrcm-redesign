@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Agentation } from "agentation";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { useRoute } from "./router";
@@ -97,6 +98,7 @@ export default function App() {
         {page}
       </div>
       <Footer />
+      {process.env.NODE_ENV === "development" && <Agentation />}
     </div>
   );
 }

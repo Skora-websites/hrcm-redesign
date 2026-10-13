@@ -1,37 +1,61 @@
 import { WHY } from "../../data/content";
-import { Icon } from "../Icon";
-import { Reveal, SectionHeading } from "../ui";
+import { SectionSurface } from "../backdrops/SectionSurface";
+import { Kicker, StaggerContainer, StaggerItem, useGsapReveal } from "../ui";
+import { TexCard } from "../TexCard";
+import { Brain, Eye, Gauge, Layers, LifeBuoy, Users } from "lucide-react";
+
+const ICONS: Record<string, typeof Users> = {
+  "Specialized Expertise": Users,
+  "Data-Driven Insights": Brain,
+  "Transparent Processes": Eye,
+  "Dedicated Support": LifeBuoy,
+  "Scalable Solutions": Gauge,
+};
+
+/** Sixth tile — same design as the other five, closing the 3 × 2 grid. */
+function AccountabilityCard() {
+  return (
+    <StaggerItem className="h-full">
+      <TexCard index={5} variant="g" icon={Layers} title="End-to-end accountability">
+        Claims audit, submission, accounts receivable, reconciliation and billing handled by a
+        single accountable team.
+      </TexCard>
+    </StaggerItem>
+  );
+}
 
 export function WhyHRCM() {
-  return (
-    <section id="why-hrcm" className="bg-white py-20 sm:py-28">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionHeading
-          align="left"
-          label={WHY.label}
-          title={WHY.heading}
-          intro={WHY.intro}
-        />
+  const revealRef = useGsapReveal<HTMLDivElement>();
 
-        {/* Editorial numbered rows — hairline-separated, no cards */}
-        <div className="mt-14 border-t border-navy-900/10">
-          {WHY.items.map((item, i) => (
-            <Reveal key={item.title} delay={i * 0.06}>
-              <div className="grid grid-cols-[2.75rem_1fr] items-start gap-x-5 border-b border-navy-900/10 py-8 md:grid-cols-[5rem_19rem_1fr] md:gap-x-10">
-                <span className="text-xl font-bold text-azure-500/70 md:text-2xl">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="flex items-center gap-3 text-lg font-semibold text-navy-900 md:text-xl">
-                  <Icon name={item.icon} className="h-5 w-5 shrink-0 text-azure-500" />
-                  {item.title}
-                </h3>
-                <p className="col-span-2 mt-3 max-w-2xl text-sm leading-relaxed text-ink-600 md:col-span-1 md:mt-0">
-                  {item.text}
-                </p>
-              </div>
-            </Reveal>
-          ))}
+  return (
+    <section id="why-hrcm" className="relative overflow-hidden py-16 sm:py-20">
+      <SectionSurface variant="orchid" />
+
+      <div ref={revealRef} className="relative mx-auto max-w-[102rem] px-8 sm:px-12">
+        <div data-gsap-reveal className="max-w-3xl">
+          <Kicker tone="azure">Why choose HRCM</Kicker>
+          <h2 className="mt-5 text-[2.05rem] font-semibold leading-[1.08] tracking-[-0.025em] text-ink-900 sm:text-[2.9rem]">
+            {WHY.heading}
+          </h2>
+          <p className="mt-5 text-lg leading-relaxed text-ink-600">{WHY.intro}</p>
         </div>
+
+        {/* One pinned design for the whole grid — every card in this
+            section shares the same texture and accent, so the section
+            reads as a single surface rather than six lookalikes. */}
+        <StaggerContainer
+          className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          staggerDelay={0.08}
+        >
+          {WHY.items.map((item, i) => (
+            <StaggerItem key={item.title} className="h-full">
+              <TexCard index={i} variant="g" icon={ICONS[item.title] ?? Users} title={item.title}>
+                {item.text}
+              </TexCard>
+            </StaggerItem>
+          ))}
+          <AccountabilityCard />
+        </StaggerContainer>
       </div>
     </section>
   );

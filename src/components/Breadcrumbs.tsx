@@ -5,7 +5,10 @@ export function Breadcrumbs({ items }: { items: { label: string; href?: string }
     <nav aria-label="Breadcrumb" className="text-sm">
       <ol className="flex flex-wrap items-center gap-2">
         <li>
-          <Link href="/" className="text-ink-500 transition-colors hover:text-azure-600">
+          <Link
+            href="/"
+            className="rounded-full px-2 py-1 text-ink-500 transition-colors hover:bg-white/70 hover:text-azure-700"
+          >
             Home
           </Link>
         </li>
@@ -17,12 +20,15 @@ export function Breadcrumbs({ items }: { items: { label: string; href?: string }
             {item.href ? (
               <Link
                 href={item.href}
-                className="text-ink-500 transition-colors hover:text-azure-600"
+                className="rounded-full px-2 py-1 text-ink-500 transition-colors hover:bg-white/70 hover:text-azure-700"
               >
                 {item.label}
               </Link>
             ) : (
-              <span aria-current="page" className="font-medium text-navy-900">
+              <span
+                aria-current="page"
+                className="rounded-full border border-white/70 bg-white/60 px-3 py-1 font-medium text-ink-800 backdrop-blur-md"
+              >
                 {item.label}
               </span>
             )}

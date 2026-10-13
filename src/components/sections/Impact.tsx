@@ -1,101 +1,112 @@
-import { useReveal } from "../../hooks/useReveal";
-import { IMPACT } from "../../data/content";
-import { Icon } from "../Icon";
-import { SectionHeading } from "../ui";
-import { BarChart, DonutChart } from "../Charts";
+import { IMPACT, metricPair } from "../../data/content";
+import { SectionSurface } from "../backdrops/SectionSurface";
+import { DeltaBars } from "../art";
+import { Card, CountUp, Kicker, StaggerContainer, StaggerItem, useGsapReveal } from "../ui";
+import { TexCard } from "../TexCard";
+import {
+  Banknote,
+  Eye,
+  HandCoins,
+  ShieldCheck,
+  Timer,
+} from "lucide-react";
 
-/** "50% Faster" → { value: 50, suffix: "Faster" }; "91% Reduction" → { 91, "Reduction" } */
-function parseResult(result: string): { value: number; suffix: string } {
-  const m = result.match(/^([\d.]+)%\s*(\w+)/);
-  return { value: m ? Number(m[1]) : 0, suffix: m ? m[2] : "" };
+const CARD_ICONS: Record<string, typeof Timer> = {
+  "Faster Payment": Timer,
+  "Denial Claims": ShieldCheck,
+  "Improved Revenue": Banknote,
+  "Payment Collection": HandCoins,
+  "Greater Financial Visibility": Eye,
+};
+
+/** Numeric part of a result string, e.g. "50% Faster" → 50. */
+function leadNumber(result: string): number {
+  const m = result.match(/^([\d.]+)/);
+  return m ? Number(m[1]) : 0;
+}
+
+function metricAccent(title: string): string {
+  // Money outcomes read green — the same green as the logo's ₹ mark
+  if (title.includes("Turnaround") || title.includes("Revenue")) return "text-sprout-700";
+  if (title.includes("Deduction")) return "text-orchid-600";
+  if (title.includes("Unsettled")) return "text-aqua-700";
+  return "text-sprout-700";
 }
 
 export function Impact() {
-  const layer1Ref = useReveal<HTMLDivElement>();
-  const layer2Ref = useReveal<HTMLDivElement>();
-  const layer3Ref = useReveal<HTMLDivElement>();
-
+  const revealRef = useGsapReveal<HTMLDivElement>();
   return (
-    <section id="impact" className="bg-white py-20 sm:py-28">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionHeading label={IMPACT.label} title={IMPACT.heading} intro={IMPACT.intro} />
+    <section id="impact" className="relative overflow-hidden py-16 sm:py-20" ref={revealRef}>
+      <SectionSurface variant="cream" />
 
-        {/* Layer 1 — open stat columns: bold top rule, unit, animated bars */}
-        <div
-          ref={layer1Ref}
-          className="stagger-grid mt-14 grid gap-x-10 gap-y-14 sm:grid-cols-2 xl:grid-cols-4"
-        >
-          {IMPACT.metrics.map((m) => (
-            <div key={m.title} className="border-t-2 border-navy-900 pt-6">
-              <div className="flex items-baseline justify-between gap-3">
-                <h3 className="text-[0.95rem] font-semibold text-navy-900">{m.title}</h3>
-                <span className="text-[0.68rem] font-semibold uppercase tracking-wider text-ink-500">
-                  {m.unit}
-                </span>
-              </div>
-
-              <div className="mt-5">
-                <BarChart metric={m} />
-              </div>
-
-              <div className="mt-4 flex items-baseline gap-2.5">
-                <span className="text-lg font-bold text-rose-600">{m.beforeLabel}</span>
-                <span aria-hidden className="text-ink-400">
-                  →
-                </span>
-                <span className="text-lg font-bold text-signal-600">{m.afterLabel}</span>
-              </div>
-
-              <p className="mt-3 flex items-center gap-1.5 text-[0.95rem] font-bold text-navy-900">
-                <Icon name="check" className="h-4 w-4 text-signal-500" strokeWidth={2.5} />
-                {m.result}
-              </p>
-            </div>
-          ))}
+      <div className="relative mx-auto max-w-[102rem] px-8 sm:px-12">
+        <div data-gsap-reveal className="max-w-3xl">
+          <Kicker tone="sprout">Measured outcomes</Kicker>
+          <h2 className="mt-5 text-[2.05rem] font-semibold leading-[1.08] tracking-[-0.025em] text-ink-900 sm:text-[2.9rem]">
+              {IMPACT.heading}
+            </h2>
+          <p className="mt-5 text-lg leading-relaxed text-ink-600">{IMPACT.intro}</p>
         </div>
 
-        {/* Layer 2 — donut visuals in an open row, separated by hairlines */}
-        <div
-          ref={layer2Ref}
-          className="stagger-grid mt-20 grid gap-12 border-t border-mist-200 pt-14 sm:grid-cols-2 xl:grid-cols-4"
-        >
+        {/* Before → after metric cards */}
+        <StaggerContainer className="mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-4" staggerDelay={0.09}>
           {IMPACT.metrics.map((m) => {
-            const { value, suffix } = parseResult(m.result);
+            const accent = metricAccent(m.title);
+            const result = m.result;
+            const num = leadNumber(result);
+            const rest = result.replace(/^[\d.]+\s*/, "");
             return (
-              <div key={m.title} className="text-center">
-                <DonutChart
-                  percent={value}
-                  label={suffix}
-                  color={suffix === "Faster" ? "#0ea5e9" : "#10b981"}
-                />
-                <h3 className="mt-5 text-[0.95rem] font-semibold text-navy-900">{m.title}</h3>
-                <div className="mt-2 flex items-center justify-center gap-2 text-sm">
-                  <span className="font-semibold text-rose-600">{m.beforeLabel}</span>
-                  <span aria-hidden className="text-ink-400">
-                    →
-                  </span>
-                  <span className="font-semibold text-signal-600">{m.afterLabel}</span>
-                  <span className="text-ink-500">{m.unit}</span>
-                </div>
-              </div>
+              <StaggerItem key={m.title} className="h-full">
+                <Card variant="glass" className="h-full p-6" hover>
+                  <div className="flex items-start justify-between gap-3">
+                    <h3 className="text-[0.95rem] font-medium text-ink-600">{m.title}</h3>
+                    <span className={`rounded-full bg-cloud-100 px-2.5 py-1 text-[0.68rem] font-semibold tracking-[-0.005em] ${accent}`}>
+                      {rest}
+                    </span>
+                  </div>
+
+                  <p className="tabular mt-4 flex items-baseline gap-1 text-[3rem] font-semibold leading-none tracking-[-0.03em] text-ink-900">
+                    <CountUp to={num} decimals={result.includes(".") ? 1 : 0} />
+                    <span className={`text-[1.1rem] font-semibold ${accent}`}>
+                      {result.replace(/^[\d.]+/, "")}
+                    </span>
+                  </p>
+
+                  <div className="mt-4">
+                    <DeltaBars before={m.before} after={m.after} className="h-11 w-full" />
+                    <p className="tabular mt-3 text-[0.85rem] text-ink-500">{metricPair(m)}</p>
+                  </div>
+                </Card>
+              </StaggerItem>
             );
           })}
-        </div>
+        </StaggerContainer>
 
-        {/* Layer 3 — benefits as an open grid, each with a hairline top rule */}
-        <div
-          ref={layer3Ref}
-          className="stagger-grid mt-20 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"
-        >
-          {IMPACT.cards.map((c) => (
-            <div key={c.title} className="border-t border-mist-200 pt-5">
-              <span className="inline-flex text-azure-500">
-                <Icon name={c.icon} className="h-6 w-6" />
-              </span>
-              <h3 className="mt-4 text-[0.95rem] font-semibold text-navy-900">{c.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-500">{c.text}</p>
-            </div>
-          ))}
+        {/* Benefit bento — six tiles so the 3 × 2 grid never leaves a gap */}
+        <div className="mt-14">
+          <h3 className="max-w-xl text-[1.5rem] font-semibold leading-snug tracking-[-0.02em] text-ink-900 sm:text-[1.85rem]">
+              What providers actually get
+          </h3>
+
+          {/* Benefit bento — six tiles so the 3 × 2 grid never leaves a gap.
+              One pinned design for the whole section: the same texture and
+              accent on every card, so the set reads as one surface family. */}
+          <StaggerContainer className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3" staggerDelay={0.07}>
+            {IMPACT.cards.map((c, i) => (
+              <StaggerItem key={c.title} className="h-full">
+                <TexCard index={i} variant="a" icon={CARD_ICONS[c.title] ?? ShieldCheck} title={c.title}>
+                  {c.text}
+                </TexCard>
+              </StaggerItem>
+            ))}
+
+            {/* Sixth tile — same design, closing the 3 × 2 grid */}
+            <StaggerItem className="h-full">
+              <TexCard index={5} variant="a" icon={Timer} title="Faster payment cycles">
+                Days of payment turnaround reduced from 120 to 60 across recent engagements.
+              </TexCard>
+            </StaggerItem>
+          </StaggerContainer>
         </div>
       </div>
     </section>

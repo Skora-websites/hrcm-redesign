@@ -1,19 +1,27 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 
-gsap.registerPlugin(ScrollTrigger);
+/**
+ * GSAP setup for the HRCM site. GSAP owns the choreographed, scroll-driven
+ * moments (hero entrance, claim-flow background, section reveals);
+ * framer-motion stays responsible for interaction feedback (hover, drag,
+ * press) where its spring physics are the better tool.
+ */
 
-// Restrained, premium motion defaults (brief §12)
-gsap.defaults({ duration: 0.7, ease: "power3.out" });
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+}
 
-export { gsap, ScrollTrigger };
+// Restrained, premium motion defaults
+gsap.defaults({ duration: 0.8, ease: "power3.out" });
 
-/** True when the user prefers reduced motion — animations should no-op. */
+export { gsap, ScrollTrigger, MotionPathPlugin };
+
+/** True when the visitor asked for reduced motion — animations no-op. */
 export function prefersReducedMotion(): boolean {
-  return (
-    typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches
-  );
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
 /**
@@ -28,33 +36,13 @@ export function shouldSkipAnimation(): boolean {
   );
 }
 
-/**
- * Scroll-triggered reveal that fires once when `scope` crosses `start`.
- * If the tab is hidden/reduced-motion, nothing is created (content stays
- * visible). A timeout safety-net snaps the tween to its final state even if
- * the ticker is throttled after activation.
- */
-export function revealOnScroll(
-  scope: HTMLElement,
-  targets: gsap.TweenTarget,
-  vars: gsap.TweenVars = {},
-  start = "top 85%",
-) {
-  if (shouldSkipAnimation()) return;
-  const duration = typeof vars.duration === "number" ? vars.duration : 0.7;
-  const stagger = typeof vars.stagger === "number" ? vars.stagger : 0;
-  const tween = gsap.from(targets, {
-    ...vars,
-    scrollTrigger: {
-      trigger: scope,
-      start,
-      once: true,
-      onEnter: () => {
-        window.setTimeout(() => {
-          if (tween.progress() < 1) tween.progress(1);
-        }, duration * 1000 + stagger * 1000 + 1200);
-      },
-    },
-  });
-  return tween;
+/** Standard reveal easing for scroll-triggered elements. */
+export const REVEAL_EASE = "power3.out";
+
+/** Failsafe: force a timeline to its end if a throttled webview stalls it. */
+export function withFailsafe(tl: gsap.core.Timeline, ms = 2200) {
+  window.setTimeout(() => {
+    if (tl.progress() < 1) tl.progress(1);
+  }, ms);
+  return tl;
 }

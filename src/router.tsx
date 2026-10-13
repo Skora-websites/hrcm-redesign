@@ -54,17 +54,18 @@ export function normalizePath(pathname: string): PageKind {
 }
 
 export function useRoute(): PageKind {
-  const [page, setPage] = useState<PageKind>(() =>
-    normalizePath(window.location.pathname),
-  );
+  // Store the pathname (not just the PageKind) so that a history change to a
+  // different URL of the same kind — e.g. one service detail to another —
+  // still triggers a re-render and re-resolves the slug.
+  const [path, setPath] = useState<string>(() => window.location.pathname);
 
   useEffect(() => {
-    const onPop = () => setPage(normalizePath(window.location.pathname));
+    const onPop = () => setPath(window.location.pathname);
     window.addEventListener("popstate", onPop);
     return () => window.removeEventListener("popstate", onPop);
   }, []);
 
-  return page;
+  return normalizePath(path);
 }
 
 export function navigate(href: string) {

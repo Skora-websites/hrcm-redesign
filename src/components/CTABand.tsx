@@ -1,5 +1,6 @@
 import { CONTACT, PORTAL_URL } from "../data/content";
-import { CTAButton, Reveal } from "./ui";
+import { FloatingOrbs } from "./Backdrop";
+import { CTAButton, Kicker, Reveal } from "./ui";
 
 export function CTABand({
   title = "Ready to strengthen your revenue cycle?",
@@ -19,52 +20,70 @@ export function CTABand({
   tertiaryHref?: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-navy-900 py-16 text-white sm:py-20">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(700px_360px_at_15%_0%,rgb(8_136_232/0.25),transparent_60%),radial-gradient(600px_320px_at_90%_100%,rgb(95_191_63/0.12),transparent_55%)]"
-      />
-      <div className="relative mx-auto max-w-4xl px-5 sm:px-8">
-        <div className="glass-dark rounded-3xl px-6 py-12 text-center sm:px-10">
-        <Reveal>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{title}</h2>
-        </Reveal>
-        <Reveal delay={0.08}>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-navy-100/80">
-            {text}
-          </p>
-        </Reveal>
-        <Reveal delay={0.16}>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <CTAButton href="/get-in-touch.html" variant="primary">
-              {primaryLabel}
-            </CTAButton>
-            <CTAButton href={secondaryHref} variant="ghost-light">
-              {secondaryLabel}
-            </CTAButton>
-            <CTAButton href={tertiaryHref} variant="ghost-light">
-              {tertiaryLabel}
-            </CTAButton>
+    <section className="relative overflow-hidden py-16 sm:py-20">
+      {/* Green wash — the closing band carries the logo's green, not blue */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-sprout-100/70 via-cloud-50 to-aqua-100/60" />
+        <div className="absolute inset-0 pattern-cross opacity-45" />
+        <div className="absolute -left-20 top-0 h-96 w-96 rounded-full bg-sprout-300/25 blur-3xl" />
+        <div className="absolute -right-16 bottom-0 h-96 w-96 rounded-full bg-aqua-300/25 blur-3xl" />
+        <FloatingOrbs />
+      </div>
+
+      <div className="relative mx-auto max-w-5xl px-8 sm:px-12">
+        <div className="glass relative overflow-hidden rounded-[var(--r-hero)] px-6 py-14 text-center sm:px-14">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -left-20 -top-24 h-64 w-64 rounded-full bg-azure-300/30 blur-3xl"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -bottom-24 -right-16 h-64 w-64 rounded-full bg-aqua-300/30 blur-3xl"
+          />
+
+          <div className="relative">
+            <Kicker tone="sprout">Next step</Kicker>
+            <Reveal y={14}>
+              <h2 className="mx-auto mt-4 max-w-3xl text-[2rem] font-semibold leading-[1.08] tracking-[-0.025em] text-ink-900 sm:text-[2.7rem]">
+                {title}
+              </h2>
+            </Reveal>
+            <Reveal delay={0.08} y={12}>
+              <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-ink-600">
+                {text}
+              </p>
+            </Reveal>
+            <Reveal delay={0.16} y={12}>
+              <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+                <CTAButton href="/get-in-touch.html" size="lg">
+                  {primaryLabel}
+                </CTAButton>
+                <CTAButton href={secondaryHref} variant="outline" size="lg" arrow>
+                  {secondaryLabel}
+                </CTAButton>
+                <CTAButton href={tertiaryHref} variant="glass" size="lg" external>
+                  {tertiaryLabel}
+                </CTAButton>
+              </div>
+            </Reveal>
+            <Reveal delay={0.22} y={10}>
+              <p className="mt-8 text-[0.85rem] text-ink-500">
+                <a
+                  href={`tel:${CONTACT.phones[0].replace(/\s/g, "")}`}
+                  className="tabular font-medium text-ink-700 underline-offset-4 transition-colors hover:text-azure-700 hover:underline"
+                >
+                  {CONTACT.phones[0]}
+                </a>
+                <span className="px-2">·</span>
+                <a
+                  href={`mailto:${CONTACT.email}`}
+                  className="font-medium text-ink-700 underline-offset-4 transition-colors hover:text-azure-700 hover:underline"
+                >
+                  {CONTACT.email}
+                </a>
+              </p>
+            </Reveal>
           </div>
-        </Reveal>
-        <Reveal delay={0.22}>
-          <p className="mt-7 text-sm text-navy-100/60">
-            Prefer to talk now?{" "}
-            <a
-              href={`tel:${CONTACT.phones[0].replace(/\s/g, "")}`}
-              className="font-semibold text-azure-300 hover:text-azure-400"
-            >
-              {CONTACT.phones[0]}
-            </a>{" "}
-            ·{" "}
-            <a
-              href={`mailto:${CONTACT.email}`}
-              className="font-semibold text-azure-300 hover:text-azure-400"
-            >
-              {CONTACT.email}
-            </a>
-          </p>
-        </Reveal>
         </div>
       </div>
     </section>

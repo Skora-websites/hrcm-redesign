@@ -1,111 +1,267 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  /* Display — Fraunces, an editorial serif with real industry weight.
+     Used for headlines, the wordmark, and big numbers. */
+  --font-display: "Fraunces", "Archivo", Georgia, serif;
 
-  /* Palette derived from HRCM's own logo (azure/green sampled from logo.png) */
-  --color-navy-950: #0b132b;
-  --color-navy-900: #0f172a;
-  --color-navy-800: #1c2541;
-  --color-navy-700: #334155;
-  --color-navy-100: #e2e8f0;
-  --color-azure-700: #0369a1;
-  --color-azure-600: #0284c7;
-  --color-azure-500: #0ea5e9;
-  --color-azure-400: #38bdf8;
-  --color-azure-300: #7dd3fc;
-  --color-azure-100: #e0f2fe;
-  --color-azure-50: #f0f9ff;
-  --color-signal-600: #059669;
-  --color-signal-500: #10b981;
-  --color-signal-400: #34d399;
-  --color-signal-100: #d1fae5;
-  --color-signal-50: #ecfdf5;
+  /* UI — Archivo, a grotesque with the authority of a production
+     enterprise product (not a startup's Inter). */
+  --font-sans: "Archivo", "Manrope", -apple-system, BlinkMacSystemFont,
+    "SF Pro Display", "SF Pro Text", ui-sans-serif, system-ui, "Segoe UI",
+    sans-serif;
+
+  /* Body copy — Manrope, a humanist grotesque that reads clean at
+     paragraph length. */
+  --font-body: "Manrope", "Archivo", -apple-system, BlinkMacSystemFont,
+    "SF Pro Text", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+
+  /* Ink scale — warm neutral grays, no blue tint */
+  --color-ink-900: #101828;
+  --color-ink-800: #1d2939;
+  --color-ink-700: #344054;
+  --color-ink-600: #475467;
+  --color-ink-500: #667085;
+  --color-ink-400: #98a2b3;
+  --color-ink-300: #cfd4dc;
+
+  /* Primary — brand azure */
+  --color-azure-700: #004a95;
+  --color-azure-600: #0071e3;
+  --color-azure-500: #2997ff;
+  --color-azure-400: #6cc4ff;
+  --color-azure-300: #a6d8ff;
+  --color-azure-200: #cfe9ff;
+  --color-azure-100: #e3f2ff;
+  --color-azure-50: #f1f7fe;
+
+  /* Secondary — clinical aqua/teal */
+  --color-aqua-700: #0b6e6a;
+  --color-aqua-600: #0fa3a0;
+  --color-aqua-500: #17c1bb;
+  --color-aqua-400: #4dd9d4;
+  --color-aqua-300: #8ae6e3;
+  --color-aqua-200: #bff1ef;
+  --color-aqua-100: #e0f8f7;
+  --color-aqua-50: #f0fcfb;
+
+  /* Tertiary — soft violet for clay tiles */
+  --color-orchid-600: #6d3bd6;
+  --color-orchid-500: #8b5cf6;
+  --color-orchid-400: #a98cf9;
+  --color-orchid-300: #c4aefb;
+  --color-orchid-200: #ddd0fd;
+  --color-orchid-100: #eee7ff;
+  --color-orchid-50: #f6f2ff;
+
+  /* Sprout — the greens lifted from the HRCM logo (₹ + leaf curves) */
+  --color-sprout-700: #2e8b17;
+  --color-sprout-600: #4fa81a;
+  --color-sprout-500: #76c40b;
+  --color-sprout-400: #93d83a;
+  --color-sprout-300: #b8e47f;
+  --color-sprout-200: #d9f0b8;
+  --color-sprout-100: #eef8dc;
+  --color-sprout-50: #f7fcee;
+
+  /* Signal — verified/positive */
+  --color-signal-600: #12854b;
+  --color-signal-500: #1aa85c;
+  --color-signal-400: #46c97d;
+  --color-signal-200: #c7f0da;
+  --color-signal-100: #e4f8ec;
+  --color-signal-50: #f1fbf5;
+
+  /* Alert — denials only. Semantic status color, never decoration. */
+  --color-alert-600: #b42318;
+  --color-alert-500: #d92d20;
+  --color-alert-200: #fecdca;
+  --color-alert-100: #fee4e2;
+  --color-alert-50: #fef3f2;
+
+  /* Warm — for clay/tile surfaces */
+  --color-sand-100: #fdf3e7;
+  --color-sand-200: #f7e3cd;
+
+  /* ---------------------------------------------------------------- */
+  /* Studio — warm pastel palette from the reference hero              */
+  /* peach base → mauve → dusty rose, grey-lavender type, navy ink     */
+  /* ---------------------------------------------------------------- */
+  --color-studio-950: #1e1a28;
+  --color-studio-900: #2a2536;
+  --color-studio-700: #4a4457;
+  --color-studio-500: #827e9c;
+  --color-studio-400: #a49cae;
+  --color-studio-300: #ccb6b8;
+  --color-studio-200: #d7c1bd;
+  --color-studio-100: #ecd6cd;
+  --color-studio-50: #f6e9e2;
+  --color-violet-accent: #9f69c5;
+
+  /* Cloud — page surfaces */
+  --color-cloud-50: #fbfcfe;
+  --color-cloud-100: #f4f7fb;
+  --color-cloud-200: #eaf0f7;
+  --color-cloud-300: #dde6f0;
+  --color-mist-200: #e6ebf2;
+  --color-mist-100: #f1f4f8;
   --color-mist-50: #f8fafc;
-  --color-mist-100: #f1f5f9;
-  --color-mist-200: #e2e8f0;
-  --color-ink-900: #0f172a;
-  --color-ink-700: #334155;
-  --color-ink-600: #475569;
-  --color-ink-500: #64748b;
 
-  --shadow-card: 0 4px 20px -2px rgb(11 19 43 / 0.05);
-  --shadow-lift: 0 20px 35px -8px rgb(2 132 199 / 0.12), 0 4px 12px -2px rgb(11 19 43 / 0.04);
-  --shadow-brand: 0 10px 30px -10px rgb(14 165 233 / 0.35);
+  /* Legacy aliases kept so existing utility classes resolve */
+  --color-navy-900: #101828;
+  --color-navy-950: #0a1424;
 
-  --animate-marquee: marquee 28s linear infinite;
-  --animate-gradient-drift: gradient-drift 14s ease-in-out infinite alternate;
-  --animate-pulse-ring: pulse-ring 2.4s ease-out infinite;
-  --animate-float-slow: float-slow 9s ease-in-out infinite;
-  --animate-float-reverse: float-reverse 11s ease-in-out infinite;
+  /* ---------------------------------------------------------------- */
+  /* Glassmorphism                                                    */
+  /* ---------------------------------------------------------------- */
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-bg-strong: rgba(255, 255, 255, 0.78);
+  --glass-border: rgba(255, 255, 255, 0.75);
+  --glass-border-soft: rgba(16, 24, 40, 0.06);
+  /* Heavy saturate on purpose: over the warm hero it blends purple into
+     white — that washed blend is the intended look, not a tinted bar. */
+  --glass-blur: saturate(165%) blur(18px);
+  --glass-blur-strong: saturate(180%) blur(26px);
+  --glass-shadow:
+    0 1px 2px rgba(16, 24, 40, 0.04), 0 12px 28px -14px rgba(16, 24, 40, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  --glass-shadow-lift:
+    0 2px 6px rgba(16, 24, 40, 0.05), 0 28px 56px -24px rgba(16, 24, 40, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
 
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-  @keyframes gradient-drift {
-    from { background-position: 0% 40%; }
-    to { background-position: 100% 60%; }
-  }
-  @keyframes pulse-ring {
-    0% { box-shadow: 0 0 0 0 rgb(16 185 129 / 0.4); }
-    70%, 100% { box-shadow: 0 0 0 14px rgb(16 185 129 / 0); }
-  }
-  @keyframes float-slow {
-    0%, 100% { transform: translate(0, 0); }
-    50% { transform: translate(14px, -18px); }
-  }
-  @keyframes float-reverse {
-    0%, 100% { transform: translate(0, 0); }
-    50% { transform: translate(-16px, 14px); }
-  }
+  /* ---------------------------------------------------------------- */
+  /* Claymorphism                                                     */
+  /* ---------------------------------------------------------------- */
+  --clay-radius: var(--r-bento);
+  --clay-shadow: 10px 10px 22px rgba(16, 24, 40, 0.09),
+    -8px -8px 18px rgba(255, 255, 255, 0.95);
+  --clay-shadow-hover: 16px 16px 32px rgba(16, 24, 40, 0.12),
+    -12px -12px 24px rgba(255, 255, 255, 1);
+  --clay-shadow-inset: inset 5px 5px 10px rgba(16, 24, 40, 0.1),
+    inset -5px -5px 10px rgba(255, 255, 255, 0.95);
+
+  /* ---------------------------------------------------------------- */
+  /* Skeuomorphism                                                    */
+  /* ---------------------------------------------------------------- */
+  --skeuo-paper: #ffffff;
+  --skeuo-shadow: 0 1px 1px rgba(16, 24, 40, 0.04),
+    0 8px 20px -10px rgba(16, 24, 40, 0.14), 0 24px 48px -32px rgba(16, 24, 40, 0.18);
+  --skeuo-shadow-lift: 0 2px 4px rgba(16, 24, 40, 0.05),
+    0 18px 40px -18px rgba(16, 24, 40, 0.2), 0 40px 80px -48px rgba(16, 24, 40, 0.24);
+  --skeuo-inset: inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(16, 24, 40, 0.04);
+
+  /* ---------------------------------------------------------------- */
+  /* Bento grid                                                       */
+  /* ---------------------------------------------------------------- */
+  --bento-gap: 16px;
+  --bento-radius: var(--r-bento);
+  --bento-bg: rgba(255, 255, 255, 0.62);
+
+  /* ---------------------------------------------------------------- */
+  /* Radii — one per hierarchy level, not one value everywhere          */
+  /* ---------------------------------------------------------------- */
+  --r-row: 12px; /* ledger rows, chips, inputs */
+  --r-tile: 18px; /* icon tiles, small panels */
+  --r-card: 24px; /* glass / paper cards */
+  --r-bento: 28px; /* bento + clay tiles */
+  --r-hero: 34px; /* hero frame */
+  --r-frame: 26px; /* photo frames */
+
+  /* Brand shadows */
+  --shadow-card: var(--glass-shadow);
+  --shadow-lift: var(--glass-shadow-lift);
+  --shadow-brand: 0 1px 2px rgba(0, 74, 149, 0.28), 0 10px 22px -12px rgba(0, 113, 227, 0.5);
+  --shadow-glass: 0 8px 32px rgba(16, 24, 40, 0.08);
+  --shadow-clay: var(--clay-shadow);
+  --shadow-skeuo: var(--skeuo-shadow);
+  --shadow-inset-top: inset 0 1px 0 rgba(255, 255, 255, 0.85);
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   color: var(--color-ink-900);
-  background: #ffffff;
+  background-color: #eef1f5;
+  /* Cool neutral page base — muted blue, matching the hero's studio.
+     Per-section surfaces sit on top of it, so the page never reads as
+     one big flat wash. */
+  background-image:
+    radial-gradient(70% 50% at 12% 0%, rgba(224, 232, 240, 0.5) 0%, rgba(224, 232, 240, 0) 60%),
+    radial-gradient(60% 45% at 92% 6%, rgba(194, 208, 222, 0.32) 0%, rgba(194, 208, 222, 0) 60%),
+    radial-gradient(70% 45% at 50% 100%, rgba(214, 226, 238, 0.4) 0%, rgba(214, 226, 238, 0) 62%),
+    linear-gradient(180deg, #f6f8fb 0%, #eef1f5 100%);
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "cv11", "ss01";
   overflow-x: hidden;
 }
 
+/* Ruled claim-sheet paper over the page wash — the base grain */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 31px,
+      rgba(16, 24, 40, 0.028) 31px,
+      rgba(16, 24, 40, 0.028) 32px
+    ),
+    linear-gradient(to right, rgba(16, 24, 40, 0.018) 1px, transparent 1px);
+  background-size: 100% 32px, 112px 100%;
+}
+
+/* Paper grain — keeps the light surfaces from reading as flat plastic */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
 ::selection {
-  background: var(--color-azure-500);
-  color: #fff;
+  background: rgba(0, 113, 227, 0.16);
+  color: var(--color-ink-900);
 }
 
-/* Visible focus rings for keyboard users on brand surfaces */
 :focus-visible {
-  outline: 2px solid var(--color-azure-500);
+  outline: 2px solid var(--color-azure-600);
   outline-offset: 3px;
-  border-radius: 4px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+  border-radius: 6px;
 }
 
 /* ------------------------------------------------------------------ */
-/* Scroll-reveal system (IntersectionObserver + CSS transitions)       */
-/* Content is VISIBLE by default; hiding is applied only when JS adds  */
-/* .will-reveal, so nothing can ever be stuck invisible.               */
+/* Scroll reveal (class-based, IntersectionObserver driven)            */
 /* ------------------------------------------------------------------ */
-
 .will-reveal {
   opacity: 0;
   transform: translateY(26px);
   transition:
-    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: var(--reveal-delay, 0ms);
   will-change: opacity, transform;
 }
@@ -115,7 +271,1469 @@ body {
   transform: translateY(0);
 }
 
+.stagger-grid > *:nth-child(1) { --reveal-delay: 0ms; }
+.stagger-grid > *:nth-child(2) { --reveal-delay: 70ms; }
+.stagger-grid > *:nth-child(3) { --reveal-delay: 140ms; }
+.stagger-grid > *:nth-child(4) { --reveal-delay: 210ms; }
+.stagger-grid > *:nth-child(5) { --reveal-delay: 280ms; }
+.stagger-grid > *:nth-child(6) { --reveal-delay: 350ms; }
+.stagger-grid > *:nth-child(7) { --reveal-delay: 420ms; }
+.stagger-grid > *:nth-child(8) { --reveal-delay: 490ms; }
+
+/* ------------------------------------------------------------------ */
+/* Glassmorphism                                                      */
+/* ------------------------------------------------------------------ */
+.glass {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-strong {
+  background: var(--glass-bg-strong);
+  -webkit-backdrop-filter: var(--glass-blur-strong);
+  backdrop-filter: var(--glass-blur-strong);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+/* Glossy highlight bar across the top of a glass surface (skeuo touch) */
+.glass-sheen::before {
+  content: "";
+  position: absolute;
+  inset: 1px 1px auto 1px;
+  height: 45%;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* Claymorphism                                                       */
+/* ------------------------------------------------------------------ */
+.clay-card {
+  background: linear-gradient(145deg, #ffffff 0%, var(--clay-tint, #f4f7fb) 100%);
+  border-radius: var(--clay-radius);
+  box-shadow: var(--clay-shadow), var(--shadow-inset-top);
+  transition:
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.clay-card:hover {
+  box-shadow: var(--clay-shadow-hover), var(--shadow-inset-top);
+  transform: translateY(-3px);
+}
+
+.clay-card:active {
+  box-shadow: var(--clay-shadow-inset);
+  transform: translateY(0);
+}
+
+.clay-pressed {
+  background: linear-gradient(145deg, var(--clay-tint, #eef3f9) 0%, #ffffff 100%);
+  border-radius: var(--clay-radius);
+  box-shadow: var(--clay-shadow-inset);
+}
+
+/* ------------------------------------------------------------------ */
+/* Skeuomorphism                                                      */
+/* ------------------------------------------------------------------ */
+.skeuo-paper {
+  background: var(--skeuo-paper);
+  border-radius: var(--r-card);
+  box-shadow: var(--skeuo-shadow), var(--skeuo-inset);
+  border: 1px solid rgba(16, 24, 40, 0.05);
+}
+
+.skeuo-card {
+  background: linear-gradient(180deg, #ffffff 0%, #fdfefe 100%);
+  border-radius: var(--r-card);
+  box-shadow: var(--skeuo-shadow), var(--skeuo-inset);
+  border: 1px solid rgba(16, 24, 40, 0.05);
+  transition:
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.skeuo-card:hover {
+  box-shadow: var(--skeuo-shadow-lift), var(--skeuo-inset);
+  transform: translateY(-3px);
+}
+
+/* Inset "well" — for inputs and pressed UI */
+.skeuo-well {
+  background: linear-gradient(180deg, #f1f5f9 0%, #ffffff 100%);
+  border-radius: 16px;
+  box-shadow: inset 0 2px 5px rgba(16, 24, 40, 0.07),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(16, 24, 40, 0.06);
+}
+
+/* ------------------------------------------------------------------ */
+/* Bento grid                                                         */
+/* ------------------------------------------------------------------ */
+.bento-grid {
+  display: grid;
+  gap: var(--bento-gap);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.bento-item {
+  position: relative;
+  background: var(--bento-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border-radius: var(--bento-radius);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  overflow: hidden;
+  transition:
+    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease;
+}
+
+.bento-item:hover {
+  box-shadow: var(--glass-shadow-lift);
+  border-color: rgba(255, 255, 255, 0.95);
+}
+
+.bento-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    120% 90% at 20% 0%,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0) 55%
+  );
+  pointer-events: none;
+}
+
+.bento-lg { grid-column: span 2; }
+.bento-xl { grid-column: span 2; grid-row: span 2; }
+.bento-md { grid-column: span 1; }
+.bento-full { grid-column: 1 / -1; }
+
+@media (max-width: 1024px) {
+  .bento-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bento-xl { grid-row: span 1; }
+}
+
+@media (max-width: 640px) {
+  .bento-grid { grid-template-columns: minmax(0, 1fr); }
+  .bento-lg,
+  .bento-xl { grid-column: span 1; }
+}
+
+/* ------------------------------------------------------------------ */
+/* Textures — each one earns its place                                   */
+/* ledger : ruled claim-sheet paper, the page's base grain               */
+/* graph  : graph paper for data surfaces (charts, boards)               */
+/* dots   : quiet dot grid for section backdrops                         */
+/* ------------------------------------------------------------------ */
+.texture-ledger {
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 27px,
+      rgba(16, 24, 40, 0.055) 27px,
+      rgba(16, 24, 40, 0.055) 28px
+    ),
+    linear-gradient(to right, rgba(16, 24, 40, 0.03) 1px, transparent 1px);
+  background-size: 100% 28px, 84px 100%;
+  background-position: 0 0, 0 0;
+}
+
+.texture-graph {
+  background-image:
+    linear-gradient(to right, rgba(16, 24, 40, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16, 24, 40, 0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.pattern-dots {
+  background-image: radial-gradient(rgba(16, 24, 40, 0.09) 1px, transparent 1px);
+  background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(75% 65% at 50% 40%, #000 0%, transparent 78%);
+  mask-image: radial-gradient(75% 65% at 50% 40%, #000 0%, transparent 78%);
+}
+
+.pattern-grid {
+  background-image:
+    linear-gradient(to right, rgba(16, 24, 40, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16, 24, 40, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(70% 60% at 50% 35%, #000 0%, transparent 75%);
+  mask-image: radial-gradient(70% 60% at 50% 35%, #000 0%, transparent 75%);
+}
+
+.pattern-cross {
+  background-image:
+    linear-gradient(to right, rgba(0, 113, 227, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 113, 227, 0.07) 1px, transparent 1px);
+  background-size: 44px 44px;
+  background-position: center center;
+  -webkit-mask-image: radial-gradient(60% 55% at 50% 50%, #000 0%, transparent 72%);
+  mask-image: radial-gradient(60% 55% at 50% 50%, #000 0%, transparent 72%);
+}
+
+/* ------------------------------------------------------------------ */
+/* Ledger primitives — rows, rules, tabular figures                     */
+/* ------------------------------------------------------------------ */
+.ledger-rule {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(16, 24, 40, 0.1) 0%,
+    rgba(16, 24, 40, 0.1) 70%,
+    transparent 100%
+  );
+}
+
+/* Status chip — colour always means a claim state, never decoration */
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.2rem 0.55rem 0.2rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.status-chip::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.status-settled {
+  color: var(--color-signal-600);
+  background: var(--color-signal-50);
+  border: 1px solid var(--color-signal-200);
+}
+
+.status-pending {
+  color: var(--color-azure-700);
+  background: var(--color-azure-50);
+  border: 1px solid var(--color-azure-200);
+}
+
+.status-review {
+  color: var(--color-aqua-700);
+  background: var(--color-aqua-50);
+  border: 1px solid var(--color-aqua-200);
+}
+
+.status-denied {
+  color: var(--color-alert-600);
+  background: var(--color-alert-50);
+  border: 1px solid var(--color-alert-200);
+}
+
+/* A single claim token travelling the pipeline */
+.claim-chip {
+  will-change: transform;
+  filter: drop-shadow(0 6px 14px rgba(16, 24, 40, 0.12));
+}
+
+/* Quiet watermark mode: dimmed and faded toward the centre of the hero,
+   so the copy and the claims board stay the loudest things on screen. */
+.claim-flow-quiet {
+  opacity: 0.34;
+  -webkit-mask-image: radial-gradient(
+    120% 90% at 78% 42%,
+    #000 0%,
+    rgba(0, 0, 0, 0.55) 42%,
+    transparent 78%
+  );
+  mask-image: radial-gradient(
+    120% 90% at 78% 42%,
+    #000 0%,
+    rgba(0, 0, 0, 0.55) 42%,
+    transparent 78%
+  );
+}
+
+/* Pointer-follow light for the hero — reacts to the visitor, never to scroll */
+.hero-spotlight {
+  opacity: 0;
+  background: radial-gradient(
+    26rem 20rem at var(--sx, 50%) var(--sy, 40%),
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(41, 151, 255, 0.07) 38%,
+    rgba(41, 151, 255, 0) 68%
+  );
+}
+
+@media (hover: none) {
+  .hero-spotlight {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Studio backdrop — warm pastel key light, bloom, grain, vignette      */
+/* This is the hero's ground, matched to the reference: peach → mauve   */
+/* → dusty rose with one soft key light, film grain and a vignette.     */
+/* ------------------------------------------------------------------ */
+.studio-stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: var(--color-studio-100);
+  background-image:
+    radial-gradient(72% 56% at 74% 4%, #f6e9e2 0%, rgba(246, 233, 226, 0) 62%),
+    radial-gradient(92% 82% at 50% 42%, #ecd6cd 0%, rgba(236, 214, 205, 0) 74%),
+    radial-gradient(66% 62% at 10% 94%, #d7c1bd 0%, rgba(215, 193, 189, 0) 68%),
+    radial-gradient(125% 112% at 50% 48%, rgba(204, 182, 184, 0) 50%, #ccb6b8 100%);
+}
+
+/* Softer wash of the same studio — for subpage heroes */
+.studio-stage-soft {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: #e7ecf2;
+  background-image:
+    radial-gradient(70% 55% at 78% 2%, #eef2f7 0%, rgba(238, 242, 247, 0) 62%),
+    radial-gradient(85% 75% at 50% 40%, #dfe6ee 0%, rgba(223, 230, 238, 0) 74%),
+    radial-gradient(120% 110% at 50% 48%, rgba(194, 208, 222, 0) 52%, #cdd9e6 100%);
+}
+
+/* Big soft blurred glow — studio light around the object.
+   Kept modest: a huge blur radius on a large circle reads as a
+   hazy wash, so the bloom stays a glow, not a fog. */
+.studio-bloom {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(48px);
+  pointer-events: none;
+}
+
+/* Film grain: keeps a gradient from reading as flat CSS.
+   Higher-frequency tile + lower opacity so it reads as grain,
+   not as soft blobs. */
+.studio-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='90' height='90' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+}
+
+/* Corner darkening — what makes a gradient read as a photographed room */
+.studio-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    118% 102% at 50% 44%,
+    rgba(30, 26, 40, 0) 54%,
+    rgba(30, 26, 40, 0.16) 100%
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Hero ground texture — a real 3D gradient surface, not flat lines.  */
+/* Layered radial gradients at different depths + a perspective floor  */
+/* plane, so the hero reads as a volumetric studio space with a        */
+/* receding floor, not a marketing gradient with a grid stamped on.    */
+/* The spiral is the hero's signature: a slow windmill/wave motion    */
+/* keeps the ground alive without ever competing with the copy.        */
+/* ------------------------------------------------------------------ */
+.hero-texture {
+  position: absolute;
+  inset: -12%;
+  pointer-events: none;
+  background-image:
+    /* near-field glow — the key light pooling in front */
+    radial-gradient(
+      90% 70% at 68% 18%,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(246, 233, 226, 0.26) 32%,
+      rgba(246, 233, 226, 0) 62%
+    ),
+    /* mid-field wash — mauve sitting deeper */
+    radial-gradient(
+      75% 60% at 22% 58%,
+      rgba(215, 193, 189, 0.48) 0%,
+      rgba(204, 182, 184, 0.2) 45%,
+      rgba(204, 182, 184, 0) 72%
+    ),
+    /* violet depth bloom — the far corner */
+    radial-gradient(
+      55% 55% at 88% 82%,
+      rgba(159, 105, 197, 0.26) 0%,
+      rgba(159, 105, 197, 0.1) 40%,
+      rgba(159, 105, 197, 0) 68%
+    ),
+    /* rose floor plane — recedes toward the bottom */
+    radial-gradient(
+      120% 80% at 50% 118%,
+      rgba(204, 182, 184, 0.52) 0%,
+      rgba(215, 193, 189, 0.3) 38%,
+      rgba(236, 214, 205, 0.08) 66%,
+      rgba(236, 214, 205, 0) 88%
+    );
+  /* perspective: the texture tilts back like a floor plane */
+  transform: perspective(900px) rotateX(18deg) scale(1.15);
+  transform-origin: 50% 0%;
+}
+
+/* The windmill — the hero's ground is a turning mill.
+   Six blade panes sit 60° apart around a hub; because they are all
+   children of this spinning parent, you see N distinct panes
+   sweeping past constantly, so the hero is never static.
+   The rotation is linear and endless — the loop is seamless. */
+.hero-windmill {
+  position: absolute;
+  inset: -28%;
+  pointer-events: none;
+  transform-origin: 50% 42%;
+  animation: hero-spin 38s linear infinite;
+}
+
+/* One blade pane: a conic wedge, soft-edged at both ends so it
+   reads as a pane of light rather than a hard slice.
+   The tints are deliberately strong and the blur deliberately
+   modest — a pane of light you can actually see turning. */
+.hero-blade {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 42%;
+  background: conic-gradient(
+    from -12deg,
+    transparent 0deg,
+    color-mix(in srgb, var(--tint) 82%, transparent) 14deg,
+    var(--tint) 30deg,
+    var(--tint) 46deg,
+    color-mix(in srgb, var(--tint) 55%, transparent) 60deg,
+    transparent 76deg
+  );
+  filter: blur(16px);
+  /* each pane breathes on its own phase, so the mill has life */
+  animation: hero-flutter 14s ease-in-out infinite;
+}
+
+/* The hub — a soft core the panes sweep out of */
+.hero-hub {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  height: 22rem;
+  width: 22rem;
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(246, 233, 226, 0.28) 42%,
+    rgba(246, 233, 226, 0) 72%
+  );
+  filter: blur(18px);
+}
+
+/* Endless rotation — the loop that keeps the hero alive */
+@keyframes hero-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Per-pane flutter — a gentle swell so the panes are not rigid */
+@keyframes hero-flutter {
+  0%, 100% { opacity: 0.65; }
+  50%      { opacity: 1; }
+}
+
+/* Stagger each pane so the swell travels around the mill */
+.hero-windmill > .hero-blade:nth-child(1) { animation-delay: 0s; }
+.hero-windmill > .hero-blade:nth-child(2) { animation-delay: -2.3s; }
+.hero-windmill > .hero-blade:nth-child(3) { animation-delay: -4.6s; }
+.hero-windmill > .hero-blade:nth-child(4) { animation-delay: -6.9s; }
+.hero-windmill > .hero-blade:nth-child(5) { animation-delay: -9.2s; }
+.hero-windmill > .hero-blade:nth-child(6) { animation-delay: -11.5s; }
+
+/* ------------------------------------------------------------------ */
+/* Hero feature modules — transparent, like the original proof ledger. */
+/* No fill, no border, no shadow: the accent rail and the before→after */
+/* bar carry the structure instead of a card surface.                  */
+/* ------------------------------------------------------------------ */
+.hero-module {
+  position: relative;
+  height: 100%;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-module:hover {
+  transform: translateY(-3px);
+}
+
+/* the accent rail — a coloured spine down the leading edge,
+   growing to full height on hover */
+.hero-module-rail {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  border-radius: 999px;
+  background: var(--module-accent, rgba(159, 105, 197, 0.5));
+  transform-origin: top center;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-module:hover .hero-module-rail {
+  transform: scaleY(1);
+}
+
+/* the before→after track and its fill */
+.hero-module-track {
+  position: relative;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(30, 40, 56, 0.08);
+  overflow: hidden;
+}
+
+.hero-module-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--module-accent) 0%, var(--module-accent) 100%);
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
 @media (prefers-reduced-motion: reduce) {
+  /* the mill stops; the panes hold a static offset so the hero
+     still reads as a layered, lit surface */
+  .hero-windmill,
+  .hero-blade {
+    animation: none;
+  }
+  .hero-module,
+  .hero-module-fill {
+    transition: none;
+  }
+  .hero-module-fill {
+    transform: scaleX(1);
+  }
+}
+
+/* The 3D floor grid — a perspective plane receding to a vanishing
+   point, drawn with gradients so it has depth, not flat lines. */
+.hero-floor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    /* converging verticals — the floor's depth lines */
+    linear-gradient(
+      105deg,
+      transparent 0%,
+      rgba(30, 26, 40, 0.045) 42%,
+      rgba(30, 26, 40, 0.045) 42.5%,
+      transparent 43%,
+      transparent 58%,
+      rgba(30, 26, 40, 0.045) 58.5%,
+      rgba(30, 26, 40, 0.045) 59%,
+      transparent 59.5%,
+      transparent 74%,
+      rgba(30, 26, 40, 0.045) 74.5%,
+      rgba(30, 26, 40, 0.045) 75%,
+      transparent 75.5%
+    ),
+    /* horizontal depth bands — get denser toward the horizon */
+    linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(30, 26, 40, 0.035) 52%,
+      rgba(30, 26, 40, 0.035) 52.5%,
+      transparent 53%,
+      transparent 62%,
+      rgba(30, 26, 40, 0.045) 62.5%,
+      rgba(30, 26, 40, 0.045) 63%,
+      transparent 63.5%,
+      transparent 74%,
+      rgba(30, 26, 40, 0.045) 74.5%,
+      rgba(30, 26, 40, 0.045) 75%,
+      transparent 75.5%,
+      transparent 86%,
+      rgba(30, 26, 40, 0.045) 86.5%,
+      rgba(30, 26, 40, 0.045) 87%,
+      transparent 87.5%
+    );
+  /* the floor plane sits below the horizon and tilts back */
+  transform: perspective(700px) rotateX(32deg) translateY(28%) scale(1.3);
+  transform-origin: 50% 100%;
+  /* fade the floor into the distance */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 30%,
+    #000 78%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #000 30%,
+    #000 78%,
+    transparent 100%
+  );
+}
+
+/* Atmospheric depth haze — a soft gradient that pushes the far
+   plane back and pulls the near field forward. Kept light so the
+   upper hero never reads as vacant or washed out. */
+.hero-depth-haze {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(246, 233, 226, 0.22) 0%,
+    rgba(246, 233, 226, 0.05) 30%,
+    rgba(236, 214, 205, 0.02) 55%,
+    rgba(204, 182, 184, 0.08) 82%,
+    rgba(204, 182, 184, 0.16) 100%
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Unique textural cards — one per position, not six lookalikes.       */
+/* Every card gets its own texture, its own chamfer, and its own       */
+/* accent, so the benefit and "why" grids read as a set of distinct   */
+/* surfaces rather than one repeated bento tile.                       */
+/* ------------------------------------------------------------------ */
+.tex-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-bento);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: var(--glass-shadow);
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tex-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--glass-shadow-lift);
+  border-color: rgba(255, 255, 255, 0.95);
+}
+
+/* the texture layer — one of .tex-a … .tex-f, set per card */
+.tex-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.85;
+  /* the texture fades out toward the text so it never fights copy */
+  -webkit-mask-image: radial-gradient(130% 110% at 18% 0%, #000 0%, rgba(0,0,0,0.35) 55%, transparent 88%);
+  mask-image: radial-gradient(130% 110% at 18% 0%, #000 0%, rgba(0,0,0,0.35) 55%, transparent 88%);
+  transition: opacity 0.4s ease;
+}
+
+.tex-card:hover .tex-layer {
+  opacity: 1;
+}
+
+/* A — concentric rings (radar sweep) */
+.tex-a {
+  background-image: repeating-radial-gradient(
+    circle at 82% 14%,
+    var(--tex-accent) 0px,
+    var(--tex-accent) 1.5px,
+    transparent 1.5px,
+    transparent 20px
+  );
+}
+
+/* B — diagonal hatch */
+.tex-b {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--tex-accent) 0px,
+    var(--tex-accent) 1.5px,
+    transparent 1.5px,
+    transparent 14px
+  );
+}
+
+/* C — graph paper with a bold primary axis */
+.tex-c {
+  background-image:
+    linear-gradient(to right, var(--tex-accent) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--tex-accent) 1px, transparent 1px),
+    linear-gradient(to right, var(--tex-strong) 2px, transparent 2px),
+    linear-gradient(to bottom, var(--tex-strong) 2px, transparent 2px);
+  background-size: 18px 18px, 18px 18px, 90px 90px, 90px 90px;
+}
+
+/* D — dot grid with cross ticks */
+.tex-d {
+  background-image:
+    radial-gradient(var(--tex-accent) 1.6px, transparent 1.6px),
+    repeating-linear-gradient(to right, var(--tex-strong) 0, var(--tex-strong) 1px, transparent 1px, transparent 44px),
+    repeating-linear-gradient(to bottom, var(--tex-strong) 0, var(--tex-strong) 1px, transparent 1px, transparent 44px);
+  background-size: 22px 22px, 44px 44px, 44px 44px;
+}
+
+/* E — ledger rules, densest at the top */
+.tex-e {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 15px,
+    var(--tex-accent) 15px,
+    var(--tex-accent) 16px
+  );
+}
+
+/* F — clinical cross grid */
+.tex-f {
+  background-image:
+    repeating-linear-gradient(to right, var(--tex-accent) 0, var(--tex-accent) 3px, transparent 3px, transparent 34px),
+    repeating-linear-gradient(to bottom, var(--tex-accent) 0, var(--tex-accent) 3px, transparent 3px, transparent 34px),
+    repeating-linear-gradient(to right, var(--tex-strong) 0, var(--tex-strong) 6px, transparent 6px, transparent 68px),
+    repeating-linear-gradient(to bottom, var(--tex-strong) 0, var(--tex-strong) 6px, transparent 6px, transparent 68px);
+}
+
+/* G — whisper. The most restrained texture in the set: barely-there
+   hairlines on a wide rhythm, in near-invisible grey. Understated by
+   design — it registers as paper, not as pattern. */
+.tex-g {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 23px,
+    var(--tex-quiet) 23px,
+    var(--tex-quiet) 24px
+  );
+}
+
+/* A chamfered corner notch — rotates per card so the set reads
+   as a family without any two cards being identical. */
+.tex-notch {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--card-accent, rgba(159, 105, 197, 0.16));
+  clip-path: polygon(100% 0, 100% 100%, 0 0);
+}
+
+/* the accent rail — a coloured spine down the leading edge,
+   its height growing on hover */
+.tex-rail {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--card-accent-solid, #9f69c5);
+  transform-origin: top center;
+  transform: scaleY(0.35);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tex-card:hover .tex-rail {
+  transform: scaleY(1);
+}
+
+/* the index numeral — a large, quiet watermark figure */
+.tex-index {
+  position: absolute;
+  right: 0.75rem;
+  bottom: -0.75rem;
+  font-size: 5.5rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: var(--card-accent-solid, #9f69c5);
+  opacity: 0.07;
+  transition: opacity 0.4s ease;
+}
+
+.tex-card:hover .tex-index {
+  opacity: 0.13;
+}
+
+/* the icon sigil — chamfered square, not a circle */
+.tex-sigil {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  color: #ffffff;
+  background: var(--card-accent-solid, #9f69c5);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 0.7rem) 0,
+    100% 0.7rem,
+    100% 100%,
+    0.7rem 100%,
+    0 calc(100% - 0.7rem)
+  );
+  box-shadow: 0 8px 20px -8px var(--card-accent-shadow, rgba(159, 105, 197, 0.5));
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tex-card:hover .tex-sigil {
+  transform: translateY(-2px) scale(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tex-card,
+  .tex-layer,
+  .tex-rail,
+  .tex-index,
+  .tex-sigil {
+    transition: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* About section card texture — one faint graph-paper ground on every */
+/* text card in the section, so the six read as a matched set without  */
+/* any two sections on the page looking the same.                      */
+/* ------------------------------------------------------------------ */
+.about-card-texture {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(16, 24, 40, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16, 24, 40, 0.045) 1px, transparent 1px);
+  background-size: 26px 26px;
+  /* fade toward the copy so the texture never fights the text */
+  -webkit-mask-image: radial-gradient(130% 110% at 14% 0%, #000 0%, rgba(0,0,0,0.3) 58%, transparent 90%);
+  mask-image: radial-gradient(130% 110% at 14% 0%, #000 0%, rgba(0,0,0,0.3) 58%, transparent 90%);
+}
+
+/* ------------------------------------------------------------------ */
+/* Founder cards — a distinct structure from the rest of the site:     */
+/* a full-bleed photo band, a name plate that straddles the photo and */
+/* the body, the full bio, and a quiet LinkedIn footer. Clipped reveal */
+/* + staggered rise + a hover where the photo settles.                 */
+/* ------------------------------------------------------------------ */
+.founder-card {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--r-card);
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: var(--glass-shadow);
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.founder-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--glass-shadow-lift);
+}
+
+/* photo band — clipped open from the top on reveal */
+.founder-photo {
+  position: relative;
+  aspect-ratio: 4 / 3.6;
+  overflow: hidden;
+  background: var(--color-cloud-200);
+  clip-path: inset(0 0 0 0);
+}
+
+.founder-photo img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transform: scale(1.08);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.founder-card:hover .founder-photo img {
+  transform: scale(1.02);
+}
+
+.founder-photo-scrim {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(16, 24, 40, 0) 40%,
+    rgba(16, 24, 40, 0.28) 100%
+  );
+}
+
+/* the role pill, sitting on the photo */
+.founder-role {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.3rem 0.7rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-azure-700);
+  backdrop-filter: blur(8px);
+}
+
+/* the name plate — straddles the photo and the body */
+.founder-plate {
+  position: relative;
+  z-index: 1;
+  margin: -2.25rem 1.25rem 0;
+  border-radius: var(--r-tile);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.94);
+  padding: 0.9rem 1.1rem;
+  box-shadow: 0 10px 26px -16px rgba(16, 24, 40, 0.35);
+  backdrop-filter: blur(10px);
+}
+
+.founder-plate h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-ink-900);
+}
+
+.founder-plate-rule {
+  margin-top: 0.5rem;
+  height: 1px;
+  border: 0;
+  background: linear-gradient(90deg, var(--color-azure-500) 0%, rgba(0, 113, 227, 0) 100%);
+  transform-origin: left center;
+}
+
+.founder-body {
+  padding: 1.1rem 1.25rem 1.25rem;
+}
+
+.founder-bio {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--color-ink-600);
+}
+
+/* footer row — quiet, right-aligned action */
+.founder-foot {
+  margin-top: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-top: 1px solid rgba(16, 24, 40, 0.07);
+  padding-top: 1rem;
+}
+
+.founder-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 0.6rem;
+  background: var(--color-azure-50);
+  padding: 0.45rem 0.7rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--color-azure-700);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.founder-link:hover {
+  background: var(--color-azure-600);
+  color: #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .founder-card,
+  .founder-photo img,
+  .founder-plate-rule,
+  .founder-link {
+    transition: none;
+  }
+  .founder-photo img {
+    transform: scale(1);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Footer — clean editorial top over a grained, flowing colour field.  */
+/* The reference shape: logo, one line of copy, social icons, four      */
+/* columns of plain links, a hairline, then a bottom row. The colour    */
+/* lives in the ground itself — ribbons of logo green over the hero's   */
+/* pastels, all under a heavy grain, so the block reads as one piece    */
+/* with the page instead of a dark slab bolted on.                      */
+/* ------------------------------------------------------------------ */
+
+/* .footer-field is placed on the <footer> element itself, so it must be
+   a normal, interactive, full-height block — the ribbons absolutely
+   position inside it. Do NOT make this absolute or pointer-events:none.
+   The gradient is coloured from the very first pixel, and the ribbons
+   reach up over nearly the whole block, so the colour covers the entire
+   footer rather than pooling at the bottom. */
+.footer-field {
+  position: relative;
+  overflow: hidden;
+  pointer-events: auto;
+  /* the field: coloured top to bottom, deepening toward the base */
+  background: linear-gradient(
+    180deg,
+    #f2e2ee 0%,
+    #eedbea 18%,
+    #ebdcee 40%,
+    #eae3e8 62%,
+    #e9f0e2 84%,
+    #e7f0dd 100%
+  );
+}
+
+/* ---- the flowing ribbons, in logo green over the hero's pastels ---- */
+.footer-ribbon {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  filter: blur(28px);
+  mix-blend-mode: multiply;
+  opacity: 0.72;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* green — the logo's ₹ mark */
+.footer-ribbon--green {
+  bottom: 0%;
+  height: 30%;
+  background: linear-gradient(
+    92deg,
+    rgba(118, 196, 11, 0) 0%,
+    rgba(118, 196, 11, 0.9) 22%,
+    rgba(147, 216, 58, 0.8) 52%,
+    rgba(70, 201, 125, 0.85) 82%,
+    rgba(70, 201, 125, 0) 100%
+  );
+}
+
+/* violet — the hero's accent, reaching up over the middle band */
+.footer-ribbon--violet {
+  bottom: 16%;
+  height: 60%;
+  background: linear-gradient(
+    86deg,
+    rgba(159, 105, 197, 0) 0%,
+    rgba(159, 105, 197, 0.62) 30%,
+    rgba(180, 140, 210, 0.68) 62%,
+    rgba(159, 105, 197, 0) 100%
+  );
+}
+
+/* rose — the broad band that carries colour over the upper half */
+.footer-ribbon--rose {
+  bottom: 30%;
+  height: 80%;
+  background: linear-gradient(
+    96deg,
+    rgba(215, 193, 189, 0) 0%,
+    rgba(215, 193, 189, 0.85) 26%,
+    rgba(236, 214, 205, 0.9) 58%,
+    rgba(204, 182, 184, 0.8) 84%,
+    rgba(204, 182, 184, 0) 100%
+  );
+}
+
+/* a wide bloom that keeps the very top of the field lit, not blank */
+.footer-ribbon--bloom {
+  bottom: 52%;
+  height: 76%;
+  filter: blur(44px);
+  mix-blend-mode: normal;
+  opacity: 0.9;
+  background: radial-gradient(
+    60% 100% at 50% 100%,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0) 72%
+  );
+}
+
+/* ---- grain: the texture that makes the ribbons read as fabric ---- */
+.footer-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+}
+
+/* a fine dither on top of the grain, for the paper-like speckle */
+.footer-dither {
+  position: absolute;
+  inset: 0;
+  opacity: 0.3;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='3' height='3'%3E%3Crect width='3' height='3' fill='%23ffffff' fill-opacity='0.35'/%3E%3Crect width='1' height='1' fill='%23000000' fill-opacity='0.28'/%3E%3C/svg%3E");
+}
+
+/* ---- editorial content ---- */
+/* Social icons — bordered rounded squares, like the reference */
+.footer-social {
+  display: flex;
+  height: 2.35rem;
+  width: 2.35rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.6rem;
+  border: 1px solid rgba(16, 24, 40, 0.14);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--color-ink-700);
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer-social:hover {
+  transform: translateY(-2px);
+  border-color: rgba(118, 196, 11, 0.5);
+  background: #ffffff;
+  color: var(--color-sprout-700);
+}
+
+/* Column headings — plain semibold, exactly like the reference */
+.footer-heading {
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-ink-900);
+}
+
+/* Links — plain, quiet, colouring on hover */
+.footer-link {
+  display: inline-block;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--color-ink-600);
+  transition: color 0.25s ease;
+}
+
+.footer-link:hover {
+  color: var(--color-sprout-700);
+}
+
+.footer-meta {
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--color-ink-600);
+  transition: color 0.25s ease;
+}
+
+a.footer-meta:hover {
+  color: var(--color-sprout-700);
+}
+
+/* the hairline above the bottom row */
+.footer-hairline {
+  height: 1px;
+  border: 0;
+  background: rgba(16, 24, 40, 0.12);
+}
+
+.footer-fine {
+  font-size: 0.8rem;
+  color: var(--color-ink-500);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-ribbon {
+    animation: none;
+  }
+  .footer-social {
+    transition: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Section surfaces — every section gets its own ground + texture,     */
+/* so the page never reads as one repeated blue wash. All light.        */
+/*   paper  — near-white ledger, for card-heavy sections               */
+/*   aqua   — clinical mint + dot grid                                 */
+/*   sprout — the logo's light green + graph paper                     */
+/*   cream  — warm studio cream + graph paper                          */
+/*   orchid — violet + dots                                             */
+/*   peach  — peach + clinical cross grid                              */
+/*   sand   — warm sand + ruled paper                                  */
+/* ------------------------------------------------------------------ */
+.surface-base {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.surface-paper {
+  background-image: linear-gradient(180deg, #ffffff 0%, #fdfcfe 45%, #f8fafc 100%);
+}
+
+.surface-aqua {
+  background-image:
+    radial-gradient(70% 55% at 12% 8%, rgba(120, 150, 150, 0.09) 0%, rgba(120, 150, 150, 0) 62%),
+    radial-gradient(55% 45% at 92% 16%, rgba(110, 135, 155, 0.07) 0%, rgba(110, 135, 155, 0) 60%),
+    linear-gradient(180deg, #edf1f2 0%, #f1f4f5 100%);
+}
+
+.surface-sprout {
+  background-image:
+    radial-gradient(65% 55% at 18% 6%, rgba(147, 216, 58, 0.22) 0%, rgba(147, 216, 58, 0) 62%),
+    radial-gradient(55% 45% at 88% 20%, rgba(23, 193, 187, 0.12) 0%, rgba(23, 193, 187, 0) 60%),
+    linear-gradient(180deg, #f7fcee 0%, #fbfdf4 100%);
+}
+
+.surface-cream {
+  background-image:
+    radial-gradient(70% 55% at 82% 4%, rgba(236, 214, 205, 0.5) 0%, rgba(236, 214, 205, 0) 62%),
+    radial-gradient(55% 50% at 10% 90%, rgba(215, 193, 189, 0.32) 0%, rgba(215, 193, 189, 0) 62%),
+    linear-gradient(180deg, #fdf8f4 0%, #fbf6f2 100%);
+}
+
+.surface-orchid {
+  background-image:
+    radial-gradient(62% 52% at 16% 6%, rgba(139, 92, 246, 0.13) 0%, rgba(139, 92, 246, 0) 62%),
+    radial-gradient(58% 46% at 90% 18%, rgba(41, 151, 255, 0.07) 0%, rgba(41, 151, 255, 0) 60%),
+    linear-gradient(180deg, #faf8ff 0%, #f9fbff 100%);
+}
+
+.surface-peach {
+  background-image:
+    radial-gradient(66% 55% at 80% 6%, rgba(236, 214, 205, 0.62) 0%, rgba(236, 214, 205, 0) 62%),
+    radial-gradient(60% 50% at 8% 94%, rgba(159, 105, 197, 0.14) 0%, rgba(159, 105, 197, 0) 62%),
+    linear-gradient(180deg, #fdf6f1 0%, #fbf5f0 100%);
+}
+
+.surface-sand {
+  background-image:
+    radial-gradient(66% 55% at 84% 8%, rgba(118, 196, 11, 0.14) 0%, rgba(118, 196, 11, 0) 60%),
+    radial-gradient(60% 50% at 8% 92%, rgba(247, 227, 205, 0.6) 0%, rgba(247, 227, 205, 0) 62%),
+    linear-gradient(180deg, #fdfbf6 0%, #fbf8f1 100%);
+}
+
+/* Photo treatment for section cards — consistent crop + duotone-free finish */
+.card-photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--r-tile);
+  background: var(--color-cloud-200);
+}
+
+.card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(16, 24, 40, 0.05);
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* Tactile + text utilities                                           */
+/* ------------------------------------------------------------------ */
+.press {
+  transition:
+    transform 0.14s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease,
+    opacity 0.25s ease;
+}
+.press:active {
+  transform: scale(0.975);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.gradient-text {
+  background: linear-gradient(
+    120deg,
+    var(--color-azure-700) 0%,
+    var(--color-azure-600) 35%,
+    var(--color-aqua-600) 70%,
+    var(--color-azure-600) 100%
+  );
+  background-size: 220% 220%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 7s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ECG / pulse trace used by hero and section backdrops */
+.pulse-line {
+  stroke-dasharray: 6 6;
+  animation: pulse-travel 2.4s linear infinite;
+}
+
+@keyframes pulse-travel {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.animate-float {
+  animation: float-y 6s ease-in-out infinite;
+}
+
+@keyframes sheen-sweep {
+  0% { transform: translateX(-120%) skewX(-18deg); }
+  100% { transform: translateX(220%) skewX(-18deg); }
+}
+
+.sheen-sweep::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 45%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.55) 50%, rgba(255, 255, 255, 0) 100%);
+  animation: sheen-sweep 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Transparent bar — used at the top of the page so the navbar merges
+   into the hero instead of reading as a separate slab. Text and the
+   hairline stay legible; no fill, no blur. */
+.glass-bar-clear {
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
+}
+
+/* Frosted floating nav */
+.glass-bar {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.72) 0%,
+    rgba(255, 255, 255, 0.58) 100%
+  );
+  -webkit-backdrop-filter: var(--glass-blur-strong);
+  backdrop-filter: var(--glass-blur-strong);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 1px 0 rgba(16, 24, 40, 0.03), 0 10px 30px -22px rgba(16, 24, 40, 0.22);
+}
+
+/* Photo frame — skeuomorphic print with inner ring */
+.image-frame {
+  position: relative;
+  border-radius: var(--r-frame);
+  overflow: hidden;
+  background: var(--color-cloud-200);
+  box-shadow: var(--skeuo-shadow), inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+}
+
+.image-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(16, 24, 40, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+}
+
+/* Stitched edge — subtle "bound document" skeuomorphic cue */
+.stitched {
+  position: relative;
+}
+.stitched::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px dashed rgba(16, 24, 40, 0.1);
+  border-radius: calc(var(--clay-radius) - 8px);
+  pointer-events: none;
+}
+
+/* Divider with fade */
+.section-divider {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(90deg, transparent, rgba(16, 24, 40, 0.09), transparent);
+}
+
+/* Numbered clay badge ring */
+.num-badge {
+  background: linear-gradient(145deg, #ffffff, var(--color-azure-50));
+  box-shadow: var(--clay-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Thin custom scrollbar inside panels */
+.thin-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-ink-300) transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
   .will-reveal {
     opacity: 1;
     transform: none;
@@ -123,110 +1741,43 @@ body {
   }
 }
 
-/* Services grid cards: stagger via nth-child transition delays */
-.stagger-grid > *:nth-child(1) { --reveal-delay: 0ms; }
-.stagger-grid > *:nth-child(2) { --reveal-delay: 70ms; }
-.stagger-grid > *:nth-child(3) { --reveal-delay: 140ms; }
-.stagger-grid > *:nth-child(4) { --reveal-delay: 210ms; }
-.stagger-grid > *:nth-child(5) { --reveal-delay: 280ms; }
-.stagger-grid > *:nth-child(6) { --reveal-delay: 350ms; }
-
-/* Scroll progress bar */
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--color-azure-600), var(--color-azure-400), var(--color-signal-500));
-  width: 0%;
-  z-index: 100;
-  transition: width 0.1s ease-out;
-}
-
-/* Hero tech-texture canvas backdrop */
-.tech-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
 /* ------------------------------------------------------------------ */
-/* Glass · spatial · skeuomorphic material system                     */
-/* (Unlayered rules — intentionally override Tailwind utilities.)     */
+/* Footer overrides and additions                                     */
 /* ------------------------------------------------------------------ */
 
-/* Frosted glass panel with a top light edge and deep floating shadow */
-.glass {
-  background: linear-gradient(135deg, rgb(255 255 255 / 0.72), rgb(255 255 255 / 0.4));
-  -webkit-backdrop-filter: blur(18px) saturate(150%);
-  backdrop-filter: blur(18px) saturate(150%);
-  border: 1px solid rgb(255 255 255 / 0.7);
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.9),
-    inset 0 -1px 0 rgb(11 19 43 / 0.05),
-    0 20px 44px -20px rgb(11 19 43 / 0.3);
+.footer-ribbon--green {
+  background: linear-gradient(
+    92deg,
+    color-mix(in srgb, var(--color-sprout-500) 0%, transparent) 0%,
+    color-mix(in srgb, var(--color-sprout-500) 85%, transparent) 22%,
+    color-mix(in srgb, var(--color-sprout-400) 75%, transparent) 52%,
+    color-mix(in srgb, var(--color-sprout-600) 80%, transparent) 82%,
+    color-mix(in srgb, var(--color-sprout-600) 0%, transparent) 100%
+  );
 }
 
-/* Frosted panel for dark/navy surfaces */
-.glass-dark {
-  background: linear-gradient(135deg, rgb(255 255 255 / 0.12), rgb(255 255 255 / 0.045));
-  -webkit-backdrop-filter: blur(18px) saturate(130%);
-  backdrop-filter: blur(18px) saturate(130%);
-  border: 1px solid rgb(255 255 255 / 0.18);
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.24),
-    0 24px 48px -24px rgb(0 0 0 / 0.5);
+.footer-ribbon--violet {
+  background: linear-gradient(
+    86deg,
+    color-mix(in srgb, var(--color-azure-700) 0%, transparent) 0%,
+    color-mix(in srgb, var(--color-azure-600) 55%, transparent) 30%,
+    color-mix(in srgb, var(--color-azure-500) 60%, transparent) 62%,
+    color-mix(in srgb, var(--color-azure-700) 0%, transparent) 100%
+  );
 }
 
-/* Keeps a tinted background, adds glass blur + inner light edge only */
-.glass-tint {
-  -webkit-backdrop-filter: blur(10px) saturate(140%);
-  backdrop-filter: blur(10px) saturate(140%);
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.75),
-    0 10px 24px -14px rgb(11 19 43 / 0.45);
+.footer-ribbon--rose {
+  background: linear-gradient(
+    96deg,
+    color-mix(in srgb, var(--color-aqua-700) 0%, transparent) 0%,
+    color-mix(in srgb, var(--color-aqua-600) 75%, transparent) 26%,
+    color-mix(in srgb, var(--color-aqua-500) 80%, transparent) 58%,
+    color-mix(in srgb, var(--color-aqua-700) 70%, transparent) 84%,
+    color-mix(in srgb, var(--color-aqua-700) 0%, transparent) 100%
+  );
 }
 
-/* Frosted top bar: bottom hairline + downward depth (header) */
-.glass-bar {
-  background: linear-gradient(180deg, rgb(255 255 255 / 0.82), rgb(255 255 255 / 0.62));
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-  backdrop-filter: blur(20px) saturate(160%);
-  border-bottom: 1px solid rgb(255 255 255 / 0.75);
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.95),
-    0 16px 36px -24px rgb(11 19 43 / 0.45);
-}
-
-/* Skeuomorphic raised surface: lit top edge, pressed bottom edge, drop depth */
-.bevel-raised {
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.9),
-    inset 0 -2px 0 rgb(11 19 43 / 0.07),
-    0 14px 30px -14px rgb(11 19 43 / 0.35);
-}
-
-/* Skeuomorphic well/indent — for form fields and inset tracks */
-.bevel-well {
-  box-shadow:
-    inset 0 2px 5px rgb(11 19 43 / 0.1),
-    inset 0 1px 2px rgb(11 19 43 / 0.07),
-    0 1px 0 rgb(255 255 255 / 0.85);
-}
-
-/* Tactile press: buttons physically dip on :active */
-.press {
-  transition:
-    transform 0.14s ease,
-    box-shadow 0.14s ease,
-    background-color 0.2s ease,
-    background-image 0.2s ease,
-    filter 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease;
-}
-.press:active {
-  transform: translateY(1.5px) scale(0.985);
+/* Ensure default link behaviour inside the footer */
+.footer-field a {
+  text-decoration: none;
 }
