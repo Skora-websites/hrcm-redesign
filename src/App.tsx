@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { Agentation } from "agentation";
+import { useEffect, Suspense, lazy } from "react";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { useRoute } from "./router";
@@ -13,6 +12,10 @@ import { TeamPage } from "./pages/TeamPage";
 import { ContactPage } from "./pages/ContactPage";
 import { LegalPage } from "./pages/LegalPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
+
+const Agentation = lazy(() =>
+  import("agentation").then((mod) => ({ default: mod.Agentation }))
+);
 
 const TITLES: Record<string, string> = {
   home: "HRCM | Revenue Cycle Management Services",
@@ -98,7 +101,11 @@ export default function App() {
         {page}
       </div>
       <Footer />
-      {process.env.NODE_ENV === "development" && <Agentation />}
+      {process.env.NODE_ENV === "development" && (
+        <Suspense fallback={null}>
+          <Agentation />
+        </Suspense>
+      )}
     </div>
   );
 }
