@@ -1,6 +1,5 @@
 import { IMPACT } from "../../data/content";
 import { Kicker } from "../ui";
-import { StaggerContainer, StaggerItem } from "../ui";
 
 /** Chart data — exact values from the brief, no modifications. */
 type ChartData = {
@@ -15,52 +14,137 @@ type ChartData = {
   scaleLabel: string;
 };
 
-/** Calculated bar width percentage based on value / scaleMax. */
-function barPercent(value: number, scaleMax: number): number {
+/** Calculated bar height percentage based on value / scaleMax. */
+function barHeight(value: number, scaleMax: number): number {
   if (scaleMax <= 0) return 0;
-  const p = (value / scaleMax) * 100;
-  return Math.max(6, Math.round(p));
+  const h = (value / scaleMax) * 100;
+  return Math.max(20, Math.round(h));
 }
 
-/** Render a single data-driven horizontal bar pair SVG. */
-function DataBar({
-  percent,
-  isAfter,
-  title,
-}: {
-  percent: number;
-  isAfter: boolean;
-  title: string;
-}) {
-  const fill = isAfter ? "rgba(16, 185, 128, 0.8)" : "rgba(29, 193, 193, 0.8)";
-  return (
-    <svg
-      viewBox="0 0 120 24"
-      role="img"
-      aria-label={title}
-    >
-      <rect x={0} y={4} width={percent} height="16" rx="4" fill={fill} />
-    </svg>
-  );
-}
-
-/** Render one chart card with its title, unit, bars, and improvement summary. */
+/** Render one impact chart card with vertical bar graph. */
 function ChartCard({ data }: { data: ChartData }) {
-  const beforePercent = barPercent(data.before, data.scaleMax);
-  const afterPercent = barPercent(data.after, data.scaleMax);
+  const beforeHeight = barHeight(data.before, data.scaleMax);
+  const afterHeight = barHeight(data.after, data.scaleMax);
 
   return (
-    <section className="p-6 pt-0">
-      <h3 className="text-sm font-medium text-ink-900 tracking-wider">{data.title}</h3>
-      <p className="text-xs text-ink-600">{data.unit}</p>
-      <div className="mt-4 space-y-1">
-        <DataBar percent={beforePercent} isAfter={false} title="Before HRCM" />
-        <DataBar percent={afterPercent} isAfter={true} title="After HRCM" />
+    <div className="bg-white rounded-2xl p-6 shadow-sm border border-ink-100 hover:shadow-lg transition-shadow duration-300">
+      <div className="mb-4">
+        <h3 className="text-sm font-medium text-ink-900 tracking-wider">{data.title}</h3>
+        <p className="text-xs text-ink-500 mt-1">{data.unit}</p>
       </div>
-      <p className="mt-3 text-sm font-medium text-green-600">
-        {data.improvement}
-      </p>
-    </section>
+
+      {/* Baseline + bars */}
+      <div className="relative h-80 mb-4">
+        {/* Baseline */}
+        <svg viewBox="0 0 240 360" className="w-full h-full" role="img" aria-hidden>
+          <defs>
+            <linearGradient id="beforeGrad" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0%" stopColor="#17c1bb" />
+              <stop offset="100%" stopColor="#0fa3a0" />
+            </linearGradient>
+            <linearGradient id="afterGrad" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0%" stopColor="#10b981" />
+              <stop offset="100%" stopColor="#059669" />
+            </linearGradient>
+          </defs>
+
+          {/* Gridlines */}
+          <g stroke="#e2e8f0" strokeWidth="1" strokeDasharray="4,4">
+            {[25, 50, 75, 100].map((pct) => (
+              <line
+                key={pct}
+                x1={20}
+                y1={360 - (pct / 100) * 340}
+                x2={220}
+                y2={360 - (pct / 100) * 340}
+              />
+            ))}
+          </g>
+
+          {/* Y-axis labels */}
+          <g fontSize="11" fill="#94a3b8" fontFamily="Inter, sans-serif" textAnchor="end">
+            {[0, 25, 50, 75, 100].map((pct) => (
+              <text
+                key={pct}
+                x={15}
+                y={360 - (pct / 100) * 340 + 4}
+                dominantBaseline="middle"
+              >
+                {Math.round((pct / 100) * data.scaleMax)}
+              </text>
+            ))}
+          </g>
+
+          {/* Before bar - electric blue */}
+          <rect
+            x={60}
+            y={360 - beforeHeight * 3.4}
+            width={70}
+            height={beforeHeight * 3.4}
+            rx={8}
+            fill="url(#beforeGrad)"
+            className="bar-animate"
+            style={{ animationDelay: "0ms" }}
+          />
+          {/* Before value label */}
+          <text
+            x={95}
+            y={360 - beforeHeight * 3.4 - 10}
+            textAnchor="middle"
+            fontSize="13"
+            fontWeight="600"
+            fill="#1e293b"
+            fontFamily="Inter, sans-serif"
+            className="label-animate"
+            style={{ animationDelay: "150ms" }}
+          >
+            {data.beforeLabel}
+          </text>
+
+          {/* After bar - fresh green */}
+          <rect
+            x={150}
+            y={360 - afterHeight * 3.4}
+            width={70}
+            height={afterHeight * 3.4}
+            rx={8}
+            fill="url(#afterGrad)"
+            className="bar-animate"
+            style={{ animationDelay: "200ms" }}
+          />
+          {/* After value label */}
+          <text
+            x={185}
+            y={360 - afterHeight * 3.4 - 10}
+            textAnchor="middle"
+            fontSize="13"
+            fontWeight="600"
+            fill="#1e293b"
+            fontFamily="Inter, sans-serif"
+            className="label-animate"
+            style={{ animationDelay: "350ms" }}
+          >
+            {data.afterLabel}
+          </text>
+
+          {/* X-axis labels */}
+          <g fontSize="12" fill="#475569" fontFamily="Inter, sans-serif" fontWeight="500" textAnchor="middle">
+            <text x={95} y={375}>Before HRCM</text>
+            <text x={185} y={375}>After HRCM</text>
+          </g>
+        </svg>
+      </div>
+
+      {/* Improvement summary */}
+      <div className="flex items-center justify-between pt-3 border-t border-ink-100">
+        <span className="text-sm font-semibold text-green-700 flex items-center gap-1">
+          <svg viewBox="0 0 20 20" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+            <path d="M12 5l-5 5 5 5" />
+          </svg>
+          {data.improvement}
+        </span>
+      </div>
+    </div>
   );
 }
 
@@ -115,31 +199,51 @@ export function Impact() {
   return (
     <section
       id="impact"
-      className="relative overflow-hidden py-12 sm:py-16 bg-white min-h-fit"
+      className="relative overflow-hidden py-16 sm:py-24 bg-gradient-to-b from-white to-slate-50 min-h-fit"
     >
-      <div className="relative mx-auto max-w-[102rem] px-8 sm:px-12">
+      <style>
+        {`
+          .bar-animate {
+            animation: barGrow 1s ease-out forwards;
+            transform-origin: bottom;
+            transform: scaleY(0);
+          }
+          .label-animate {
+            animation: fadeIn 0.5s ease-out forwards;
+            opacity: 0;
+          }
+          @keyframes barGrow {
+            from { transform: scaleY(0); }
+            to { transform: scaleY(1); }
+          }
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+        `}
+      </style>
+
+      <div className="relative mx-auto max-w-[102rem] px-6 sm:px-10 lg:px-16">
         {/* Introduction column — desktop left, mobile stacked */}
-        <div className="sm:w-1/2 max-w-3xl">
+        <div className="sm:w-1/2 max-w-3xl lg:pr-10">
           <Kicker tone="sprout">BUSINESS IMPACT</Kicker>
-          <h2 className="mt-2 text-[2.1rem] font-semibold leading-[1.05] tracking-[-0.02em] text-ink-900">
+          <h2 className="mt-3 text-[2.25rem] sm:text-[2.75rem] font-bold leading-[1.05] tracking-[-0.02em] text-ink-900">
             Business Impact
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-ink-600">
+          <p className="mt-5 text-lg leading-relaxed text-ink-600 max-w-xl">
             {IMPACT.intro}
           </p>
         </div>
 
-        {/* Charts grid — desktop right, mobile stacked below intro */}
-        <div className="sm:w-1/2 sm:mt-0 sm:pr-8">
-          <StaggerContainer
-            className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
-          >
+        {/* Charts container — spaced out on viewport */}
+        <div className="sm:w-1/2 sm:mt-0 lg:mt-0">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {CHARTS.map((chart) => (
-              <StaggerItem key={chart.title} className="col-span-1">
+              <div key={chart.title} className="relative">
                 <ChartCard data={chart} />
-              </StaggerItem>
+              </div>
             ))}
-          </StaggerContainer>
+          </div>
         </div>
       </div>
     </section>
