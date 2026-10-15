@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
           {/* Brand & Social */}
           <div className="flex-1 min-w-[300px] max-w-[350px]">
             <div className="flex items-center text-[24px] font-bold text-ink-900 mb-4 font-display">
-               <img src="/logo.png" alt="HRCM logo" style={{ marginRight: '10px', height: '32px', width: '32px', objectFit: 'contain' }} />
+               <img src="/logo.png" alt="HRCM logo" style={{ marginRight: '12px', height: '44px', width: '44px', objectFit: 'contain' }} />
                HRCM
             </div>
             <p className="text-[15px] leading-[1.6] text-ink-600 mb-5">

@@ -63,9 +63,7 @@ export function Header() {
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-azure-300/50 to-transparent" />
         <div className="mx-auto flex h-[3.75rem] max-w-[102rem] items-center justify-between gap-6 px-8 sm:px-12">
           <Link href="/" className="flex shrink-0 items-center gap-2.5" aria-label="HRCM home">
-            <span className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-white shadow-[var(--glass-shadow)] ring-1 ring-inset ring-white/70">
-              <img src="/logo.png" alt="" aria-hidden className="h-6 w-6 object-contain" />
-            </span>
+            <img src="/logo.png" alt="" aria-hidden className="h-10 w-10 object-contain" />
             <span className="text-[1rem] font-semibold tracking-[-0.02em] text-ink-900">HRCM</span>
           </Link>
 
@@ -151,9 +149,7 @@ export function Header() {
             >
               <div className="flex items-center justify-between">
                 <span className="flex items-center gap-2.5">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white shadow-[var(--glass-shadow)]">
-                    <img src="/logo.png" alt="HRCM Logo" className="h-6 w-6 object-contain" />
-                  </span>
+                  <img src="/logo.png" alt="HRCM Logo" className="h-10 w-10 object-contain" />
                   <span className="text-[0.95rem] font-semibold tracking-tight text-ink-900">HRCM</span>
                 </span>
                 <button

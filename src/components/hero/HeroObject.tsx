@@ -7,43 +7,42 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import { ArrowUpRight, Check, Undo2 } from "lucide-react";
+import { Activity, FileCode, Radar, Scale, ShieldCheck, Sparkles, TrendingUp } from "lucide-react";
 
 /**
  * HeroObject — the hero's centrepiece.
  *
- * A translucent glass claim sheet with real claim rows sitting at different
- * depths inside it, and satellite chips floating around it at their own
- * focal distances. Built with real 3D transforms, not an illustration:
+ * The HRCM AI software, shown as a translucent glass workspace rather than a
+ * claims board: an intelligent core (concentric rings + a live ECG pulse that
+ * echoes the logo's heartbeat) with capability tiles around it. Built with the
+ * same real 3D transforms as before —
  *
  *   group 1 — the scroll tumble (rotateX + y + scale as the hero leaves)
  *   group 2 — the pointer tilt (springs, ±16° / ±12°)
  *   group 3 — a continuous showcase turn, so the object never sits still
  *
- * Pointer tilt composes with the showcase turn instead of fighting it.
- * Every inner layer carries its own translateZ, so tilting produces real
- * parallax. The glass is warm (peach/violet/rose) to sit in the pastel
- * studio, and far satellites are blurred for depth-of-field.
+ * The glass is green/teal to sit in the logo's pastel studio, and far
+ * satellites are blurred for depth-of-field. Inert under reduced motion.
  *
- * Inert under prefers-reduced-motion: flat, no tilt, no turn.
+ * NOTE: the capability tiles below are domain placeholders (audit, coding,
+ * AR, reconciliation) pending the client's AI-software feature list — swap the
+ * CAPABILITIES array for the exact copy when it arrives.
  */
 
 const EASE_SPRING = { stiffness: 120, damping: 18, mass: 0.7 };
 
-/** Claim rows shown inside the sheet. */
-const ROWS = [
-  { id: "CL-4821", payer: "Star Health", amount: "₹1,84,500", status: "settled" as const },
-  { id: "CL-4827", payer: "New India", amount: "₹92,300", status: "denied" as const },
-  { id: "CL-4833", payer: "HDFC Ergo", amount: "₹3,41,000", status: "review" as const },
-  { id: "CL-4841", payer: "ICICI Lombard", amount: "₹2,26,750", status: "settled" as const },
+/** Capability tiles shown around the core. Placeholder copy — replace with the
+ *  real HRCM AI feature list (the source PDF could not be read by this tool). */
+const CAPABILITIES = [
+  { label: "Denial intelligence", Glyph: ShieldCheck },
+  { label: "Auto-coding", Glyph: FileCode },
+  { label: "Predictive AR", Glyph: TrendingUp },
+  { label: "Reconciliation", Glyph: Scale },
 ];
 
-/** Status chips — violet for the good outcome, keeping the accent single. */
-const CHIP: Record<string, string> = {
-  settled: "border-[#9f69c5]/25 bg-[#9f69c5]/12 text-[#7d4ea0]",
-  review: "border-studio-500/25 bg-studio-500/12 text-studio-700",
-  denied: "border-alert-200 bg-alert-50 text-alert-600",
-};
+/** ECG heartbeat path — the logo's pulse, drawn as a signal across the core. */
+const ECG =
+  "M0 60 H44 l6 -26 l9 52 l8 -34 l5 8 H96 l9 -20 l7 30 l5 -10 H200";
 
 export function HeroObject({ className = "" }: { className?: string }) {
   const scene = useRef<HTMLDivElement>(null);
@@ -116,19 +115,19 @@ export function HeroObject({ className = "" }: { className?: string }) {
           {/* ---- group 3: continuous showcase turn ---- */}
           <motion.div
             style={{ transformStyle: "preserve-3d" }}
-            animate={flat ? undefined : { rotateY: [-24, 24, -24] }}
-            transition={{ duration: 17, repeat: Infinity, ease: "easeInOut" }}
+            animate={flat ? undefined : { rotateY: [-22, 22, -22] }}
+            transition={{ duration: 19, repeat: Infinity, ease: "easeInOut" }}
           >
-            {/* ============ the glass claim sheet ============ */}
+            {/* ============ the glass AI workspace ============ */}
             <div className="relative" style={{ transformStyle: "preserve-3d" }}>
-              {/* coloured refraction inside the glass */}
+              {/* coloured refraction inside the glass — green/teal */}
               <div
                 aria-hidden
                 className="pointer-events-none absolute -inset-6 rounded-[44px] opacity-70 blur-xl"
                 style={{
                   ...z(-60),
                   background:
-                    "radial-gradient(60% 60% at 20% 20%, rgba(246,233,226,0.6), transparent 70%), radial-gradient(50% 50% at 85% 30%, rgba(159,105,197,0.3), transparent 70%), radial-gradient(60% 60% at 60% 95%, rgba(204,182,184,0.42), transparent 70%)",
+                    "radial-gradient(60% 60% at 20% 20%, rgba(244,250,238,0.65), transparent 70%), radial-gradient(50% 50% at 85% 30%, rgba(21,154,140,0.28), transparent 70%), radial-gradient(60% 60% at 60% 95%, rgba(155,189,132,0.42), transparent 70%)",
                 }}
               />
 
@@ -137,9 +136,9 @@ export function HeroObject({ className = "" }: { className?: string }) {
                 className="relative rounded-[38px] p-[1.5px]"
                 style={{
                   background:
-                    "linear-gradient(140deg, rgba(255,255,255,0.98) 0%, rgba(246,233,226,0.6) 34%, rgba(215,193,189,0.38) 56%, rgba(255,255,255,0.75) 100%)",
+                    "linear-gradient(140deg, rgba(255,255,255,0.98) 0%, rgba(244,250,238,0.6) 34%, rgba(188,223,162,0.42) 56%, rgba(255,255,255,0.78) 100%)",
                   boxShadow:
-                    "0 2px 6px rgba(30,26,40,0.05), 0 30px 70px -28px rgba(30,26,40,0.4), 0 70px 130px -60px rgba(159,105,197,0.35)",
+                    "0 2px 6px rgba(27,42,21,0.05), 0 30px 70px -28px rgba(27,42,21,0.4), 0 70px 130px -60px rgba(21,154,140,0.32)",
                 }}
               >
                 <div
@@ -149,7 +148,7 @@ export function HeroObject({ className = "" }: { className?: string }) {
                     // subtree, which would destroy the internal Z-depth. The
                     // layered gradients + specular carry the glass read instead.
                     background:
-                      "linear-gradient(150deg, rgba(255,255,255,0.9) 0%, rgba(246,233,226,0.74) 45%, rgba(236,214,205,0.8) 100%)",
+                      "linear-gradient(150deg, rgba(255,255,255,0.92) 0%, rgba(244,250,238,0.82) 45%, rgba(211,236,189,0.86) 100%)",
                   }}
                 >
                   {/* specular streak — tracks the pointer */}
@@ -177,69 +176,108 @@ export function HeroObject({ className = "" }: { className?: string }) {
 
                   {/* ---- content, layered in Z ---- */}
                   <div className="relative" style={{ transformStyle: "preserve-3d" }}>
-                    {/* deep watermark */}
-                    <div
-                      aria-hidden
-                      className="pointer-events-none absolute -right-3 -top-4 select-none text-[6rem] font-bold leading-none text-studio-950/10"
-                      style={z(-10)}
-                    >
-                      ₹
-                    </div>
-
                     {/* header */}
                     <div className="relative flex items-center justify-between gap-3" style={z(46)}>
                       <span className="flex items-center gap-2">
                         <span className="relative flex h-2 w-2">
-                          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#9f69c5] opacity-70" />
-                          <span className="relative inline-flex h-2 w-2 rounded-full bg-[#9f69c5]" />
+                          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#5aa318] opacity-70" />
+                          <span className="relative inline-flex h-2 w-2 rounded-full bg-[#5aa318]" />
                         </span>
                         <span className="text-[0.9rem] font-semibold text-studio-950">
-                          Claims board
+                          HRCM AI
                         </span>
                       </span>
                       <span className="tabular rounded-full border border-white/70 bg-white/70 px-2.5 py-0.5 text-[0.7rem] font-medium text-studio-700">
-                        Today · 4 of 128
+                        Live
                       </span>
                     </div>
 
-                    {/* rows — each row sits a little less deep than the last */}
-                    <ul className="relative mt-4 space-y-2" style={{ transformStyle: "preserve-3d" }}>
-                      {ROWS.map((r, i) => (
+                    {/* the intelligent core — concentric rings + ECG pulse */}
+                    <div
+                      className="relative mt-4 flex h-40 items-center justify-center"
+                      style={z(34)}
+                    >
+                      {/* concentric rings, echoing the logo's arc */}
+                      <span
+                        aria-hidden
+                        className="absolute h-36 w-36 rounded-full border border-[#5aa318]/20"
+                      />
+                      <span
+                        aria-hidden
+                        className="absolute h-24 w-24 rounded-full border border-[#159a8c]/25"
+                      />
+                      <motion.span
+                        aria-hidden
+                        className="absolute h-12 w-12 rounded-full bg-[#5aa318]/12"
+                        animate={flat ? undefined : { scale: [1, 1.18, 1], opacity: [0.7, 0.35, 0.7] }}
+                        transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut" }}
+                      />
+                      {/* radar sweep */}
+                      {!flat && (
+                        <motion.span
+                          aria-hidden
+                          className="absolute h-36 w-36 rounded-full"
+                          style={{
+                            background:
+                              "conic-gradient(from 0deg, rgba(21,154,140,0.28) 0deg, rgba(21,154,140,0) 60deg, rgba(21,154,140,0) 360deg)",
+                          }}
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+                        />
+                      )}
+                      {/* ECG heartbeat — the logo's pulse */}
+                      <svg
+                        viewBox="0 0 200 120"
+                        className="relative h-20 w-full"
+                        fill="none"
+                        aria-hidden
+                      >
+                        <motion.path
+                          d={ECG}
+                          stroke="#5aa318"
+                          strokeWidth="3"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          initial={flat ? undefined : { pathLength: 0, opacity: 0 }}
+                          animate={flat ? undefined : { pathLength: 1, opacity: 1 }}
+                          transition={{ duration: 1.6, ease: "easeInOut" }}
+                        />
+                      </svg>
+                    </div>
+
+                    {/* capability tiles */}
+                    <ul
+                      className="relative mt-3 grid grid-cols-2 gap-2"
+                      style={{ transformStyle: "preserve-3d" }}
+                    >
+                      {CAPABILITIES.map((c, i) => (
                         <li
-                          key={r.id}
-                          className="flex items-center gap-3 rounded-[14px] border border-white/70 bg-white/60 px-3 py-2.5"
-                          style={z(34 - i * 4)}
+                          key={c.label}
+                          className="flex items-center gap-2 rounded-[14px] border border-white/70 bg-white/60 px-3 py-2.5"
+                          style={z(28 - i * 3)}
                         >
-                          <span className="min-w-0 flex-1">
-                            <span className="tabular block text-[0.8rem] font-semibold text-studio-950">
-                              {r.id}
-                            </span>
-                            <span className="mt-0.5 block truncate text-[0.72rem] text-studio-500">
-                              {r.payer}
-                            </span>
+                          <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-[#5aa318]/12 text-[#3f7a0e]">
+                            <c.Glyph className="h-3.5 w-3.5" aria-hidden />
                           </span>
-                          <span className="tabular text-[0.78rem] font-medium text-studio-950">
-                            {r.amount}
-                          </span>
-                          <span className={`status-chip text-[0.62rem] ${CHIP[r.status]}`}>
-                            {r.status === "settled"
-                              ? "Settled"
-                              : r.status === "denied"
-                                ? "Denied"
-                                : "In review"}
+                          <span className="text-[0.74rem] font-medium leading-tight text-studio-950">
+                            {c.label}
                           </span>
                         </li>
                       ))}
                     </ul>
 
-                    {/* footer strip */}
+                    {/* footer strip — abstract status, no claim data */}
                     <div
-                      className="relative mt-4 flex items-center justify-between gap-3 rounded-[14px] bg-white/55 px-3.5 py-2.5"
-                      style={z(22)}
+                      className="relative mt-3 flex items-center justify-between gap-3 rounded-[14px] bg-white/55 px-3.5 py-2.5"
+                      style={z(20)}
                     >
-                      <span className="text-[0.72rem] text-studio-500">Recovered this month</span>
-                      <span className="tabular text-[0.95rem] font-semibold text-studio-950">
-                        ₹38.4 L
+                      <span className="flex items-center gap-2 text-[0.72rem] text-studio-500">
+                        <Sparkles className="h-3.5 w-3.5 text-[#159a8c]" aria-hidden />
+                        Models active
+                      </span>
+                      <span className="flex items-center gap-1.5 text-[0.72rem] font-semibold text-[#3f7a0e]">
+                        <Activity className="h-3.5 w-3.5" aria-hidden />
+                        Real-time
                       </span>
                     </div>
                   </div>
@@ -253,36 +291,33 @@ export function HeroObject({ className = "" }: { className?: string }) {
                 delay={0}
                 flat={flat}
               >
-                <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-[#9f69c5] text-white">
-                  <Check className="h-3.5 w-3.5" aria-hidden />
+                <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-[#5aa318] text-white">
+                  <Radar className="h-3.5 w-3.5" aria-hidden />
                 </span>
-                <span className="text-[0.78rem] font-semibold text-studio-950">Settled</span>
+                <span className="text-[0.78rem] font-semibold text-studio-950">Intelligent</span>
               </Satellite>
 
-              {/* far of focus */}
               <Satellite
                 className="-right-3 top-20 sm:-right-8 lg:-right-12"
                 zdepth={100}
                 delay={1.4}
                 flat={flat}
               >
-                <span className="tabular text-[0.78rem] font-semibold text-studio-950">₹4.2 L</span>
-                <span className="tabular rounded-full bg-[#9f69c5]/15 px-2 py-0.5 text-[0.65rem] font-semibold text-[#7d4ea0]">
-                  recovered
+                <span className="tabular rounded-full bg-[#159a8c]/15 px-2 py-0.5 text-[0.65rem] font-semibold text-[#0f7a6f]">
+                  Auto-coded
                 </span>
               </Satellite>
 
-              {/* far of focus */}
               <Satellite
                 className="-left-2 bottom-12 sm:-left-6 lg:-left-8"
                 zdepth={115}
                 delay={2.6}
                 flat={flat}
               >
-                <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-alert-100 text-alert-600">
-                  <Undo2 className="h-3.5 w-3.5" aria-hidden />
+                <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-[#159a8c]/15 text-[#0f7a6f]">
+                  <TrendingUp className="h-3.5 w-3.5" aria-hidden />
                 </span>
-                <span className="text-[0.75rem] font-medium text-studio-700">Re-billing</span>
+                <span className="text-[0.75rem] font-medium text-studio-700">Predictive</span>
               </Satellite>
 
               <Satellite
@@ -292,9 +327,9 @@ export function HeroObject({ className = "" }: { className?: string }) {
                 flat={flat}
               >
                 <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-studio-950 text-white">
-                  <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
+                  <Sparkles className="h-3.5 w-3.5" aria-hidden />
                 </span>
-                <span className="text-[0.75rem] font-medium text-studio-700">Audit</span>
+                <span className="text-[0.75rem] font-medium text-studio-700">Insights</span>
               </Satellite>
             </div>
           </motion.div>
@@ -332,7 +367,7 @@ function Satellite({
       style={{ z: zdepth, transformStyle: "preserve-3d" }}
       animate={flat ? undefined : { y: [0, -9, 0] }}
       transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay }}
-      className={`absolute flex items-center gap-2 rounded-2xl border border-white/70 bg-white/80 px-3 py-2 shadow-[0_10px_30px_-12px_rgba(30,26,40,0.35)] backdrop-blur-xl ${className}`}
+      className={`absolute flex items-center gap-2 rounded-2xl border border-white/70 bg-white/80 px-3 py-2 shadow-[0_10px_30px_-12px_rgba(27,42,21,0.35)] backdrop-blur-xl ${className}`}
     >
       {children}
     </motion.div>

@@ -84,19 +84,21 @@
   --color-sand-200: #f7e3cd;
 
   /* ---------------------------------------------------------------- */
-  /* Studio — warm pastel palette from the reference hero              */
-  /* peach base → mauve → dusty rose, grey-lavender type, navy ink     */
+  /* Studio — light green pastel palette lifted from the HRCM logo       */
+  /* (₹ green + ECG green, bridged to the logo's teal-blue arc).        */
+  /* A soft green ground so the navy headline stays the only cool thing. */
   /* ---------------------------------------------------------------- */
-  --color-studio-950: #1e1a28;
-  --color-studio-900: #2a2536;
-  --color-studio-700: #4a4457;
-  --color-studio-500: #827e9c;
-  --color-studio-400: #a49cae;
-  --color-studio-300: #ccb6b8;
-  --color-studio-200: #d7c1bd;
-  --color-studio-100: #ecd6cd;
-  --color-studio-50: #f6e9e2;
-  --color-violet-accent: #9f69c5;
+  --color-studio-950: #1b2a15;
+  --color-studio-900: #26381d;
+  --color-studio-700: #3f5232;
+  --color-studio-500: #6f8f5f;
+  --color-studio-400: #9bbd84;
+  --color-studio-300: #bcdfa2;
+  --color-studio-200: #d3ecbd;
+  --color-studio-100: #e6f4d8;
+  --color-studio-50: #f4faee;
+  --color-green-accent: #5aa318;
+  --color-teal-accent: #159a8c;
 
   /* Cloud — page surfaces */
   --color-cloud-50: #fbfcfe;
@@ -584,9 +586,10 @@ h4 {
 }
 
 /* ------------------------------------------------------------------ */
-/* Studio backdrop — warm pastel key light, bloom, grain, vignette      */
-/* This is the hero's ground, matched to the reference: peach → mauve   */
-/* → dusty rose with one soft key light, film grain and a vignette.     */
+/* Studio backdrop — light green key light, bloom, grain, vignette.     */
+/* The hero's ground, lifted from the HRCM logo: a soft green pastel    */
+/* (₹ / ECG green) with one warm key light, film grain and a vignette,  */
+/* bridged toward the logo's teal-blue arc for cool depth.              */
 /* ------------------------------------------------------------------ */
 .studio-stage {
   position: absolute;
@@ -595,10 +598,10 @@ h4 {
   pointer-events: none;
   background-color: var(--color-studio-100);
   background-image:
-    radial-gradient(72% 56% at 74% 4%, #f6e9e2 0%, rgba(246, 233, 226, 0) 62%),
-    radial-gradient(92% 82% at 50% 42%, #ecd6cd 0%, rgba(236, 214, 205, 0) 74%),
-    radial-gradient(66% 62% at 10% 94%, #d7c1bd 0%, rgba(215, 193, 189, 0) 68%),
-    radial-gradient(125% 112% at 50% 48%, rgba(204, 182, 184, 0) 50%, #ccb6b8 100%);
+    radial-gradient(72% 56% at 74% 4%, #f4faee 0%, rgba(244, 250, 238, 0) 62%),
+    radial-gradient(92% 82% at 50% 42%, #e6f4d8 0%, rgba(230, 244, 216, 0) 74%),
+    radial-gradient(66% 62% at 10% 94%, #d3ecbd 0%, rgba(211, 236, 189, 0) 68%),
+    radial-gradient(125% 112% at 50% 48%, rgba(188, 223, 162, 0) 50%, #bcdfa2 100%);
 }
 
 /* Softer wash of the same studio — for subpage heroes */
@@ -607,11 +610,11 @@ h4 {
   inset: 0;
   overflow: hidden;
   pointer-events: none;
-  background-color: #e7ecf2;
+  background-color: #eaf4dd;
   background-image:
-    radial-gradient(70% 55% at 78% 2%, #eef2f7 0%, rgba(238, 242, 247, 0) 62%),
-    radial-gradient(85% 75% at 50% 40%, #dfe6ee 0%, rgba(223, 230, 238, 0) 74%),
-    radial-gradient(120% 110% at 50% 48%, rgba(194, 208, 222, 0) 52%, #cdd9e6 100%);
+    radial-gradient(70% 55% at 78% 2%, #f4faee 0%, rgba(244, 250, 238, 0) 62%),
+    radial-gradient(85% 75% at 50% 40%, #e6f4d8 0%, rgba(230, 244, 216, 0) 74%),
+    radial-gradient(120% 110% at 50% 48%, rgba(188, 223, 162, 0) 52%, #c0e3a4 100%);
 }
 
 /* Big soft blurred glow — studio light around the object.
@@ -641,8 +644,8 @@ h4 {
   inset: 0;
   background: radial-gradient(
     118% 102% at 50% 44%,
-    rgba(30, 26, 40, 0) 54%,
-    rgba(30, 26, 40, 0.16) 100%
+    rgba(27, 42, 21, 0) 54%,
+    rgba(27, 42, 21, 0.14) 100%
   );
 }
 
@@ -663,30 +666,30 @@ h4 {
     radial-gradient(
       90% 70% at 68% 18%,
       rgba(255, 255, 255, 0.5) 0%,
-      rgba(246, 233, 226, 0.26) 32%,
-      rgba(246, 233, 226, 0) 62%
+      rgba(244, 250, 238, 0.28) 32%,
+      rgba(244, 250, 238, 0) 62%
     ),
-    /* mid-field wash — mauve sitting deeper */
+    /* mid-field wash — soft green sitting deeper */
     radial-gradient(
       75% 60% at 22% 58%,
-      rgba(215, 193, 189, 0.48) 0%,
-      rgba(204, 182, 184, 0.2) 45%,
-      rgba(204, 182, 184, 0) 72%
+      rgba(211, 236, 189, 0.5) 0%,
+      rgba(188, 223, 162, 0.22) 45%,
+      rgba(188, 223, 162, 0) 72%
     ),
-    /* violet depth bloom — the far corner */
+    /* teal depth bloom — the logo's blue-green arc, far corner */
     radial-gradient(
       55% 55% at 88% 82%,
-      rgba(159, 105, 197, 0.26) 0%,
-      rgba(159, 105, 197, 0.1) 40%,
-      rgba(159, 105, 197, 0) 68%
+      rgba(21, 154, 140, 0.2) 0%,
+      rgba(21, 154, 140, 0.08) 40%,
+      rgba(21, 154, 140, 0) 68%
     ),
-    /* rose floor plane — recedes toward the bottom */
+    /* green floor plane — recedes toward the bottom */
     radial-gradient(
       120% 80% at 50% 118%,
-      rgba(204, 182, 184, 0.52) 0%,
-      rgba(215, 193, 189, 0.3) 38%,
-      rgba(236, 214, 205, 0.08) 66%,
-      rgba(236, 214, 205, 0) 88%
+      rgba(155, 189, 132, 0.5) 0%,
+      rgba(211, 236, 189, 0.32) 38%,
+      rgba(244, 250, 238, 0.1) 66%,
+      rgba(244, 250, 238, 0) 88%
     );
   /* perspective: the texture tilts back like a floor plane */
   transform: perspective(900px) rotateX(18deg) scale(1.15);
@@ -740,8 +743,8 @@ h4 {
   background: radial-gradient(
     circle,
     rgba(255, 255, 255, 0.5) 0%,
-    rgba(246, 233, 226, 0.28) 42%,
-    rgba(246, 233, 226, 0) 72%
+    rgba(244, 250, 238, 0.3) 42%,
+    rgba(244, 250, 238, 0) 72%
   );
   filter: blur(18px);
 }
@@ -790,7 +793,7 @@ h4 {
   bottom: 0;
   width: 3px;
   border-radius: 999px;
-  background: var(--module-accent, rgba(159, 105, 197, 0.5));
+  background: var(--module-accent, rgba(90, 163, 24, 0.5));
   transform-origin: top center;
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -844,36 +847,36 @@ h4 {
     linear-gradient(
       105deg,
       transparent 0%,
-      rgba(30, 26, 40, 0.045) 42%,
-      rgba(30, 26, 40, 0.045) 42.5%,
+      rgba(27, 42, 21, 0.045) 42%,
+      rgba(27, 42, 21, 0.045) 42.5%,
       transparent 43%,
       transparent 58%,
-      rgba(30, 26, 40, 0.045) 58.5%,
-      rgba(30, 26, 40, 0.045) 59%,
+      rgba(27, 42, 21, 0.045) 58.5%,
+      rgba(27, 42, 21, 0.045) 59%,
       transparent 59.5%,
       transparent 74%,
-      rgba(30, 26, 40, 0.045) 74.5%,
-      rgba(30, 26, 40, 0.045) 75%,
+      rgba(27, 42, 21, 0.045) 74.5%,
+      rgba(27, 42, 21, 0.045) 75%,
       transparent 75.5%
     ),
     /* horizontal depth bands — get denser toward the horizon */
     linear-gradient(
       to bottom,
       transparent 0%,
-      rgba(30, 26, 40, 0.035) 52%,
-      rgba(30, 26, 40, 0.035) 52.5%,
+      rgba(27, 42, 21, 0.035) 52%,
+      rgba(27, 42, 21, 0.035) 52.5%,
       transparent 53%,
       transparent 62%,
-      rgba(30, 26, 40, 0.045) 62.5%,
-      rgba(30, 26, 40, 0.045) 63%,
+      rgba(27, 42, 21, 0.045) 62.5%,
+      rgba(27, 42, 21, 0.045) 63%,
       transparent 63.5%,
       transparent 74%,
-      rgba(30, 26, 40, 0.045) 74.5%,
-      rgba(30, 26, 40, 0.045) 75%,
+      rgba(27, 42, 21, 0.045) 74.5%,
+      rgba(27, 42, 21, 0.045) 75%,
       transparent 75.5%,
       transparent 86%,
-      rgba(30, 26, 40, 0.045) 86.5%,
-      rgba(30, 26, 40, 0.045) 87%,
+      rgba(27, 42, 21, 0.045) 86.5%,
+      rgba(27, 42, 21, 0.045) 87%,
       transparent 87.5%
     );
   /* the floor plane sits below the horizon and tilts back */
@@ -905,11 +908,11 @@ h4 {
   pointer-events: none;
   background: linear-gradient(
     180deg,
-    rgba(246, 233, 226, 0.22) 0%,
-    rgba(246, 233, 226, 0.05) 30%,
-    rgba(236, 214, 205, 0.02) 55%,
-    rgba(204, 182, 184, 0.08) 82%,
-    rgba(204, 182, 184, 0.16) 100%
+    rgba(244, 250, 238, 0.24) 0%,
+    rgba(244, 250, 238, 0.06) 30%,
+    rgba(230, 244, 216, 0.02) 55%,
+    rgba(188, 223, 162, 0.08) 82%,
+    rgba(155, 189, 132, 0.16) 100%
   );
 }
 
@@ -1035,7 +1038,7 @@ h4 {
   right: 0;
   width: 2.5rem;
   height: 2.5rem;
-  background: var(--card-accent, rgba(159, 105, 197, 0.16));
+  background: var(--card-accent, rgba(90, 163, 24, 0.16));
   clip-path: polygon(100% 0, 100% 100%, 0 0);
 }
 
@@ -1047,7 +1050,7 @@ h4 {
   top: 0;
   bottom: 0;
   width: 3px;
-  background: var(--card-accent-solid, #9f69c5);
+  background: var(--card-accent-solid, #5aa318);
   transform-origin: top center;
   transform: scaleY(0.35);
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
@@ -1066,7 +1069,7 @@ h4 {
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.05em;
-  color: var(--card-accent-solid, #9f69c5);
+  color: var(--card-accent-solid, #5aa318);
   opacity: 0.07;
   transition: opacity 0.4s ease;
 }
@@ -1084,7 +1087,7 @@ h4 {
   width: 3rem;
   height: 3rem;
   color: #ffffff;
-  background: var(--card-accent-solid, #9f69c5);
+  background: var(--card-accent-solid, #5aa318);
   clip-path: polygon(
     0 0,
     calc(100% - 0.7rem) 0,
@@ -1093,7 +1096,7 @@ h4 {
     0.7rem 100%,
     0 calc(100% - 0.7rem)
   );
-  box-shadow: 0 8px 20px -8px var(--card-accent-shadow, rgba(159, 105, 197, 0.5));
+  box-shadow: 0 8px 20px -8px var(--card-accent-shadow, rgba(90, 163, 24, 0.5));
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -1351,10 +1354,10 @@ h4 {
   height: 60%;
   background: linear-gradient(
     86deg,
-    rgba(159, 105, 197, 0) 0%,
-    rgba(159, 105, 197, 0.62) 30%,
+    rgba(90, 163, 24, 0) 0%,
+    rgba(90, 163, 24, 0.62) 30%,
     rgba(180, 140, 210, 0.68) 62%,
-    rgba(159, 105, 197, 0) 100%
+    rgba(90, 163, 24, 0) 100%
   );
 }
 
@@ -1538,7 +1541,7 @@ a.footer-meta:hover {
 .surface-peach {
   background-image:
     radial-gradient(66% 55% at 80% 6%, rgba(236, 214, 205, 0.62) 0%, rgba(236, 214, 205, 0) 62%),
-    radial-gradient(60% 50% at 8% 94%, rgba(159, 105, 197, 0.14) 0%, rgba(159, 105, 197, 0) 62%),
+    radial-gradient(60% 50% at 8% 94%, rgba(90, 163, 24, 0.14) 0%, rgba(90, 163, 24, 0) 62%),
     linear-gradient(180deg, #fdf6f1 0%, #fbf5f0 100%);
 }
 

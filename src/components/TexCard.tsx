@@ -14,7 +14,7 @@ export type TexTexture = "a" | "b" | "c" | "d" | "e" | "f" | "g";
 /** The accent set — six distinct, all on-brand. */
 const ACCENTS = [
   { line: "#0071e3", soft: "rgba(0, 113, 227, 0.13)", shadow: "rgba(0, 113, 227, 0.4)" },   // azure
-  { line: "#9f69c5", soft: "rgba(159, 105, 197, 0.15)", shadow: "rgba(159, 105, 197, 0.4)" }, // violet
+  { line: "#2e8b17", soft: "rgba(46, 139, 23, 0.15)", shadow: "rgba(46, 139, 23, 0.4)" },  // deep green
   { line: "#17c1bb", soft: "rgba(23, 193, 187, 0.13)", shadow: "rgba(23, 193, 187, 0.4)" },  // aqua
   { line: "#76c40b", soft: "rgba(118, 196, 11, 0.14)", shadow: "rgba(118, 196, 11, 0.4)" },   // sprout
   { line: "#8b5cf6", soft: "rgba(139, 92, 246, 0.13)", shadow: "rgba(139, 92, 246, 0.4)" },  // orchid

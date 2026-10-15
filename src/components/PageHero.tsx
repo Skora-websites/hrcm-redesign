@@ -51,7 +51,7 @@ export function PageHero({
         className="pointer-events-none absolute inset-x-0 top-0 h-[46rem]"
         style={{
           background:
-            "radial-gradient(85% 60% at 50% 0%, rgba(255,255,255,0.6) 0%, rgba(246,233,226,0.35) 34%, rgba(246,233,226,0) 68%)",
+            "radial-gradient(85% 60% at 50% 0%, rgba(255,255,255,0.6) 0%, rgba(244,250,238,0.4) 34%, rgba(244,250,238,0) 68%)",
         }}
       />
 

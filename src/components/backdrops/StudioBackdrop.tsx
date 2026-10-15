@@ -30,7 +30,7 @@ export function StudioBackdrop({
           height: "34rem",
           width: "34rem",
           background:
-            "radial-gradient(circle, rgba(246,233,226,0.95) 0%, rgba(246,233,226,0) 68%)",
+            "radial-gradient(circle, rgba(244,250,238,0.95) 0%, rgba(244,250,238,0) 68%)",
         }}
         animate={reduce ? undefined : { x: [0, 34, -22, 0], y: [0, 22, -14, 0] }}
         transition={{ duration: 26, repeat: Infinity, ease: "easeInOut" }}
@@ -42,7 +42,7 @@ export function StudioBackdrop({
           top: "8%",
           height: "30rem",
           width: "30rem",
-          background: "radial-gradient(circle, rgba(159,105,197,0.3) 0%, rgba(159,105,197,0) 68%)",
+          background: "radial-gradient(circle, rgba(21,154,140,0.28) 0%, rgba(21,154,140,0) 68%)",
         }}
         animate={reduce ? undefined : { x: [0, -26, 18, 0], y: [0, -18, 20, 0] }}
         transition={{ duration: 32, repeat: Infinity, ease: "easeInOut", delay: 2 }}
@@ -54,7 +54,7 @@ export function StudioBackdrop({
           bottom: "-16%",
           height: "28rem",
           width: "28rem",
-          background: "radial-gradient(circle, rgba(204,182,184,0.55) 0%, rgba(204,182,184,0) 70%)",
+          background: "radial-gradient(circle, rgba(155,189,132,0.5) 0%, rgba(155,189,132,0) 70%)",
         }}
         animate={reduce ? undefined : { x: [0, 22, -18, 0], y: [0, -14, 12, 0] }}
         transition={{ duration: 22, repeat: Infinity, ease: "easeInOut", delay: 4 }}

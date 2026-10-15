@@ -201,7 +201,7 @@ export function Kicker({
     orchid: "text-orchid-600",
     signal: "text-signal-600",
     sprout: "text-sprout-700",
-    violet: "text-[#9f69c5]",
+    violet: "text-[#3f7a0e]",
     ink: "text-ink-500",
   };
   return (

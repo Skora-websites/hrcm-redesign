@@ -7,13 +7,13 @@ import { CountUp, CTAButton } from "../ui";
 import { Clock, Percent, ShieldCheck, Wallet } from "lucide-react";
 
 /**
- * Hero. The most characteristic thing in this subject's world is the claim
- * lifecycle, so the page opens on it: headline on the left, and a 3D glass
- * claim sheet on the right with real claim rows at different depths.
+ * Hero. The page opens on the product itself: headline on the left, and the
+ * HRCM AI software shown as a 3D glass workspace on the right — an intelligent
+ * core with a live ECG pulse and capability tiles, no claim data.
  *
- * The ground is a warm pastel studio matched to the reference (peach → mauve
- * → dusty rose, film grain, vignette) — deliberately not blue, so the navy
- * headline and the violet accent are the only saturated things on screen.
+ * The ground is a light green pastel studio lifted from the HRCM logo (₹ /
+ * ECG green, bridged to the logo's teal arc), so the deep-green headline and
+ * the green accent are the only saturated things on screen.
  */
 
 /** Numeric part of a result string, e.g. "50% Faster" → { num: 50, rest: "% Faster" }. */
@@ -23,12 +23,14 @@ function splitResult(result: string): { num: number | null; rest: string } {
   return { num: Number(m[1]), rest: m[2] };
 }
 
-/** Per-module identity — accent, glow, and its own sigil. */
+/** Per-module identity — accent, glow, and its own sigil. All in the logo's
+ *  green family (logo green, sprout, teal, deep green) so the ledger stays
+ *  cohesive with the green hero. */
 const MODULE_LOOK = [
-  { accent: "#0071e3", glow: "rgba(0,113,227,0.14)", Glyph: Clock },
-  { accent: "#17c1bb", glow: "rgba(23,193,187,0.14)", Glyph: Percent },
-  { accent: "#9f69c5", glow: "rgba(159,105,197,0.16)", Glyph: Wallet },
-  { accent: "#76c40b", glow: "rgba(118,196,11,0.14)", Glyph: ShieldCheck },
+  { accent: "#5aa318", glow: "rgba(90,163,24,0.14)", Glyph: Clock },
+  { accent: "#159a8c", glow: "rgba(21,154,140,0.14)", Glyph: Percent },
+  { accent: "#76c40b", glow: "rgba(118,196,11,0.16)", Glyph: Wallet },
+  { accent: "#2e8b17", glow: "rgba(46,139,23,0.14)", Glyph: ShieldCheck },
 ];
 
 /**
@@ -190,11 +192,11 @@ export function Hero() {
         className="pointer-events-none absolute inset-x-0 top-0 h-[46rem]"
         style={{
           background:
-            "radial-gradient(85% 60% at 50% 0%, rgba(255,255,255,0.6) 0%, rgba(246,233,226,0.35) 34%, rgba(246,233,226,0) 68%)",
+            "radial-gradient(85% 60% at 50% 0%, rgba(255,255,255,0.6) 0%, rgba(244,250,238,0.4) 34%, rgba(244,250,238,0) 68%)",
         }}
       />
 
-      {/* warm blooms sitting behind the object, so it glows in-set */}
+      {/* green blooms sitting behind the object, so it glows in-set */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div
           className="studio-bloom"
@@ -203,7 +205,7 @@ export function Hero() {
             top: "14%",
             height: "32rem",
             width: "32rem",
-            background: "radial-gradient(circle, rgba(246,233,226,0.9) 0%, rgba(246,233,226,0) 68%)",
+            background: "radial-gradient(circle, rgba(244,250,238,0.9) 0%, rgba(244,250,238,0) 68%)",
           }}
         />
         <div
@@ -213,7 +215,7 @@ export function Hero() {
             bottom: "4%",
             height: "24rem",
             width: "24rem",
-            background: "radial-gradient(circle, rgba(159,105,197,0.22) 0%, rgba(159,105,197,0) 70%)",
+            background: "radial-gradient(circle, rgba(21,154,140,0.2) 0%, rgba(21,154,140,0) 70%)",
           }}
         />
       </div>
@@ -223,12 +225,12 @@ export function Hero() {
           are unmistakably visible as they turn. */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="hero-windmill">
-          <div className="hero-blade" style={{ transform: "rotate(0deg)", "--tint": "rgba(159,105,197,0.55)" } as CSSProperties} />
-          <div className="hero-blade" style={{ transform: "rotate(60deg)", "--tint": "rgba(236,214,205,0.7)" } as CSSProperties} />
-          <div className="hero-blade" style={{ transform: "rotate(120deg)", "--tint": "rgba(215,193,189,0.75)" } as CSSProperties} />
-          <div className="hero-blade" style={{ transform: "rotate(180deg)", "--tint": "rgba(204,182,184,0.65)" } as CSSProperties} />
-          <div className="hero-blade" style={{ transform: "rotate(240deg)", "--tint": "rgba(246,233,226,0.8)" } as CSSProperties} />
-          <div className="hero-blade" style={{ transform: "rotate(300deg)", "--tint": "rgba(159,105,197,0.42)" } as CSSProperties} />
+          <div className="hero-blade" style={{ transform: "rotate(0deg)", "--tint": "rgba(90,163,24,0.5)" } as CSSProperties} />
+          <div className="hero-blade" style={{ transform: "rotate(60deg)", "--tint": "rgba(147,216,58,0.5)" } as CSSProperties} />
+          <div className="hero-blade" style={{ transform: "rotate(120deg)", "--tint": "rgba(21,154,140,0.42)" } as CSSProperties} />
+          <div className="hero-blade" style={{ transform: "rotate(180deg)", "--tint": "rgba(46,139,23,0.42)" } as CSSProperties} />
+          <div className="hero-blade" style={{ transform: "rotate(240deg)", "--tint": "rgba(211,236,189,0.7)" } as CSSProperties} />
+          <div className="hero-blade" style={{ transform: "rotate(300deg)", "--tint": "rgba(90,163,24,0.38)" } as CSSProperties} />
           <div className="hero-hub" />
         </div>
       </div>
@@ -238,8 +240,8 @@ export function Hero() {
           {/* ---------------- Copy ---------------- */}
           <div>
             <div data-hero-kicker className="flex items-center gap-3">
-              <span className="h-px w-10 bg-gradient-to-r from-[#9f69c5] to-transparent" />
-              <span className="text-[0.82rem] font-medium tracking-[-0.005em] text-[#9f69c5]">
+              <span className="h-px w-10 bg-gradient-to-r from-[#5aa318] to-transparent" />
+              <span className="text-[0.82rem] font-medium tracking-[-0.005em] text-[#3f7a0e]">
                 Healthcare revenue cycle management
               </span>
             </div>
@@ -281,14 +283,14 @@ export function Hero() {
             </div>
           </div>
 
-          {/* ---------------- 3D glass claims object ---------------- */}
+          {/* ---------------- 3D glass AI workspace ---------------- */}
           <div className="relative flex justify-center lg:-ml-10 lg:justify-end">
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 -z-10"
               style={{
                 background:
-                  "radial-gradient(56% 56% at 62% 42%, rgba(255,255,255,0.75) 0%, rgba(246,233,226,0.5) 45%, rgba(246,233,226,0) 72%)",
+                  "radial-gradient(56% 56% at 62% 42%, rgba(255,255,255,0.75) 0%, rgba(244,250,238,0.5) 45%, rgba(244,250,238,0) 72%)",
               }}
             />
             <HeroObject className="w-full" />
