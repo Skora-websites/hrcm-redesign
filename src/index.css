@@ -185,6 +185,13 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+/* User preference: scale desktop view to match ~80% Chrome zoom proportion */
+@media (min-width: 1024px) {
+  html {
+    zoom: 0.82;
+  }
+}
+
 body {
   font-family: var(--font-body);
   color: var(--color-ink-900);
@@ -1309,6 +1316,7 @@ h4 {
   position: relative;
   overflow: hidden;
   pointer-events: auto;
+  border-top: 1px solid rgba(15, 23, 42, 0.07);
   /* the field: coloured top to bottom, deepening toward the base */
   background: linear-gradient(
     180deg,
