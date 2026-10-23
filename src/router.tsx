@@ -8,6 +8,8 @@ export type PageKind =
   | "service-detail"
   | "why"
   | "team"
+  | "software"
+  | "careers"
   | "contact"
   | "terms"
   | "privacy"
@@ -25,9 +27,10 @@ export function normalizePath(pathname: string): PageKind {
   p = p.replace(/\.html$/, "").replace(/\/index$/, "");
   if (p === "" || p === "/") return "home";
 
-  const serviceSlugs = SERVICES.map((s) =>
-    s.href.replace(/^\/services\//, "").replace(/\.html$/, ""),
-  );
+  const serviceSlugs = [
+    ...SERVICES.map((s) => s.href.replace(/^\/services\//, "").replace(/\.html$/, "")),
+    "medical-billing", // backwards compatibility alias for data-management
+  ];
   const svc = p.match(/^\/services\/(.+)$/);
   if (svc) {
     return serviceSlugs.includes(svc[1]) ? "service-detail" : "404";
@@ -42,7 +45,13 @@ export function normalizePath(pathname: string): PageKind {
       return "why";
     case "/our-team":
       return "team";
+    case "/software":
+    case "/hrcm-software":
+      return "software";
+    case "/careers":
+      return "careers";
     case "/get-in-touch":
+    case "/contact":
       return "contact";
     case "/terms":
       return "terms";

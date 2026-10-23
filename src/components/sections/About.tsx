@@ -24,17 +24,17 @@ const HUBS: HubData[] = [
   // ── ROW 1: Operations & Delivery Hubs ──
   {
     id: "noida",
-    territory: "Noida Central",
+    territory: "Greater Noida",
     pill: "UTC+5:30",
     stationName: "CENTRAL OPERATIONS HUB",
-    cityRow: "NOIDA HQ",
+    cityRow: "GREATER NOIDA HQ",
     addressLine1: "Tower 4, NX One, Plot No. 17",
     addressLine2: "Techzone-4, Greater Noida, UP",
-    contactLine1: "+91 98688 08775",
+    contactLine1: "+91 80102 85464",
     contactLine2: "info@hrcm.in",
     metadata: "AUDIT & RECONCILIATION · EST. 2021",
     image: "/images/hub-noida.jpg",
-    alt: "Indian healthcare revenue analysts at HRCM headquarters in Noida",
+    alt: "Indian healthcare revenue analysts at HRCM headquarters in Greater Noida",
   },
   {
     id: "hospitals",
@@ -45,7 +45,7 @@ const HUBS: HubData[] = [
     addressLine1: "Tier-1 & Tier-2 Hospital Centers",
     addressLine2: "Dedicated On-Site Claims & Billing Desks",
     contactLine1: "+91 80102 85464",
-    contactLine2: "partners@hrcm.in",
+    contactLine2: "info@hrcm.in",
     metadata: "BILLING & QUERY MANAGEMENT · ACTIVE OPS",
     image: "/images/hub-hospital.jpg",
     alt: "Indian hospital billing coordinator and physician at patient discharge desk",
@@ -58,8 +58,8 @@ const HUBS: HubData[] = [
     cityRow: "ANALYTICS LAB",
     addressLine1: "Automated Payer Rule Engine",
     addressLine2: "Real-time Discrepancy Matching & Settlement",
-    contactLine1: "+91 98688 08775",
-    contactLine2: "recovery@hrcm.in",
+    contactLine1: "+91 80102 85464",
+    contactLine2: "info@hrcm.in",
     metadata: "120 → 60 DAYS ACCELERATION · LIVE",
     image: "/images/hub-analytics.jpg",
     alt: "Indian healthcare data analytics specialist analyzing claim settlement data",
@@ -232,14 +232,14 @@ function StationCard({
 
       {/* ── Frosted Detail Panel (Appears on Hover / Open) ── */}
       <div className="station-panel pointer-events-none absolute inset-x-0 bottom-0 z-[3] overflow-hidden">
-        {/* Solid Frosted Glass Surface */}
+        {/* Solid Frosted Glass Surface — Dark Theme on Hover */}
         <div className="station-blur-layer absolute inset-0" />
 
         {/* 4 Stacked Detail Items */}
         <div className="station-panel-content relative flex flex-col">
           {/* 1. Station Row with Left Arrow */}
           <div
-            className="panel-item panel-station-row flex items-center gap-2 pb-[0.45rem] border-b border-slate-200/90"
+            className="panel-item panel-station-row flex items-center gap-2 pb-[0.45rem] border-b border-white/15"
             style={{ "--i": 0 } as React.CSSProperties}
           >
             <svg
@@ -247,7 +247,7 @@ function StationCard({
               height="9"
               viewBox="0 0 16 10"
               fill="none"
-              className="shrink-0 text-slate-900"
+              className="shrink-0 text-azure-400"
             >
               <path
                 d="M5 1L1 5M1 5L5 9M1 5H15"
@@ -257,33 +257,33 @@ function StationCard({
                 strokeLinejoin="round"
               />
             </svg>
-            <span className="font-mono text-slate-900 font-bold tracking-[0.14em] uppercase text-[clamp(0.72rem,0.8vw,0.82rem)]">
+            <span className="font-mono text-white font-bold tracking-[0.14em] uppercase text-[clamp(0.72rem,0.8vw,0.82rem)]">
               {hub.cityRow}
             </span>
           </div>
 
           {/* 2. Address Lines */}
           <div
-            className="panel-item panel-address-row pt-[0.45rem] pb-[0.45rem] border-b border-slate-200/90"
+            className="panel-item panel-address-row pt-[0.45rem] pb-[0.45rem] border-b border-white/15"
             style={{ "--i": 1 } as React.CSSProperties}
           >
-            <p className="font-sans font-bold text-slate-900 tracking-[-0.02em] leading-tight text-[clamp(0.82rem,0.92vw,0.95rem)]">
+            <p className="font-sans font-bold text-white tracking-[-0.02em] leading-tight text-[clamp(0.82rem,0.92vw,0.95rem)]">
               {hub.addressLine1}
             </p>
-            <p className="font-sans font-medium text-slate-600 tracking-[-0.02em] leading-tight mt-[0.15rem] text-[clamp(0.74rem,0.82vw,0.85rem)]">
+            <p className="font-sans font-medium text-slate-300 tracking-[-0.02em] leading-tight mt-[0.15rem] text-[clamp(0.74rem,0.82vw,0.85rem)]">
               {hub.addressLine2}
             </p>
           </div>
 
           {/* 3. Phone & Email (Selectable) */}
           <div
-            className="panel-item panel-contact-row pt-[0.45rem] pb-[0.45rem] border-b border-slate-200/90 select-text pointer-events-auto"
+            className="panel-item panel-contact-row pt-[0.45rem] pb-[0.45rem] border-b border-white/15 select-text pointer-events-auto"
             style={{ "--i": 2 } as React.CSSProperties}
           >
-            <p className="font-sans font-bold text-slate-900 tracking-[-0.02em] leading-tight text-[clamp(0.82rem,0.92vw,0.95rem)]">
+            <p className="font-sans font-bold text-white tracking-[-0.02em] leading-tight text-[clamp(0.82rem,0.92vw,0.95rem)]">
               {hub.contactLine1}
             </p>
-            <p className="font-sans font-medium text-slate-600 tracking-[-0.02em] leading-tight mt-[0.15rem] text-[clamp(0.74rem,0.82vw,0.85rem)]">
+            <p className="font-sans font-medium text-azure-300 tracking-[-0.02em] leading-tight mt-[0.15rem] text-[clamp(0.74rem,0.82vw,0.85rem)]">
               {hub.contactLine2}
             </p>
           </div>
@@ -293,7 +293,7 @@ function StationCard({
             className="panel-item panel-meta-row pt-[0.45rem]"
             style={{ "--i": 3 } as React.CSSProperties}
           >
-            <p className="font-mono font-bold text-slate-500 tracking-[0.12em] uppercase text-[clamp(0.66rem,0.72vw,0.75rem)]">
+            <p className="font-mono font-bold text-azure-400 tracking-[0.12em] uppercase text-[clamp(0.66rem,0.72vw,0.75rem)]">
               {hub.metadata}
             </p>
           </div>
@@ -469,12 +469,12 @@ export function About() {
 
         .station-blur-layer {
           border-radius: 0 0 var(--radius) var(--radius);
-          background: rgba(255, 255, 255, 0.95);
-          backdrop-filter: blur(28px) saturate(160%);
-          -webkit-backdrop-filter: blur(28px) saturate(160%);
+          background: rgba(10, 18, 34, 0.94);
+          backdrop-filter: blur(28px) saturate(180%);
+          -webkit-backdrop-filter: blur(28px) saturate(180%);
           opacity: 0;
-          border-top: 1px solid rgba(255, 255, 255, 0.95);
-          box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.16);
+          border-top: 1px solid rgba(255, 255, 255, 0.16);
+          box-shadow: 0 -12px 36px rgba(0, 0, 0, 0.55);
           mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.4) 10%, #000 24%, #000 100%);
           -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.4) 10%, #000 24%, #000 100%);
         }
@@ -482,7 +482,7 @@ export function About() {
         /* Fallback if backdrop-filter is not supported */
         @supports not (backdrop-filter: blur(30px)) {
           .station-blur-layer {
-            background: rgba(250, 250, 248, 0.96);
+            background: rgba(10, 18, 34, 0.98);
           }
         }
 

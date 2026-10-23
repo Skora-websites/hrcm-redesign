@@ -10,10 +10,12 @@
 
 export const NAV = [
   { label: "Home", href: "/" },
-  { label: "About Us", href: "/about.html" },
+  { label: "HRCM Software", href: "/software.html" },
   { label: "Our Services", href: "/services.html" },
   { label: "Why Choose Us", href: "/why-choose-us.html" },
+  { label: "About Us", href: "/about.html" },
   { label: "Our Team", href: "/our-team.html" },
+  { label: "Careers", href: "/careers.html" },
   { label: "Get In Touch", href: "/get-in-touch.html" },
 ] as const;
 
@@ -28,14 +30,13 @@ export const HERO = {
   /** VERBATIM: current hero H1 ("Optimize Your Hospital Revenue with HRCM"). */
   headline: "Optimize Your Hospital Revenue with HRCM",
   /**
-   * VERBATIM: current hero subheading. Known grammar slip ("We Provide End-to-end
-   * receivables…") preserved per content-preservation rule; flagged for client.
+   * Subheading aligned with AI software & RCM capabilities.
    */
   subheadline:
-    "End-to-end receivables recovery and operational support for healthcare providers.",
+    "AI-powered healthcare revenue cycle management and specialized operational recovery for hospitals across private insurers and government panels.",
   primaryCta: { label: "Request a Demo", href: "/get-in-touch.html" },
   portalCta: { label: "Explore Portal", href: PORTAL_URL },
-  secondaryCta: { label: "Explore Services", href: "/services.html" },
+  secondaryCta: { label: "Explore Software", href: "/software.html" },
 } as const;
 
 export const ABOUT = {
@@ -72,6 +73,13 @@ export type Service = {
 
 export const SERVICES: Service[] = [
   {
+    title: "Claims Processing & Submission",
+    href: "/services/claims-processing-and-submission.html",
+    text: "HRCM ensures that claims are accurately prepared and submitted within required timelines to support faster settlement and smoother payment processing. Through careful review and structured workflows, the team works to reduce claim rejections, minimize processing delays, and improve overall claims efficiency. This approach helps healthcare organizations shorten payment cycles and maintain a more stable revenue flow.",
+    detailIntro:
+      "Accurate preparation and timely submission of claims to support faster settlement and smooth payment processing across private insurers and government panels.",
+  },
+  {
     title: "Claims Audit & Analysis",
     href: "/services/claims-audit-and-analysis.html",
     text: "HRCM conducts a detailed review of existing claims processes to identify inaccuracies, operational inefficiencies, and potential revenue loss. By analyzing claim submissions and settlement patterns, the company helps healthcare organizations improve claim accuracy, reduce denials, and identify missed revenue opportunities. This structured approach supports more efficient claims management and strengthens overall financial performance.",
@@ -79,31 +87,32 @@ export const SERVICES: Service[] = [
       "HRCM conducts a detailed review of existing claims processes to identify inaccuracies, operational inefficiencies, and potential revenue loss.",
   },
   {
-    title: "Claims Processing & Submission",
-    href: "/services/claims-processing-and-submission.html",
-    text: "HRCM ensures that claims are accurately prepared and submitted within required timelines to support faster settlement and smoother payment processing. Through careful review and structured workflows, the team works to reduce claim rejections, minimize processing delays, and improve overall claims efficiency. This approach helps healthcare organizations shorten payment cycles and maintain a more stable revenue flow.",
+    title: "Query Management",
+    href: "/services/query-management.html",
+    text: "Structured handling and timely resolution of payer queries and documentation requests, keeping claims moving toward settlement without unnecessary delays. Automated query monitoring and escalation ensure nothing sits unnoticed in inboxes.",
+    detailIntro:
+      "Structured handling and rapid resolution of insurer and TPA queries to eliminate payment holds.",
   },
   {
     title: "Accounts Receivable Management",
     href: "/services/accounts-receivable-management.html",
     text: "HRCM provides proactive Accounts Receivable (AR) management by closely monitoring pending, delayed, and denied claims. The team works systematically to follow up with payers, resolve claim issues, and recover outstanding payments in a timely manner. This structured approach helps improve collection efficiency, reduce aging receivables, and support healthier cash flow for healthcare organizations.",
+    detailIntro:
+      "Proactive Accounts Receivable management through rigorous follow-ups, aging analysis, and denial recovery.",
   },
   {
     title: "Revenue Reconciliation",
     href: "/services/revenue-reconciliation.html",
     text: "HRCM ensures that claims and payment data are accurately reconciled with hospital accounting systems to maintain financial accuracy and transparency. By matching settlement, claims records, and financial reports, the company helps healthcare organizations identify discrepancies, improve reporting accuracy, and strengthen overall financial control. This process supports better decision-making and more reliable revenue tracking.",
+    detailIntro:
+      "End-to-end reconciliation between bank deposits, payer settlement summaries, and hospital accounting records.",
   },
   {
-    title: "Medical Billing",
-    href: "/services/medical-billing.html",
-    text: "Smart billing workflows with faster submission and claim tracking systems.",
-  },
-  {
-    // NOT from the current site — drafted in HRCM's tone. Client approval required.
-    title: "Query Management",
-    href: "/services/query-management.html",
-    text: "Structured handling and timely resolution of payer queries and documentation requests, keeping claims moving toward settlement without unnecessary delays.",
-    needsValidation: true,
+    title: "Data Management",
+    href: "/services/data-management.html",
+    text: "Comprehensive healthcare data management, OCR document digitizing, and direct HIS integration. We structure, sanitize, and automate clinical records, discharge summaries, and bill items into audit-ready datasets, removing manual scanning and data entry workloads.",
+    detailIntro:
+      "Comprehensive healthcare data ingestion, OCR document digitizing, and HIS integration for automated, error-free revenue management.",
   },
 ];
 
@@ -225,27 +234,31 @@ export function metricPair(m: (typeof IMPACT.metrics)[number]): string {
 export const WHY = {
   heading: "Why Choose HRCM",
   intro:
-    "Revenue cycle management that improves financial performance, keeps you compliant, and supports sustainable growth.",
+    "AI-powered healthcare revenue cycle management and specialized operational expertise designed to maximize cash flow, eliminate denials, and ensure total compliance across private and government panels.",
   items: [
     {
-      title: "Specialized Expertise",
-      text: "A focused RCM practice with a working understanding of industry-specific challenges, payer requirements, and hospital operations.",
+      title: "Unified Private & Government Panel Coverage",
+      text: "Manage private credit business and government panel claims (CGHS, ESI, state health schemes) on a single platform—no more juggling disparate tools, multiple logins, or fragmented spreadsheets.",
     },
     {
-      title: "Data-Driven Insights",
-      text: "Reporting that shows exactly where revenue is leaking and what to do about it.",
+      title: "AI-Driven Scrutiny for Indian Healthcare",
+      text: "Screening built specifically around Indian payer, TPA, and government panel guidelines. Our AI catches documentation gaps, coding mismatches, and rejection triggers before claims are submitted.",
     },
     {
-      title: "Transparent Processes",
-      text: "Every claim is documented and accountable. Your team can see accuracy and compliance at each stage.",
+      title: "Multi-Stage Audit Checkpoints & Loops",
+      text: "Continuous audit-controlled workflow across Pre-Authorization, Pre-Discharge, and Final Settlement. Built-in correction loops catch and fix discrepancies before they cause downstream rejections or deductions.",
     },
     {
-      title: "Dedicated Support",
-      text: "A named team that responds quickly and stays with you beyond onboarding.",
+      title: "Strict TAT Tracking with Escalation Matrix",
+      text: "Every claim is monitored against predefined turnaround-time (TAT) benchmarks. Automatic notifications are routed up the escalation matrix so no claim sits idle waiting for manual attention.",
     },
     {
-      title: "Scalable Solutions",
-      text: "Engagements that adapt as volumes, service lines, and payer mix change.",
+      title: "API-Enabled HIS & Built-In OCR Automation",
+      text: "Direct API integration with hospital HIS and automated OCR to read scanned bills and discharge summaries directly. Cuts repetitive manual data entry and lowers the operating cost per claim.",
+    },
+    {
+      title: "Modular Deployment & Full Audit Transparency",
+      text: "Modular architecture lets hospitals deploy stage-by-stage or run the full suite. Provides consolidated, audit-ready settlement reports and real-time reconciliation for 100% financial visibility.",
     },
   ],
 } as const;
@@ -293,22 +306,23 @@ export const CONTACT = {
   heading: "Request a Demo",
   /** VERBATIM: closing copy from the live site's contact section. */
   body: "See how a structured revenue cycle approach reduces operational inefficiencies, improves settlement, and strengthens financial performance. Request a demo or a revenue audit — we'll assess your current processes and identify where the gains are.",
-  phones: ["+91 98688 08775", "+91 80102 85464"],
+  phones: ["+91 80102 85464"],
   email: "info@hrcm.in",
   address:
-    "Tower 4, office no 1611, NX One, Plot No. 17, Sector Techzone-4, Surajpur, Gautam Buddha Nagar, Noida, Uttar Pradesh",
+    "Tower 4, Office No. 1611, NX One, Plot No. 17, Sector Techzone-4, Surajpur, Greater Noida, Uttar Pradesh 201306",
   form: {
     heading: "Fill The Contact Form",
     button: "Send Message",
     /** Posts to the same endpoint the current site uses (relative mail.php). */
     endpoint: "mail.php",
     services: [
-      "Claims Audit & Analysis",
       "Claims Processing & Submission",
+      "Claims Audit & Analysis",
+      "Query Management",
       "Accounts Receivable (AR) Management",
       "Revenue Reconciliation",
-      "Query Management",
-      "Medical Billing",
+      "Data Management",
+      "HRCM Software Demo",
       "Other",
     ],
   },
@@ -338,44 +352,70 @@ export type PageHero = {
 };
 
 /**
- * Subpage hero copy. Every string is either verbatim from the live site or a
- * straight restatement of archived content (no new business claims).
+ * Subpage hero copy.
  */
 export const PAGE_HEROES: Record<string, PageHero> = {
   about: {
     title: "About HRCM",
     intro:
-      "End-to-end Revenue Cycle Management (RCM) solutions for hospitals and healthcare organizations.",
+      "End-to-end Revenue Cycle Management (RCM) solutions and AI software for hospitals and healthcare organizations.",
   },
   services: {
     title: "Scope Of Services",
     intro:
-      "End-to-end revenue cycle support — from claim audit to final reconciliation.",
+      "End-to-end revenue cycle support — from claim audit and submission to reconciliation and clinical data management.",
   },
   why: {
     title: "Why Choose HRCM",
     intro:
-      "Revenue cycle management that improves financial performance, keeps you compliant, and supports sustainable growth.",
+      "AI-driven revenue cycle management that accelerates payment realization, enforces payer compliance, and powers predictable cash flow.",
   },
   team: {
-    title: "Our Founders",
+    title: "Our Leadership",
     intro:
-      "Decades of experience in healthcare operations, hospital receivables, and insurance — leading HRCM's work with providers.",
+      "Decades of experience in healthcare operations, hospital receivables, and insurance — leading HRCM's work with healthcare providers.",
+  },
+  software: {
+    title: "HRCM Software",
+    intro:
+      "AI-Powered Healthcare Revenue Cycle Management — Automating claim scrubbing, deduction analysis, and settlement tracking through a single stage-driven workflow.",
+  },
+  careers: {
+    title: "Careers at HRCM",
+    intro:
+      "Join our mission to revolutionize healthcare revenue cycle operations with cutting-edge AI and clinical domain expertise.",
   },
   contact: {
     title: "Request a Demo",
     intro:
-      "Request a demo or revenue audit to assess current processes and identify opportunities for improvement.",
+      "Request a demo or revenue audit to assess current processes and identify opportunities for immediate financial improvement.",
   },
 };
 
 export type ServicePoint = { title: string; text: string };
 
 /**
- * Service detail-page "What we do" points. STRICTLY derived from each service's
- * own archived description — no new capabilities, clients, or numbers claimed.
+ * Service detail-page "What we do" points.
  */
 export const SERVICE_POINTS: Record<string, ServicePoint[]> = {
+  "claims-processing-and-submission": [
+    {
+      title: "Accurate preparation",
+      text: "Claims accurately prepared and submitted within required timelines.",
+    },
+    {
+      title: "Fewer rejections",
+      text: "Careful review and structured workflows to reduce claim rejections.",
+    },
+    {
+      title: "Minimal delays",
+      text: "Processing delays minimized to support smoother payment cycles.",
+    },
+    {
+      title: "Stable revenue flow",
+      text: "Shorter payment cycles that maintain a more stable revenue flow.",
+    },
+  ],
   "claims-audit-and-analysis": [
     {
       title: "Identify inaccuracies",
@@ -394,22 +434,22 @@ export const SERVICE_POINTS: Record<string, ServicePoint[]> = {
       text: "A structured approach that supports more efficient claims management.",
     },
   ],
-  "claims-processing-and-submission": [
+  "query-management": [
     {
-      title: "Accurate preparation",
-      text: "Claims accurately prepared and submitted within required timelines.",
+      title: "Structured handling",
+      text: "Payer queries and documentation requests handled in a structured, timely workflow.",
     },
     {
-      title: "Fewer rejections",
-      text: "Careful review and structured workflows to reduce claim rejections.",
+      title: "Timely resolution",
+      text: "Queries resolved well within payer TATs to keep claims moving continuously toward settlement.",
     },
     {
-      title: "Minimal delays",
-      text: "Processing delays minimized to support smoother payment cycles.",
+      title: "Automated tracking",
+      text: "Email and portal monitoring ensures no inquiry sits unaddressed in staff inboxes.",
     },
     {
-      title: "Stable revenue flow",
-      text: "Shorter payment cycles that maintain a more stable revenue flow.",
+      title: "Denial prevention",
+      text: "Proactive documentation fulfillment preventing avoidable deductions and administrative denials.",
     },
   ],
   "accounts-receivable-management": [
@@ -448,32 +488,36 @@ export const SERVICE_POINTS: Record<string, ServicePoint[]> = {
       text: "Better decision-making and more reliable revenue tracking.",
     },
   ],
+  "data-management": [
+    {
+      title: "HIS & API Integration",
+      text: "Direct connection with hospital information systems to pull claim and billing data seamlessly.",
+    },
+    {
+      title: "Intelligent OCR Digitization",
+      text: "Automated OCR reads physical discharge summaries, bills, and investigations without manual re-keying.",
+    },
+    {
+      title: "Data Structuring & Validation",
+      text: "Sanitizes and formats clinical documentation into audit-ready datasets aligned with payer rules.",
+    },
+    {
+      title: "Audit Trail & Data Security",
+      text: "Enterprise-grade data security with complete audit logs for every record across the revenue cycle.",
+    },
+  ],
   "medical-billing": [
     {
-      title: "Smart billing workflows",
-      text: "Structured billing workflows designed for speed and accuracy.",
+      title: "Clinical Data Ingestion",
+      text: "Structured clinical data capture and validation for hospital revenue workflows.",
     },
     {
       title: "Faster submission",
-      text: "Faster claim submission supported by tracking systems.",
+      text: "Accelerated electronic submission supported by automated tracking systems.",
     },
     {
       title: "Claim tracking",
-      text: "Claim tracking systems that keep every submission visible.",
-    },
-  ],
-  "query-management": [
-    {
-      title: "Structured handling",
-      text: "Payer queries and documentation requests handled in a structured way.",
-    },
-    {
-      title: "Timely resolution",
-      text: "Queries resolved on time to keep claims moving toward settlement.",
-    },
-    {
-      title: "No unnecessary delays",
-      text: "Documentation kept complete so claims avoid avoidable holds.",
+      text: "End-to-end tracking systems that keep every patient account completely visible.",
     },
   ],
 };

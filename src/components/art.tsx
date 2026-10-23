@@ -313,12 +313,13 @@ export function QueryArt({ className }: ArtProps) {
 }
 
 const SERVICE_ART: Record<string, (p: ArtProps) => React.ReactElement> = {
-  "claims-audit-and-analysis": AuditArt,
   "claims-processing-and-submission": SubmissionArt,
+  "claims-audit-and-analysis": AuditArt,
+  "query-management": QueryArt,
   "accounts-receivable-management": ArArt,
   "revenue-reconciliation": ReconcileArt,
+  "data-management": BillingArt,
   "medical-billing": BillingArt,
-  "query-management": QueryArt,
 };
 
 export function ServiceArt({ slug, className }: { slug: string; className?: string }) {

@@ -27,19 +27,57 @@ function splitResult(result: string): { num: number | null; rest: string } {
  *  green family (logo green, sprout, teal, deep green) so the ledger stays
  *  cohesive with the green hero. */
 const MODULE_LOOK = [
-  { accent: "#5aa318", glow: "rgba(90,163,24,0.14)", Glyph: Clock },
-  { accent: "#159a8c", glow: "rgba(21,154,140,0.14)", Glyph: Percent },
-  { accent: "#76c40b", glow: "rgba(118,196,11,0.16)", Glyph: Wallet },
-  { accent: "#2e8b17", glow: "rgba(46,139,23,0.14)", Glyph: ShieldCheck },
+  {
+    tag: "TURNAROUND SPEED",
+    accent: "#0071e3",
+    gradient: "linear-gradient(135deg, #0071e3 0%, #2997ff 100%)",
+    glow: "rgba(0,113,227,0.24)",
+    patternClass: "hero-pattern-dots",
+    badgeBg: "rgba(0,113,227,0.08)",
+    badgeText: "#0071e3",
+    delta: "2x Faster",
+    Glyph: Clock,
+  },
+  {
+    tag: "LEAKAGE PREVENTION",
+    accent: "#0fa3a0",
+    gradient: "linear-gradient(135deg, #0fa3a0 0%, #17c1bb 100%)",
+    glow: "rgba(15,163,160,0.24)",
+    patternClass: "hero-pattern-grid",
+    badgeBg: "rgba(15,163,160,0.08)",
+    badgeText: "#0b7270",
+    delta: "↓ 91% Deductions",
+    Glyph: Percent,
+  },
+  {
+    tag: "CAPITAL RECOVERY",
+    accent: "#2997ff",
+    gradient: "linear-gradient(135deg, #2997ff 0%, #6cc4ff 100%)",
+    glow: "rgba(41,151,255,0.24)",
+    patternClass: "hero-pattern-stripes",
+    badgeBg: "rgba(41,151,255,0.08)",
+    badgeText: "#0066cc",
+    delta: "84 pts Reclaimed",
+    Glyph: Wallet,
+  },
+  {
+    tag: "PAYER COMPLIANCE",
+    accent: "#004a95",
+    gradient: "linear-gradient(135deg, #004a95 0%, #0071e3 100%)",
+    glow: "rgba(0,74,149,0.24)",
+    patternClass: "hero-pattern-cross",
+    badgeBg: "rgba(0,74,149,0.08)",
+    badgeText: "#003b77",
+    delta: "Zero-Omission",
+    Glyph: ShieldCheck,
+  },
 ];
 
 /**
- * HeroModule — one feature module.
+ * HeroModule — creative bento feature card.
  *
- * A chamfered tile, not a pill: a notched top-right corner, a 1px
- * chamfered edge, its own accent, and a before→after bar that fills
- * as the module scrolls in. The title / number / bar rows share a
- * baseline grid so all four read as one instrument panel.
+ * Micro-architectural pattern, frosted dimensional glass, glowing
+ * comparison gauge, and interactive hover lift.
  */
 function HeroModule({
   metric,
@@ -54,7 +92,7 @@ function HeroModule({
   const { Glyph } = look;
 
   // how much of "before" is left after engagement — drives the bar
-  const ratio = metric.before > 0 ? Math.max(0.03, metric.after / metric.before) : 1;
+  const ratio = metric.before > 0 ? Math.max(0.04, Math.min(1, metric.after / metric.before)) : 1;
 
   useEffect(() => {
     const el = fillRef.current;
@@ -83,61 +121,96 @@ function HeroModule({
 
   return (
     <div
-      className="hero-module"
+      className={`hero-bento-card group flex h-full flex-col p-6 sm:p-7 ${look.patternClass}`}
       style={
         {
-          "--module-accent": look.accent,
-          "--module-glow": look.glow,
+          "--card-glow": look.glow,
+          "--card-gradient": look.gradient,
         } as CSSProperties
       }
     >
-      {/* accent rail — the only furniture; no card surface */}
-      <span className="hero-module-rail" aria-hidden />
+      {/* Top subtle iridescent hairline accent */}
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-[2.5px] opacity-75 transition-opacity duration-300 group-hover:opacity-100"
+        style={{
+          background: look.gradient,
+        }}
+      />
 
-      <div className="relative flex h-full flex-col pl-4 pr-1 py-1">
-        {/* header — title left, sigil right */}
-        <div className="flex items-start justify-between gap-3">
-          <dt className="text-[0.82rem] font-semibold leading-snug tracking-[-0.005em] text-studio-700">
-            {metric.title}
-          </dt>
+      {/* Ambient corner light bloom */}
+      <div
+        className="pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full opacity-30 blur-2xl transition-opacity duration-500 group-hover:opacity-60"
+        style={{ background: look.accent }}
+      />
+
+      {/* Card Header: Tag pill & floating squircle icon */}
+      <div className="relative flex items-center justify-between gap-3">
+        <span
+          className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[0.66rem] font-bold tracking-[0.08em] uppercase border border-slate-200/80 bg-white/90 shadow-2xs backdrop-blur-xs"
+          style={{ color: look.badgeText }}
+        >
           <span
-            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[9px] text-white"
-            style={{ background: look.accent }}
-          >
-            <Glyph className="h-4 w-4" aria-hidden />
-          </span>
-        </div>
+            className="h-1.5 w-1.5 rounded-full animate-pulse"
+            style={{ backgroundColor: look.accent }}
+          />
+          {look.tag}
+        </span>
+        <span
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl text-white shadow-md transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6"
+          style={{ background: look.gradient }}
+        >
+          <Glyph className="h-4.5 w-4.5" aria-hidden />
+        </span>
+      </div>
 
-        {/* the number — anchored so all four align on one baseline */}
-        <dd className="mt-6 flex items-baseline gap-1.5">
-          <span className="tabular text-[2.5rem] font-semibold leading-none tracking-[-0.035em] text-studio-950 sm:text-[2.9rem]">
-            {num !== null ? (
-              <CountUp to={num} decimals={metric.result.includes(".") ? 1 : 0} />
-            ) : (
-              metric.result
-            )}
-          </span>
-          <span className="text-[1rem] font-semibold" style={{ color: look.accent }}>
-            {rest}
-          </span>
-        </dd>
+      {/* Metric Title */}
+      <h4 className="relative mt-5 text-[0.98rem] font-bold leading-snug tracking-tight text-slate-800 font-sans">
+        {metric.title}
+      </h4>
 
-        {/* before → after, with a bar that fills */}
-        <div className="mt-auto pt-6">
-          <div className="flex items-center justify-between gap-3 pb-2 text-[0.7rem]">
-            <span className="text-studio-400">{metric.beforeLabel}</span>
-            <span className="text-studio-400">before</span>
+      {/* The Big Result Number */}
+      <div className="relative mt-3 flex items-baseline gap-1.5">
+        <span className="tabular text-[2.6rem] font-bold leading-none tracking-[-0.035em] text-slate-900 font-display">
+          {num !== null ? (
+            <CountUp to={num} decimals={metric.result.includes(".") ? 1 : 0} />
+          ) : (
+            metric.result
+          )}
+        </span>
+        <span className="text-[1.05rem] font-bold tracking-tight" style={{ color: look.accent }}>
+          {rest}
+        </span>
+      </div>
+
+      {/* Before / After Dual-Stage Progress Instrument */}
+      <div className="relative mt-auto pt-6">
+        <div className="rounded-xl border border-slate-200/80 bg-white/80 p-3 shadow-2xs backdrop-blur-xs">
+          <div className="flex items-center justify-between text-[0.7rem] pb-1.5 font-medium">
+            <span className="text-slate-500">Baseline Before</span>
+            <span className="tabular font-semibold text-slate-700">{metric.beforeLabel} {metric.unit}</span>
           </div>
-          <div className="hero-module-track">
+
+          <div className="hero-module-track my-1">
             <div ref={fillRef} className="hero-module-fill" />
           </div>
-          <div className="mt-2 flex items-center justify-between gap-3 pb-2 text-[0.7rem]">
-            <span className="font-semibold" style={{ color: look.accent }}>
-              {metric.afterLabel}
-            </span>
-            <span className="text-studio-500">after</span>
+
+          <div className="flex items-center justify-between text-[0.72rem] pt-1.5 font-bold" style={{ color: look.accent }}>
+            <span>HRCM Optimized</span>
+            <span className="tabular font-extrabold">{metric.afterLabel} {metric.unit}</span>
           </div>
-          <p className="tabular pt-1 text-[0.75rem] text-studio-500">{metricPair(metric)}</p>
+        </div>
+
+        {/* Delta Tag */}
+        <div className="mt-2.5 flex items-center justify-between">
+          <span className="text-[0.72rem] font-medium text-slate-500">
+            {metricPair(metric)}
+          </span>
+          <span
+            className="inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-[0.68rem] font-bold"
+            style={{ backgroundColor: look.badgeBg, color: look.badgeText }}
+          >
+            {look.delta}
+          </span>
         </div>
       </div>
     </div>
@@ -192,11 +265,11 @@ export function Hero() {
         className="pointer-events-none absolute inset-x-0 top-0 h-[46rem]"
         style={{
           background:
-            "radial-gradient(85% 60% at 50% 0%, rgba(255,255,255,0.6) 0%, rgba(244,250,238,0.4) 34%, rgba(244,250,238,0) 68%)",
+            "radial-gradient(85% 60% at 50% 0%, rgba(255,255,255,0.7) 0%, rgba(227,242,255,0.45) 34%, rgba(227,242,255,0) 68%)",
         }}
       />
 
-      {/* green blooms sitting behind the object, so it glows in-set */}
+      {/* light blue blooms sitting behind the object, so it glows in-set */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div
           className="studio-bloom"
@@ -205,7 +278,7 @@ export function Hero() {
             top: "14%",
             height: "32rem",
             width: "32rem",
-            background: "radial-gradient(circle, rgba(244,250,238,0.9) 0%, rgba(244,250,238,0) 68%)",
+            background: "radial-gradient(circle, rgba(227,242,255,0.9) 0%, rgba(227,242,255,0) 68%)",
           }}
         />
         <div
@@ -215,22 +288,23 @@ export function Hero() {
             bottom: "4%",
             height: "24rem",
             width: "24rem",
-            background: "radial-gradient(circle, rgba(21,154,140,0.2) 0%, rgba(21,154,140,0) 70%)",
+            background: "radial-gradient(circle, rgba(0,113,227,0.18) 0%, rgba(0,113,227,0) 70%)",
           }}
         />
       </div>
 
       {/* The windmill — six blade panes sweeping past a soft hub.
           Rendered ABOVE every wash and bloom so the panes of light
-          are unmistakably visible as they turn. */}
+          are unmistakably visible as they turn. Alternating azure and
+          teal ribbons create dynamic depth across the light-blue ground. */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="hero-windmill">
-          <div className="hero-blade" style={{ transform: "rotate(0deg)", "--tint": "rgba(90,163,24,0.5)" } as CSSProperties} />
-          <div className="hero-blade" style={{ transform: "rotate(60deg)", "--tint": "rgba(147,216,58,0.5)" } as CSSProperties} />
-          <div className="hero-blade" style={{ transform: "rotate(120deg)", "--tint": "rgba(21,154,140,0.42)" } as CSSProperties} />
-          <div className="hero-blade" style={{ transform: "rotate(180deg)", "--tint": "rgba(46,139,23,0.42)" } as CSSProperties} />
-          <div className="hero-blade" style={{ transform: "rotate(240deg)", "--tint": "rgba(211,236,189,0.7)" } as CSSProperties} />
-          <div className="hero-blade" style={{ transform: "rotate(300deg)", "--tint": "rgba(90,163,24,0.38)" } as CSSProperties} />
+          <div className="hero-blade" style={{ transform: "rotate(0deg)", "--tint": "rgba(0,113,227,0.44)" } as CSSProperties} />
+          <div className="hero-blade" style={{ transform: "rotate(60deg)", "--tint": "rgba(23,193,187,0.52)" } as CSSProperties} />
+          <div className="hero-blade" style={{ transform: "rotate(120deg)", "--tint": "rgba(41,151,255,0.42)" } as CSSProperties} />
+          <div className="hero-blade" style={{ transform: "rotate(180deg)", "--tint": "rgba(15,163,160,0.52)" } as CSSProperties} />
+          <div className="hero-blade" style={{ transform: "rotate(240deg)", "--tint": "rgba(77,217,212,0.48)" } as CSSProperties} />
+          <div className="hero-blade" style={{ transform: "rotate(300deg)", "--tint": "rgba(0,113,227,0.38)" } as CSSProperties} />
           <div className="hero-hub" />
         </div>
       </div>
@@ -240,13 +314,13 @@ export function Hero() {
           {/* ---------------- Copy ---------------- */}
           <div>
             <div data-hero-kicker className="flex items-center gap-3">
-              <span className="h-px w-10 bg-gradient-to-r from-[#5aa318] to-transparent" />
-              <span className="text-[0.82rem] font-medium tracking-[-0.005em] text-[#3f7a0e]">
-                Healthcare revenue cycle management
+              <span className="h-px w-10 bg-gradient-to-r from-azure-600 to-transparent" />
+              <span className="text-[0.82rem] font-medium tracking-[-0.005em] text-azure-700">
+                AI-Powered Healthcare Revenue Cycle Management
               </span>
             </div>
 
-            <h1 className="mt-6 max-w-[19ch] text-[2.6rem] font-semibold leading-[1.03] tracking-[-0.035em] text-studio-950 sm:text-[3.4rem] lg:text-[4.05rem]">
+            <h1 className="mt-6 max-w-[20ch] text-[2.6rem] font-semibold leading-[1.03] tracking-[-0.035em] text-studio-950 sm:text-[3.4rem] lg:text-[4.05rem]">
               <span data-hero-line className="block">
                 Optimize your
               </span>
@@ -254,7 +328,7 @@ export function Hero() {
                 hospital revenue
               </span>
               <span data-hero-line className="block text-studio-500">
-                with HRCM
+                with HRCM AI
               </span>
             </h1>
 
@@ -262,7 +336,7 @@ export function Hero() {
               data-hero-copy
               className="mt-6 max-w-xl text-[1.05rem] leading-[1.7] text-studio-700 sm:text-[1.15rem]"
             >
-              End-to-end receivables recovery and operational support for healthcare providers.
+              Automated claim scrubbing, deduction analysis, and settlement tracking across private insurers and government panels.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3.5">
@@ -290,7 +364,7 @@ export function Hero() {
               className="pointer-events-none absolute inset-0 -z-10"
               style={{
                 background:
-                  "radial-gradient(56% 56% at 62% 42%, rgba(255,255,255,0.75) 0%, rgba(244,250,238,0.5) 45%, rgba(244,250,238,0) 72%)",
+                  "radial-gradient(56% 56% at 62% 42%, rgba(255,255,255,0.8) 0%, rgba(227,242,255,0.55) 45%, rgba(227,242,255,0) 72%)",
               }}
             />
             <HeroObject className="w-full" />
@@ -298,22 +372,26 @@ export function Hero() {
         </div>
 
         {/* ---------------- Feature modules ---------------- */}
-        <div data-hero-ledger className="mt-16 lg:mt-20">
-          <div className="flex items-end justify-between gap-6 pb-4">
-            <p className="text-[0.85rem] text-studio-500">What changes after we take over</p>
-            <p className="hidden text-[0.78rem] text-studio-400 sm:block">
-              As reported by HRCM across recent engagements
+        <div data-hero-ledger className="mt-16 lg:mt-24">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 pb-6">
+            <div>
+              <span className="text-[0.74rem] font-bold uppercase tracking-[0.14em] text-azure-700">
+                Verified Hospital Performance
+              </span>
+              <h3 className="mt-1 text-xl sm:text-2xl font-bold tracking-tight text-studio-950 font-display">
+                What changes after HRCM takes over
+              </h3>
+            </div>
+            <p className="text-xs text-studio-500 font-medium sm:text-right">
+              Measured against hospital baselines across recent engagements
             </p>
           </div>
-          <hr className="ledger-rule" />
-          <dl className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4 lg:divide-x lg:divide-studio-200">
+          
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {IMPACT.metrics.map((m, i) => (
-              <div key={m.title} className="lg:px-6 lg:first:pl-0 lg:last:pr-0">
-                <HeroModule metric={m} index={i} />
-              </div>
+              <HeroModule key={m.title} metric={m} index={i} />
             ))}
-          </dl>
-          <hr className="ledger-rule mt-4" />
+          </div>
         </div>
       </div>
     </section>

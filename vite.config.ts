@@ -14,20 +14,28 @@ const pages = [
   "services",
   "why-choose-us",
   "our-team",
+  "software",
+  "careers",
   "get-in-touch",
   "terms",
   "privacy",
   "404",
-  "services/claims-audit-and-analysis",
   "services/claims-processing-and-submission",
+  "services/claims-audit-and-analysis",
+  "services/query-management",
   "services/accounts-receivable-management",
   "services/revenue-reconciliation",
+  "services/data-management",
   "services/medical-billing",
-  "services/query-management",
 ];
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      "@": resolve(__dirname, "./src"),
+    },
+  },
   server: { port: 5180, strictPort: true },
   build: {
     outDir: "dist",

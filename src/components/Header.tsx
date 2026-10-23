@@ -61,10 +61,9 @@ export function Header() {
         }`}
       >
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-azure-300/50 to-transparent" />
-        <div className="mx-auto flex h-[3.75rem] max-w-[102rem] items-center justify-between gap-6 px-8 sm:px-12">
-          <Link href="/" className="flex shrink-0 items-center gap-2.5" aria-label="HRCM home">
-            <img src="/logo.png" alt="" aria-hidden className="h-10 w-10 object-contain" />
-            <span className="text-[1rem] font-semibold tracking-[-0.02em] text-ink-900">HRCM</span>
+        <div className="mx-auto flex h-[4.75rem] max-w-[102rem] items-center justify-between gap-6 px-8 sm:px-12">
+          <Link href="/" className="flex shrink-0 items-center" aria-label="HRCM home">
+            <img src="/logo.png" alt="HRCM" className="h-14 w-14 sm:h-16 sm:w-16 lg:h-[4.25rem] lg:w-[4.25rem] object-contain transition-transform duration-300 hover:scale-105" />
           </Link>
 
           <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
@@ -148,9 +147,8 @@ export function Header() {
               transition={{ type: "spring", stiffness: 320, damping: 34 }}
             >
               <div className="flex items-center justify-between">
-                <span className="flex items-center gap-2.5">
-                  <img src="/logo.png" alt="HRCM Logo" className="h-10 w-10 object-contain" />
-                  <span className="text-[0.95rem] font-semibold tracking-tight text-ink-900">HRCM</span>
+                <span className="flex items-center">
+                  <img src="/logo.png" alt="HRCM Logo" className="h-14 w-14 sm:h-16 sm:w-16 object-contain" />
                 </span>
                 <button
                   onClick={() => setOpen(false)}

@@ -109,15 +109,14 @@ const Footer: React.FC = () => {
 
           {/* Top Bar: Brand, Status Badge & Back To Top Action */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-10 mb-10 border-b border-slate-200/70 gap-6">
-            <div className="flex items-center gap-4">
-              <div className="flex items-center text-[26px] font-bold text-[#0f172a] font-display">
+            <div className="flex items-center gap-5">
+              <a href="/" className="inline-flex items-center" aria-label="HRCM home">
                 <img
                   src="/logo.png"
                   alt="HRCM logo"
-                  className="mr-3 h-11 w-11 object-contain transition-transform duration-300 hover:rotate-6 hover:scale-105"
+                  className="h-20 w-20 sm:h-24 sm:w-24 object-contain transition-transform duration-300 hover:rotate-3 hover:scale-105"
                 />
-                HRCM
-              </div>
+              </a>
               <div className="hidden sm:inline-flex items-center gap-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-700">
                 <span className="h-2 w-2 rounded-full bg-emerald-500 animate-ping" />
                 <span>Pan-India 24/7 Ops Active</span>
@@ -194,10 +193,12 @@ const Footer: React.FC = () => {
               <ul className="space-y-2.5 text-sm font-sans text-[#475467]">
                 {[
                   { label: 'Home', href: '/' },
+                  { label: 'HRCM Software', href: '/software.html' },
                   { label: 'About Us', href: '/about.html' },
                   { label: 'Our Services', href: '/services.html' },
                   { label: 'Why Choose Us', href: '/why-choose-us.html' },
                   { label: 'Our Team', href: '/our-team.html' },
+                  { label: 'Careers', href: '/careers.html' },
                   { label: 'Get In Touch', href: '/get-in-touch.html' },
                 ].map((item) => (
                   <li key={item.label}>
@@ -220,12 +221,12 @@ const Footer: React.FC = () => {
               </h4>
               <ul className="space-y-2.5 text-sm font-sans text-[#475467]">
                 {[
-                  { label: 'Claims Audit & Analysis', href: '/services/claims-audit-and-analysis.html' },
                   { label: 'Claims Processing & Submission', href: '/services/claims-processing-and-submission.html' },
+                  { label: 'Claims Audit & Analysis', href: '/services/claims-audit-and-analysis.html' },
+                  { label: 'Query Management', href: '/services/query-management.html' },
                   { label: 'Accounts Receivable Management', href: '/services/accounts-receivable-management.html' },
                   { label: 'Revenue Reconciliation', href: '/services/revenue-reconciliation.html' },
-                  { label: 'Medical Billing', href: '/services/medical-billing.html' },
-                  { label: 'Query Management', href: '/services/query-management.html' },
+                  { label: 'Data Management', href: '/services/data-management.html' },
                 ].map((item) => (
                   <li key={item.label}>
                     <a
@@ -243,17 +244,11 @@ const Footer: React.FC = () => {
             {/* Column 4: Contact & HQ (3 Cols) */}
             <div className="lg:col-span-3">
               <h4 className="text-xs font-bold uppercase tracking-wider text-[#0f172a] font-mono mb-4">
-                Noida Headquarters
+                Greater Noida Headquarters
               </h4>
               <div className="space-y-3 text-sm font-sans text-[#475467]">
                 <div className="flex items-center gap-2">
                   <span className="font-semibold text-[#0f172a]">Direct:</span>
-                  <a href="tel:+919868808775" className="hover:text-[#0071e3] transition-colors">
-                    +91 98688 08775
-                  </a>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="font-semibold text-[#0f172a]">Support:</span>
                   <a href="tel:+918010285464" className="hover:text-[#0071e3] transition-colors">
                     +91 80102 85464
                   </a>

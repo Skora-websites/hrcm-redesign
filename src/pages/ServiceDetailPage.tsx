@@ -10,11 +10,12 @@ import { Reveal, StaggerContainer, StaggerItem } from "../components/ui";
 import { ArrowUpRight, Check } from "lucide-react";
 
 export function ServiceDetailPage({ slug }: { slug: string }) {
+  const resolvedSlug = slug === "medical-billing" ? "data-management" : slug;
   const service = SERVICES.find(
-    (s) => s.href.replace(/^\/services\//, "").replace(/\.html$/, "") === slug,
+    (s) => s.href.replace(/^\/services\//, "").replace(/\.html$/, "") === resolvedSlug,
   );
   if (!service) return null;
-  const points = SERVICE_POINTS[slug] ?? [];
+  const points = SERVICE_POINTS[resolvedSlug] ?? SERVICE_POINTS[slug] ?? [];
   const others = SERVICES.filter((s) => s.title !== service.title);
 
   return (

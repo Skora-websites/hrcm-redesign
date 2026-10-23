@@ -25,7 +25,7 @@ export function ComingSoon() {
       <div ref={panel} className="relative mx-auto max-w-[102rem] px-8 sm:px-12">
         <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
           <div>
-            <Kicker tone="orchid">In development</Kicker>
+            <Kicker tone="azure">Developed</Kicker>
             <h2 className="mt-4 max-w-2xl text-[2.05rem] font-semibold leading-[1.08] tracking-[-0.025em] text-ink-900 sm:text-[2.9rem]">
                 {COMING_SOON.heading}
               </h2>
@@ -66,10 +66,10 @@ export function ComingSoon() {
                 </CTAButton>
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/55 px-4 py-2 text-[0.8rem] font-medium text-ink-600 backdrop-blur-xl">
                   <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-azure-500 opacity-70" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-azure-600" />
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-70" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-600" />
                   </span>
-                  HRCM AI Claims Platform · in development
+                  HRCM AI Claims Platform · Developed
                 </span>
               </div>
             </Reveal>
@@ -78,18 +78,18 @@ export function ComingSoon() {
           {/* Visual */}
           <motion.div style={{ y: visualY }} className="relative">
 
-            <div className="relative mx-auto max-w-md">
+            <div className="relative mx-auto max-w-lg">
               {/* glow plate */}
               <div
                 aria-hidden
                 className="absolute inset-6 rounded-[40px] bg-gradient-to-br from-azure-300/40 to-aqua-300/40 blur-3xl"
               />
-              <div className="glass relative overflow-hidden rounded-[32px] p-3">
+              <div className="glass relative overflow-hidden rounded-[32px] p-3 shadow-xl border border-white/80">
                 <div className="relative overflow-hidden rounded-[var(--r-card)] bg-white/70">
                   <img
-                    src="/images/ai-visual.png"
-                    alt="AI-assisted claims protection — settlement timer with clinical data shield"
-                    className="h-[20rem] w-full object-cover sm:h-[24rem]"
+                    src="/images/hrcm-ai-platform.jpg"
+                    alt="HRCM AI Claims Platform — automated claim scrubbing, denial risk prediction and settlement analytics"
+                    className="h-[20rem] w-full object-cover object-top sm:h-[24rem]"
                     loading="lazy"
                     decoding="async"
                   />

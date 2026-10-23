@@ -10,6 +10,8 @@ import { ServiceDetailPage } from "./pages/ServiceDetailPage";
 import { WhyPage } from "./pages/WhyPage";
 import { TeamPage } from "./pages/TeamPage";
 import { ContactPage } from "./pages/ContactPage";
+import { SoftwarePage } from "./pages/SoftwarePage";
+import { CareersPage } from "./pages/CareersPage";
 import { LegalPage } from "./pages/LegalPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 
@@ -23,6 +25,8 @@ const TITLES: Record<string, string> = {
   services: "Our Services | HRCM Revenue Cycle Management",
   why: "Why Choose Us | HRCM Revenue Cycle Management",
   team: "Our Team | HRCM Leadership",
+  software: "HRCM Software | AI-Powered Healthcare Revenue Cycle Management",
+  careers: "Careers at HRCM | Healthcare Technology & Operations",
   contact: "Get In Touch | HRCM",
   terms: "Terms & Conditions | HRCM",
   privacy: "Privacy Policy | HRCM",
@@ -74,6 +78,12 @@ export default function App() {
       break;
     case "team":
       page = <TeamPage />;
+      break;
+    case "software":
+      page = <SoftwarePage />;
+      break;
+    case "careers":
+      page = <CareersPage />;
       break;
     case "contact":
       page = <ContactPage />;
