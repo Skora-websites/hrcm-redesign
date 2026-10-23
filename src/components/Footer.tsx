@@ -114,7 +114,7 @@ const Footer: React.FC = () => {
                 <img
                   src="/logo.png"
                   alt="HRCM logo"
-                  className="h-20 w-20 sm:h-24 sm:w-24 object-contain transition-transform duration-300 hover:rotate-3 hover:scale-105"
+                  className="h-24 w-auto sm:h-28 lg:h-32 object-contain transition-transform duration-300 hover:rotate-3 hover:scale-105"
                 />
               </a>
               <div className="hidden sm:inline-flex items-center gap-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-700">

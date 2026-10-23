@@ -246,7 +246,7 @@ export function Hero() {
     <section
       ref={root}
       id="home"
-      className="relative overflow-hidden pb-16 pt-24 sm:pt-28 lg:pb-24 lg:pt-32"
+      className="relative overflow-hidden pb-16 pt-28 sm:pt-32 lg:pb-24 lg:pt-36"
     >
       <StudioBackdrop />
 

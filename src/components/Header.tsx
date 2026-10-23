@@ -61,9 +61,9 @@ export function Header() {
         }`}
       >
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-azure-300/50 to-transparent" />
-        <div className="mx-auto flex h-[4.75rem] max-w-[102rem] items-center justify-between gap-6 px-8 sm:px-12">
-          <Link href="/" className="flex shrink-0 items-center" aria-label="HRCM home">
-            <img src="/logo.png" alt="HRCM" className="h-14 w-14 sm:h-16 sm:w-16 lg:h-[4.25rem] lg:w-[4.25rem] object-contain transition-transform duration-300 hover:scale-105" />
+        <div className="mx-auto flex h-[5.5rem] sm:h-[6rem] lg:h-[6.5rem] max-w-[102rem] items-center justify-between gap-6 px-8 sm:px-12">
+          <Link href="/" className="flex shrink-0 items-center py-1.5" aria-label="HRCM home">
+            <img src="/logo.png" alt="HRCM" className="h-16 w-auto sm:h-20 lg:h-24 object-contain transition-transform duration-300 hover:scale-105 drop-shadow-xs" />
           </Link>
 
           <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
@@ -148,7 +148,7 @@ export function Header() {
             >
               <div className="flex items-center justify-between">
                 <span className="flex items-center">
-                  <img src="/logo.png" alt="HRCM Logo" className="h-14 w-14 sm:h-16 sm:w-16 object-contain" />
+                  <img src="/logo.png" alt="HRCM Logo" className="h-16 w-auto sm:h-20 object-contain" />
                 </span>
                 <button
                   onClick={() => setOpen(false)}
