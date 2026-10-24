@@ -157,14 +157,6 @@ const CHALLENGES_INTERVENTIONS: ChallengeCard[] = [
   },
 ];
 
-const TRUSTED_HOSPITALS = [
-  "Yatharth Super Speciality Hospitals",
-  "Primus Super Speciality Hospital",
-  "Sharda Hospital & Medical Sciences",
-  "Dr. Shroff's Charity Eye Hospital",
-  "Ujala Cygnus Healthcare Services",
-  "Aarvy Healthcare Super Speciality Hospital",
-];
 
 export function CaseStudy() {
   const [activeTab, setActiveTab] = useState<"matrix" | "interventions">("matrix");
@@ -207,7 +199,7 @@ export function CaseStudy() {
             </span>
             <span className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50/90 px-3.5 py-1.5 text-xs font-semibold text-emerald-800">
               <Sparkles className="h-3.5 w-3.5 text-emerald-600" />
-              Partner: HRCM Receivables Recovery
+              Scope: Hospital Receivables Turnaround
             </span>
           </div>
         </div>
@@ -407,35 +399,6 @@ export function CaseStudy() {
           </div>
         )}
 
-        {/* ── Hospital Partners Banner (From PDF Page 5) ── */}
-        <div className="mt-14 rounded-2xl border border-slate-200/80 bg-white p-6 sm:p-8 shadow-xs">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-slate-100 pb-5">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-wider text-slate-500 font-mono">
-                Trusted by India's Leading Healthcare Brands
-              </p>
-              <h3 className="mt-1 text-lg font-bold text-slate-900 font-sans">
-                Partnerships Delivering Measurable Financial Turnaround
-              </h3>
-            </div>
-            <span className="text-xs font-semibold text-azure-600">
-              Pan-India Hospital Network Deployments
-            </span>
-          </div>
-
-          <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-            {TRUSTED_HOSPITALS.map((hospital, idx) => (
-              <div
-                key={idx}
-                className="flex items-center justify-center rounded-xl bg-slate-50 border border-slate-200/70 p-3 text-center transition-colors hover:bg-azure-50/50 hover:border-azure-200"
-              >
-                <span className="text-xs font-semibold text-slate-700 leading-tight">
-                  {hospital}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
