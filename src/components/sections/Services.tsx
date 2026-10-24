@@ -8,20 +8,20 @@ import HowItWorks, { type Step } from "@/components/ui/how-it-works";
 
 const SERVICE_STEPS: Step[] = [
   {
-    title: "Claims Processing & Submission",
-    description:
-      "HRCM ensures that claims are accurately prepared and submitted within required timelines to support faster settlement and smoother payment processing.",
-    theme: "pastel-blue",
-    href: "/services/claims-processing-and-submission.html",
-    badge: "Stage 01 · Submission",
-  },
-  {
     title: "Claims Audit & Analysis",
     description:
       "HRCM conducts a detailed review of existing claims processes to identify inaccuracies, operational inefficiencies, and potential revenue loss.",
     theme: "pastel-green",
     href: "/services/claims-audit-and-analysis.html",
-    badge: "Stage 02 · Pre-Audit",
+    badge: "Stage 01 · Pre-Audit",
+  },
+  {
+    title: "Claims Submission",
+    description:
+      "HRCM ensures that claims are accurately prepared and submitted within required timelines to support faster settlement and smoother payment workflows.",
+    theme: "pastel-blue",
+    href: "/services/claims-processing-and-submission.html",
+    badge: "Stage 02 · Submission",
   },
   {
     title: "Query Management",
@@ -50,7 +50,7 @@ const SERVICE_STEPS: Step[] = [
   {
     title: "Data Management",
     description:
-      "Intelligent healthcare data ingestion, OCR document digitizing, and direct HIS integration for automated, error-free revenue management.",
+      "Intelligent healthcare data ingestion, document digitizing, and direct HIS integration for automated, error-free revenue management.",
     theme: "pastel-green",
     href: "/services/data-management.html",
     badge: "Stage 06 · Ingestion",

@@ -129,13 +129,6 @@ function HeroModule({
         } as CSSProperties
       }
     >
-      {/* Top subtle iridescent hairline accent */}
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[2.5px] opacity-75 transition-opacity duration-300 group-hover:opacity-100"
-        style={{
-          background: look.gradient,
-        }}
-      />
 
       {/* Ambient corner light bloom */}
       <div

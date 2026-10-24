@@ -73,18 +73,18 @@ export type Service = {
 
 export const SERVICES: Service[] = [
   {
-    title: "Claims Processing & Submission",
-    href: "/services/claims-processing-and-submission.html",
-    text: "HRCM ensures that claims are accurately prepared and submitted within required timelines to support faster settlement and smoother payment processing. Through careful review and structured workflows, the team works to reduce claim rejections, minimize processing delays, and improve overall claims efficiency. This approach helps healthcare organizations shorten payment cycles and maintain a more stable revenue flow.",
-    detailIntro:
-      "Accurate preparation and timely submission of claims to support faster settlement and smooth payment processing across private insurers and government panels.",
-  },
-  {
     title: "Claims Audit & Analysis",
     href: "/services/claims-audit-and-analysis.html",
     text: "HRCM conducts a detailed review of existing claims processes to identify inaccuracies, operational inefficiencies, and potential revenue loss. By analyzing claim submissions and settlement patterns, the company helps healthcare organizations improve claim accuracy, reduce denials, and identify missed revenue opportunities. This structured approach supports more efficient claims management and strengthens overall financial performance.",
     detailIntro:
       "HRCM conducts a detailed review of existing claims processes to identify inaccuracies, operational inefficiencies, and potential revenue loss.",
+  },
+  {
+    title: "Claims Submission",
+    href: "/services/claims-processing-and-submission.html",
+    text: "HRCM ensures that claims are accurately prepared and submitted within required timelines to support faster settlement and smoother payment workflows. Through careful review and structured workflows, the team works to reduce claim rejections, minimize delays, and improve overall claims efficiency. This approach helps healthcare organizations shorten payment cycles and maintain a more stable revenue flow.",
+    detailIntro:
+      "Accurate preparation and timely submission of claims to support faster settlement and smooth payment clearance across private insurers and government panels.",
   },
   {
     title: "Query Management",
@@ -110,9 +110,9 @@ export const SERVICES: Service[] = [
   {
     title: "Data Management",
     href: "/services/data-management.html",
-    text: "Comprehensive healthcare data management, OCR document digitizing, and direct HIS integration. We structure, sanitize, and automate clinical records, discharge summaries, and bill items into audit-ready datasets, removing manual scanning and data entry workloads.",
+    text: "Comprehensive healthcare data management, document digitizing, and direct HIS integration. We structure, sanitize, and automate clinical records, discharge summaries, and bill items into audit-ready datasets, removing manual scanning and data entry workloads.",
     detailIntro:
-      "Comprehensive healthcare data ingestion, OCR document digitizing, and HIS integration for automated, error-free revenue management.",
+      "Comprehensive healthcare data ingestion, document digitizing, and HIS integration for automated, error-free revenue management.",
   },
 ];
 
@@ -234,31 +234,39 @@ export function metricPair(m: (typeof IMPACT.metrics)[number]): string {
 export const WHY = {
   heading: "Why Choose HRCM",
   intro:
-    "AI-powered healthcare revenue cycle management and specialized operational expertise designed to maximize cash flow, eliminate denials, and ensure total compliance across private and government panels.",
+    "Comprehensive claims recovery services and AI-powered operational expertise designed to maximize cash flow, eliminate denials, and ensure total revenue realization across all private and government panels.",
   items: [
     {
-      title: "Unified Private & Government Panel Coverage",
-      text: "Manage private credit business and government panel claims (CGHS, ESI, state health schemes) on a single platform—no more juggling disparate tools, multiple logins, or fragmented spreadsheets.",
+      title: "Audit, Dispatch & Multi-Channel Submission",
+      text: "Dispatch and recovery of claims with timely and accurate audit and dispatch to insurance companies, TPAs, government panels, and PSU authorities via physical and electronic channels.",
+    },
+    {
+      title: "End-to-End Claim Tracking & Recovery",
+      text: "Complete ownership of claim tracking and recovery including acknowledgment confirmation, follow-ups, escalation management, and issue resolution to reduce claim aging.",
+    },
+    {
+      title: "Specialized Delayed & Rejected Claim Recovery",
+      text: "Specialized recovery of pending, delayed, and rejected claims across all payer categories through structured follow-ups and detailed deduction analysis.",
+    },
+    {
+      title: "Customized MIS & Dashboard Reporting",
+      text: "Customized MIS and dashboard reporting offering visibility into receivables, tracking claim status, aging buckets, payer-wise performance, rejection trends, deduction percentages, and recovery progress.",
+    },
+    {
+      title: "Complete Claim Query Lifecycle Management",
+      text: "Complete claim query lifecycle management from receipt and analysis to documentation coordination and timely submission of responses within defined TATs.",
+    },
+    {
+      title: "Comprehensive Payment Reconciliation",
+      text: "Comprehensive payment reconciliation to identify short payments, incorrect deductions, unadjusted credits, and pending balances to ensure accurate accounting and maximized revenue realization.",
     },
     {
       title: "AI-Driven Scrutiny for Indian Healthcare",
       text: "Screening built specifically around Indian payer, TPA, and government panel guidelines. Our AI catches documentation gaps, coding mismatches, and rejection triggers before claims are submitted.",
     },
     {
-      title: "Multi-Stage Audit Checkpoints & Loops",
-      text: "Continuous audit-controlled workflow across Pre-Authorization, Pre-Discharge, and Final Settlement. Built-in correction loops catch and fix discrepancies before they cause downstream rejections or deductions.",
-    },
-    {
-      title: "Strict TAT Tracking with Escalation Matrix",
-      text: "Every claim is monitored against predefined turnaround-time (TAT) benchmarks. Automatic notifications are routed up the escalation matrix so no claim sits idle waiting for manual attention.",
-    },
-    {
-      title: "API-Enabled HIS & Built-In OCR Automation",
-      text: "Direct API integration with hospital HIS and automated OCR to read scanned bills and discharge summaries directly. Cuts repetitive manual data entry and lowers the operating cost per claim.",
-    },
-    {
-      title: "Modular Deployment & Full Audit Transparency",
-      text: "Modular architecture lets hospitals deploy stage-by-stage or run the full suite. Provides consolidated, audit-ready settlement reports and real-time reconciliation for 100% financial visibility.",
+      title: "API-Enabled HIS & Built-In Document Automation",
+      text: "Direct API integration with hospital HIS and smart document processing to read scanned bills and discharge summaries directly. Cuts repetitive manual data entry and lowers the operating cost per claim.",
     },
   ],
 } as const;
@@ -338,7 +346,7 @@ export const FOOTER = {
     { label: "Privacy Policy", href: "/privacy.html" },
     { label: "Contact Us", href: "/get-in-touch.html" },
   ],
-  linkedin: "https://www.linkedin.com/company/hrcm-consultancy-services-pvt-ltd/",
+  linkedin: "https://www.linkedin.com/company/hrcm-consultancy-services-pvt-ltd/?viewAsMember=true",
   copyright: "Copyright © 2026 HRCM. All Rights Reserved.",
 } as const;
 
@@ -494,8 +502,8 @@ export const SERVICE_POINTS: Record<string, ServicePoint[]> = {
       text: "Direct connection with hospital information systems to pull claim and billing data seamlessly.",
     },
     {
-      title: "Intelligent OCR Digitization",
-      text: "Automated OCR reads physical discharge summaries, bills, and investigations without manual re-keying.",
+      title: "Intelligent Document Digitization",
+      text: "Automated digital extraction reads physical discharge summaries, bills, and investigations without manual re-keying.",
     },
     {
       title: "Data Structuring & Validation",

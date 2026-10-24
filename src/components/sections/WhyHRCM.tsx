@@ -2,15 +2,27 @@ import { WHY } from "../../data/content";
 import { SectionSurface } from "../backdrops/SectionSurface";
 import { Kicker, StaggerContainer, StaggerItem, useGsapReveal } from "../ui";
 import { TexCard } from "../TexCard";
-import { Brain, Cpu, Eye, Gauge, Layers, ShieldCheck, Users } from "lucide-react";
+import {
+  Activity,
+  BarChart3,
+  Brain,
+  CheckCircle2,
+  Cpu,
+  MessageSquareCheck,
+  RotateCcw,
+  Send,
+  Users,
+} from "lucide-react";
 
 const ICONS: Record<string, typeof Users> = {
-  "Unified Private & Government Panel Coverage": Layers,
+  "Audit, Dispatch & Multi-Channel Submission": Send,
+  "End-to-End Claim Tracking & Recovery": Activity,
+  "Specialized Delayed & Rejected Claim Recovery": RotateCcw,
+  "Customized MIS & Dashboard Reporting": BarChart3,
+  "Complete Claim Query Lifecycle Management": MessageSquareCheck,
+  "Comprehensive Payment Reconciliation": CheckCircle2,
   "AI-Driven Scrutiny for Indian Healthcare": Brain,
-  "Multi-Stage Audit Checkpoints & Loops": ShieldCheck,
-  "Strict TAT Tracking with Escalation Matrix": Gauge,
-  "API-Enabled HIS & Built-In OCR Automation": Cpu,
-  "Modular Deployment & Full Audit Transparency": Eye,
+  "API-Enabled HIS & Built-In Document Automation": Cpu,
 };
 
 export function WhyHRCM() {
@@ -29,10 +41,10 @@ export function WhyHRCM() {
           <p className="mt-5 text-lg leading-relaxed text-ink-600">{WHY.intro}</p>
         </div>
 
-        {/* 3 × 2 grid of descriptive why choose us cards */}
+        {/* 8-card grid: 4 columns on large screens for 2 clean rows */}
         <StaggerContainer
-          className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
-          staggerDelay={0.08}
+          className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
+          staggerDelay={0.06}
         >
           {WHY.items.map((item, i) => (
             <StaggerItem key={item.title} className="h-full">

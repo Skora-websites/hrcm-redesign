@@ -6,6 +6,7 @@ import { PageHero } from "../components/PageHero";
 import { Breadcrumbs } from "../components/Breadcrumbs";
 import { Kicker } from "../components/ui";
 import { Impact } from "../components/sections/Impact";
+import { CaseStudy } from "../components/sections/CaseStudy";
 import { Sparkline } from "../components/art";
 import { ShieldCheck, CheckCircle2, TrendingUp, ArrowRight } from "lucide-react";
 
@@ -341,6 +342,9 @@ export function AboutPage() {
 
       {/* ── Business Impact Section (Identical 3D Interactive Presentation from Homepage) ── */}
       <Impact />
+
+      {/* ── Case Study: Transformation of Hospital Credit Business ── */}
+      <CaseStudy />
 
       {/* ── Bottom CTA Band ── */}
       <CTABand />

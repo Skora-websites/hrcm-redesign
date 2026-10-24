@@ -2,29 +2,43 @@ import type { Ref } from "react";
 import { motion } from "framer-motion";
 import { WHY } from "../data/content";
 import { IconTile } from "./ui";
-import { Brain, Cpu, Eye, Gauge, Layers, ShieldCheck, Users } from "lucide-react";
+import {
+  Activity,
+  BarChart3,
+  Brain,
+  CheckCircle2,
+  Cpu,
+  MessageSquareCheck,
+  RotateCcw,
+  Send,
+  Users,
+} from "lucide-react";
 
 const ICONS: Record<string, typeof Users> = {
-  "Unified Private & Government Panel Coverage": Layers,
+  "Audit, Dispatch & Multi-Channel Submission": Send,
+  "End-to-End Claim Tracking & Recovery": Activity,
+  "Specialized Delayed & Rejected Claim Recovery": RotateCcw,
+  "Customized MIS & Dashboard Reporting": BarChart3,
+  "Complete Claim Query Lifecycle Management": MessageSquareCheck,
+  "Comprehensive Payment Reconciliation": CheckCircle2,
   "AI-Driven Scrutiny for Indian Healthcare": Brain,
-  "Multi-Stage Audit Checkpoints & Loops": ShieldCheck,
-  "Strict TAT Tracking with Escalation Matrix": Gauge,
-  "API-Enabled HIS & Built-In OCR Automation": Cpu,
-  "Modular Deployment & Full Audit Transparency": Eye,
+  "API-Enabled HIS & Built-In Document Automation": Cpu,
 };
 
 const TONES: Record<string, "azure" | "aqua" | "orchid" | "signal"> = {
-  "Unified Private & Government Panel Coverage": "azure",
+  "Audit, Dispatch & Multi-Channel Submission": "azure",
+  "End-to-End Claim Tracking & Recovery": "aqua",
+  "Specialized Delayed & Rejected Claim Recovery": "signal",
+  "Customized MIS & Dashboard Reporting": "azure",
+  "Complete Claim Query Lifecycle Management": "orchid",
+  "Comprehensive Payment Reconciliation": "aqua",
   "AI-Driven Scrutiny for Indian Healthcare": "orchid",
-  "Multi-Stage Audit Checkpoints & Loops": "signal",
-  "Strict TAT Tracking with Escalation Matrix": "aqua",
-  "API-Enabled HIS & Built-In OCR Automation": "azure",
-  "Modular Deployment & Full Audit Transparency": "signal",
+  "API-Enabled HIS & Built-In Document Automation": "azure",
 };
 
 /**
  * The "Why Choose HRCM" feature grid (icon tile + title + text).
- * Six equal tiles in 3 × 2, so every row is full. Shared by WhyHRCM and WhyPage.
+ * Eight equal tiles in 4 × 2 layout. Shared by WhyHRCM and WhyPage.
  */
 export function WhyGrid({
   className = "",
@@ -36,7 +50,7 @@ export function WhyGrid({
   return (
     <div
       ref={ref}
-      className={`grid gap-5 sm:grid-cols-2 lg:grid-cols-3 ${className}`}
+      className={`grid gap-5 sm:grid-cols-2 lg:grid-cols-4 ${className}`}
     >
       {WHY.items.map((item, i) => {
         const Icon = ICONS[item.title] ?? Users;

@@ -198,9 +198,9 @@ const PLATFORM_CAPABILITIES = [
     icon: Database,
   },
   {
-    title: "OCR-Enabled Document Reader",
+    title: "Intelligent Document Reader",
     description:
-      "Built-in optical character recognition automatically reads physical discharge summaries, paper bills, and diagnostic reports.",
+      "Built-in machine vision automatically reads physical discharge summaries, paper bills, and diagnostic reports.",
     icon: FileCheck2,
   },
   {
@@ -235,7 +235,7 @@ const COMPARISON_ROWS = [
   {
     capability: "Data Entry",
     manual: "Manual typing from scanned documents",
-    hrcm: "OCR-enabled — reads documents directly, no manual entry required",
+    hrcm: "Smart reader — extracts data directly, no manual entry required",
   },
   {
     capability: "Panel Coverage",
@@ -541,7 +541,7 @@ export function SoftwarePage() {
       </section>
 
       {/* ============================================================ */}
-      {/* Platform Capabilities (HIS, OCR, Email, TAT)                 */}
+      {/* Platform Capabilities (HIS, Docs, Email, TAT)                 */}
       {/* ============================================================ */}
       <section className="relative py-16 sm:py-20 bg-slate-900 text-white rounded-[36px] mx-4 sm:mx-8 lg:mx-12 overflow-hidden shadow-2xl">
         <div className="pointer-events-none absolute -right-20 -top-20 h-96 w-96 rounded-full bg-emerald-500/15 blur-3xl" />
@@ -729,7 +729,7 @@ export function SoftwarePage() {
                 <h3 className="mt-4 text-xl font-bold text-ink-900">Complete End-to-End Suite</h3>
                 <p className="mt-3 text-xs leading-relaxed text-ink-600">
                   The complete 3-stage platform across Pre-Authorization, Discharge, and Final Settlement.
-                  Includes HIS API integration, OCR reader, email monitor, and bank reconciliation.
+                  Includes HIS API integration, smart document reader, email monitor, and bank reconciliation.
                 </p>
                 <ul className="mt-6 space-y-2.5 text-xs text-ink-700">
                   <li className="flex items-center gap-2">

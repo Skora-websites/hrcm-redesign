@@ -24,7 +24,7 @@ const EASE_SPRING = { stiffness: 120, damping: 18, mass: 0.7 };
 const CAPABILITIES = [
   { label: "AI Claim Scrubbing", Glyph: ShieldCheck },
   { label: "Deduction Analysis", Glyph: Scale },
-  { label: "HIS & OCR Ingestion", Glyph: FileCode },
+  { label: "HIS & Data Ingestion", Glyph: FileCode },
   { label: "Reconciliation & TAT", Glyph: TrendingUp },
 ];
 

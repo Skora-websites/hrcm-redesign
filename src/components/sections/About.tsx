@@ -32,7 +32,7 @@ const HUBS: HubData[] = [
     addressLine2: "Techzone-4, Greater Noida, UP",
     contactLine1: "+91 80102 85464",
     contactLine2: "info@hrcm.in",
-    metadata: "AUDIT & RECONCILIATION · EST. 2021",
+    metadata: "AUDIT & RECONCILIATION · EST. 2024",
     image: "/images/hub-noida.jpg",
     alt: "Indian healthcare revenue analysts at HRCM headquarters in Greater Noida",
   },
@@ -40,15 +40,15 @@ const HUBS: HubData[] = [
     id: "hospitals",
     territory: "Hospital Desks",
     pill: "ON-SITE & EMBEDDED",
-    stationName: "PAN-INDIA PROVIDER NETWORK",
+    stationName: "ON-SITE CLAIM AUDITING & DISPATCH",
     cityRow: "HOSPITAL EMBEDDED",
     addressLine1: "Tier-1 & Tier-2 Hospital Centers",
-    addressLine2: "Dedicated On-Site Claims & Billing Desks",
+    addressLine2: "On-site Claim Auditing & Dispatch",
     contactLine1: "+91 80102 85464",
     contactLine2: "info@hrcm.in",
-    metadata: "BILLING & QUERY MANAGEMENT · ACTIVE OPS",
+    metadata: "CLAIM AUDITING & DISPATCH · ACTIVE OPS",
     image: "/images/hub-hospital.jpg",
-    alt: "Indian hospital billing coordinator and physician at patient discharge desk",
+    alt: "Indian hospital claims coordinator and physician at patient discharge desk",
   },
   {
     id: "analytics",
@@ -56,7 +56,7 @@ const HUBS: HubData[] = [
     pill: "24/7 RECONCILIATION",
     stationName: "AR AUDIT & RECOVERY CENTER",
     cityRow: "ANALYTICS LAB",
-    addressLine1: "Automated Payer Rule Engine",
+    addressLine1: "Payer Rule Engine",
     addressLine2: "Real-time Discrepancy Matching & Settlement",
     contactLine1: "+91 80102 85464",
     contactLine2: "info@hrcm.in",
@@ -407,11 +407,11 @@ export function About() {
         }
 
         .station-territory {
-          font-family: var(--font-display);
+          font-family: 'Inter', var(--font-sans), system-ui, sans-serif;
           font-weight: 700;
           font-size: clamp(1.15rem, 1.25vw, 1.35rem);
           line-height: 1.15;
-          letter-spacing: -0.025em;
+          letter-spacing: -0.02em;
           color: #ffffff !important;
           text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
           margin: 0;

@@ -236,19 +236,19 @@ export default function HowItWorks({
 }: HowItWorksProps) {
   const defaultFeatures: Step[] = [
     {
-      title: "Claims Processing & Submission",
-      description:
-        "Accurate preparation and submission within required timelines to support faster settlement and smoother payment processing.",
-      theme: "pastel-blue",
-      href: "/services/claims-processing-and-submission.html",
-      badge: "Stage 01",
-    },
-    {
       title: "Claims Audit & Analysis",
       description:
         "Comprehensive review of claims processes to identify inaccuracies, operational inefficiencies, and eliminate revenue loss.",
       theme: "pastel-green",
       href: "/services/claims-audit-and-analysis.html",
+      badge: "Stage 01",
+    },
+    {
+      title: "Claims Submission",
+      description:
+        "Accurate preparation and submission within required timelines to support faster settlement and smoother payment clearance.",
+      theme: "pastel-blue",
+      href: "/services/claims-processing-and-submission.html",
       badge: "Stage 02",
     },
     {
@@ -278,7 +278,7 @@ export default function HowItWorks({
     {
       title: "Data Management",
       description:
-        "Intelligent healthcare OCR ingestion, clinical document digitizing, and direct HIS integration for automated revenue ops.",
+        "Intelligent healthcare data ingestion, clinical document digitizing, and direct HIS integration for automated revenue ops.",
       theme: "pastel-green",
       href: "/services/data-management.html",
       badge: "Stage 06",
